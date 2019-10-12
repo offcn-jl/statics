@@ -62,10 +62,10 @@
 
     // 登陆中间件
     ChaosHandler = function (callback) {
-        if (!ChaosLoginStatus) {
+        if (!ChaosLoginStatus || Cookies.get('ChaosForm_' + ChaosForm + "_Phone") == undefined) {
             ChaosFunctions.ShowByClass("hl-cover,hl-popup"); // 弹出登陆窗口
         } else {
-            callback() // 调用回调函数
+            callback(Cookies.get('ChaosForm_' + ChaosForm + "_Phone")) // 调用回调函数
         }
     };
     globalVariablesList += " [ ChaosHandler ( 登陆中间件 ) ]";
