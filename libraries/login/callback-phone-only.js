@@ -35,9 +35,9 @@
                 //console.log(xhr)
                 if (typeof (xhr.responseJson) == "object") {
                     ChaosForm = xhr.responseJson.FormID
-                    document.getElementsByTagName('chaos')[0].setAttribute("FormID", xhr.responseJson.FormID)
-                    document.getElementsByTagName('chaos')[0].setAttribute("Name", xhr.responseJson.Name)
-                    document.getElementsByTagName('chaos')[0].setAttribute("URL", xhr.responseJson.URL)
+                    document.getElementsByTagName('chaos')[0].setAttribute("chaos-form-id", xhr.responseJson.FormID)
+                    document.getElementsByTagName('chaos')[0].setAttribute("chaos-name", xhr.responseJson.Name)
+                    document.getElementsByTagName('chaos')[0].setAttribute("chaos-url", xhr.responseJson.URL)
                 }
                 console.log("Chaos > 当前登陆表单 ID ( ChaosForm ) 为: " + ChaosForm)
             });

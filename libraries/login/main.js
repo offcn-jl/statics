@@ -77,11 +77,11 @@
     } else {
         // 设置 Chaos 标签的属性
         if (config.Type !== "lingt") {
-            document.getElementsByTagName('chaos')[0].setAttribute("id", config.ID)
+            document.getElementsByTagName('chaos')[0].setAttribute("chaos-id", config.ID)
         }
-        document.getElementsByTagName('chaos')[0].setAttribute("type", config.Type)
+        document.getElementsByTagName('chaos')[0].setAttribute("chaos-type", config.Type)
         if (config.Type === "book") {
-            document.getElementsByTagName('chaos')[0].setAttribute("page", config.Page)
+            document.getElementsByTagName('chaos')[0].setAttribute("chaos-page", config.Page)
         }
     }
 
@@ -188,13 +188,13 @@
                     // 初始化登陆函数
                     let initLogin = function () {
                         // 根据登陆模块 ID 获取表单 ID
-                        ChaosXHR.GET("https://api.2.jilinoffcn.com/events/?action=xgi&id=" + ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "id", "MQ=="), function (xhr) {
+                        ChaosXHR.GET("https://api.2.jilinoffcn.com/events/?action=xgi&id=" + ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "chaos-id", "MQ=="), function (xhr) {
                             //console.log(xhr)
                             if (typeof (xhr.responseJson) == "object") {
                                 ChaosForm = xhr.responseJson.FormID
-                                document.getElementsByTagName('chaos')[0].setAttribute("FormID", xhr.responseJson.FormID)
-                                document.getElementsByTagName('chaos')[0].setAttribute("Name", xhr.responseJson.Name)
-                                document.getElementsByTagName('chaos')[0].setAttribute("URL", xhr.responseJson.URL)
+                                document.getElementsByTagName('chaos')[0].setAttribute("chaos-form-id", xhr.responseJson.FormID)
+                                document.getElementsByTagName('chaos')[0].setAttribute("chaos-name", xhr.responseJson.Name)
+                                document.getElementsByTagName('chaos')[0].setAttribute("chaos-url", xhr.responseJson.URL)
                             }
                             console.log("Chaos > 当前登陆表单 ID ( ChaosForm ) 为: " + ChaosForm)
                         });
