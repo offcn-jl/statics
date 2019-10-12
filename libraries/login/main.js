@@ -58,7 +58,7 @@
         script = scripts[scripts.length - 1], // 当前加载的script
         config = {
             ID: ChaosFunctions.Attr(script, "id", "MQ=="), // 活动ID
-            Type: ChaosFunctions.Attr(script, "login-type", "lingt"), // 登陆模块类型 light ( 仅定位 ) 、 a-tag ( 拦截 a 标签 ) 、 all-a-tag ( 拦截全部 a 标签 ) 、 callback 、 callback-phone-only
+            Type: ChaosFunctions.Attr(script, "login-type", "lingt"), // 登陆模块类型 light ( 仅定位 ) 、 a-tag ( 拦截 a 标签 ) 、 all-a-tag ( 拦截全部 a 标签 ) 、 callback ( 回调函数 )、 callback-phone-only ( 仅电话登陆的回调函数 )
             Page: ChaosFunctions.Attr(script, "page", "5"), // 页码 ( 电子书 )
         };
 
@@ -116,6 +116,16 @@
                 case "all-a-tag": // 拦截 a 标签
                     ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/all-a-tag.js")
                     break;
+                case "book": // 电子书
+                    ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/book.js")
+                    break;
+                case "callback": // 回调函数
+                    ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/callback.js")
+                    break;
+                case "callback-phone-only":
+                    ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/callback-phone-only.js")
+                    console.warn("Chaos > 登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n" + globalVariablesList + "\n\n请注意不要覆盖！");
+                    return;
                 default:
                     console.warn("Chaos > 登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n" + globalVariablesList + "\n\n请注意不要覆盖！");
                     // 加载 light 模块
@@ -138,7 +148,7 @@
                 // 渲染微信登陆组件
                 ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/template/wechat.js");
                 let initTimer = setInterval(function () {
-                    if (typeof (ChaosLoacation) === "object") {
+                    if (typeof (ChaosTemplate) === "string") {
                         clearInterval(initTimer);
                         document.getElementsByTagName('chaos')[0].innerHTML += ChaosTemplate;
                         console.log("Chaos > 微信登陆模板加载成功");
@@ -150,7 +160,7 @@
                 // 渲染手机号登陆组件
                 ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/template/phone.js");
                 let initTimer = setInterval(function () {
-                    if (typeof (ChaosLoacation) === "object") {
+                    if (typeof (ChaosTemplate) === "string") {
                         clearInterval(initTimer);
                         document.getElementsByTagName('chaos')[0].innerHTML += ChaosTemplate;
                         console.log("Chaos > 手机号登陆模板加载成功");

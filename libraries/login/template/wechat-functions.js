@@ -2,19 +2,17 @@
 (function () {
     let wechatLonginInterval
 
+    // 隐藏窗口函数
+    ChaosHideLogin = function() {
+        // 隐藏窗口
+        ChaosFunctions.HideByClass("hl-cover,hl-popup");
+        // 结束微信登陆监听事件
+        clearInterval(wechatLonginInterval);
+    }
+
     // 注册关闭登陆框监听器
-    document.getElementsByClassName("hl-cover")[0].addEventListener("click", function () {
-        // 隐藏窗口
-        ChaosFunctions.HideByClass("hl-cover,hl-popup");
-        // 结束微信登陆监听事件
-        clearInterval(wechatLonginInterval);
-    });
-    document.getElementsByClassName("hl-close")[0].addEventListener("click", function () {
-        // 隐藏窗口
-        ChaosFunctions.HideByClass("hl-cover,hl-popup");
-        // 结束微信登陆监听事件
-        clearInterval(wechatLonginInterval);
-    });
+    document.getElementsByClassName("hl-cover")[0].addEventListener("click", ChaosHideLogin);
+    document.getElementsByClassName("hl-close")[0].addEventListener("click", ChaosHideLogin);
 
     WechatInit = function () {
         // 根据登陆模块 ID 获取表单 ID
@@ -104,6 +102,6 @@
             }, 1000)
         }
     }
-    console.warn('Chaos > 微信登陆模块 ( 处理函数 ) 中定义了全局变量 [ WechatInit ( 二维码登陆初始化函数 ) ] ，请注意不要覆盖！')
+    console.warn('Chaos > 微信登陆模块 ( 处理函数 ) 中定义了全局变量 [ WechatInit ( 二维码登陆初始化函数 ) ] [ ChaosHideLogin ( 隐藏登陆模块函数 ) ] ，请注意不要覆盖！')
     console.log('Chaos > 微信登陆模块处理函数 ( wechat-functions.js ) 加载成功')
 })();

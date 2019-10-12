@@ -4,16 +4,16 @@
     document.getElementsByClassName("hlp-bottom")[0].setAttribute("href", ChaosLoacation.u); // 广告位URL地址
     document.getElementsByClassName("ad-button")[0].setAttribute("href", ChaosLoacation.u); // 广告位URL地址
 
+    // 隐藏窗口函数
+    ChaosHideLogin = function() {
+        // 隐藏窗口
+        ChaosFunctions.HideByClass("hl-cover,hl-popup");
+    }
+
     /* 注册监听事件 开始 */
     // 注册关闭登陆框监听器
-    document.getElementsByClassName("hl-cover")[0].addEventListener("click", function(){
-        // 隐藏窗口
-        ChaosFunctions.HideByClass("hl-cover,hl-popup");
-    });
-    document.getElementsByClassName("hl-close")[0].addEventListener("click", function(){
-        // 隐藏窗口
-        ChaosFunctions.HideByClass("hl-cover,hl-popup");
-    });
+    document.getElementsByClassName("hl-cover")[0].addEventListener("click", ChaosHideLogin);
+    document.getElementsByClassName("hl-close")[0].addEventListener("click", ChaosHideLogin);
     // 菜单栏登陆按钮
     document.getElementById("hlp_sign_in").addEventListener("click", function(){
         document.getElementById("hlp_sign_in").classList.add("hlpt-current");
@@ -165,6 +165,6 @@
         }
     }
 
-    console.warn('Chaos > 手机号登陆模块 ( 处理函数 ) 中定义了全局变量 [ ChaosCallback ( Jsonp 回调函数 ) ] ，请注意不要覆盖！')
+    console.warn('Chaos > 手机号登陆模块 ( 处理函数 ) 中定义了全局变量 [ ChaosCallback ( Jsonp 回调函数 ) ] [ ChaosHideLogin ( 隐藏登陆模块函数 ) ] ，请注意不要覆盖！')
     console.log('Chaos > 手机号登陆模块处理函数 ( phone-functions.js ) 加载成功')
 })();
