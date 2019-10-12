@@ -16,7 +16,7 @@
 
     WechatInit = function () {
         // 根据登陆模块 ID 获取表单 ID
-        ChaosXHR.GET("https://api.2.jilinoffcn.com/events/?action=xgq&eid=" + ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "id", "MQ==") + "&appid=" + ChaosLoacation.a, function (xhr) {
+        ChaosXHR.GET("https://api.2.jilinoffcn.com/events/?action=xgq&eid=" + ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "chaos-id", "MQ==") + "&appid=" + ChaosLoacation.a, function (xhr) {
             if (typeof (xhr.responseJson) == "object") {
                 if (typeof (xhr.responseJson.ticket) == "string") {
                     document.getElementsByClassName("hlwm-qrcode")[0].setAttribute("src", "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + xhr.responseJson.ticket)

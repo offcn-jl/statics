@@ -31,7 +31,7 @@
         if (typeof (Cookies) === "function" && typeof ChaosXHR === "object") {
             clearInterval(initTimer)
             // 根据登陆模块 ID 获取表单 ID
-            ChaosXHR.GET("https://api.2.jilinoffcn.com/events/?action=xgi&id=" + ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "id", "MQ=="), function (xhr) {
+            ChaosXHR.GET("https://api.2.jilinoffcn.com/events/?action=xgi&id=" + ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "chaos-id", "MQ=="), function (xhr) {
                 //console.log(xhr)
                 if (typeof (xhr.responseJson) == "object") {
                     ChaosForm = xhr.responseJson.FormID

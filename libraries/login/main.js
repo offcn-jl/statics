@@ -57,9 +57,9 @@
     let scripts = document.getElementsByTagName('script'),
         script = scripts[scripts.length - 1], // 当前加载的script
         config = {
-            ID: ChaosFunctions.Attr(script, "id", "MQ=="), // 活动ID
-            Type: ChaosFunctions.Attr(script, "login-type", "lingt"), // 登陆模块类型 light ( 仅定位 ) 、 a-tag ( 拦截 a 标签 ) 、 all-a-tag ( 拦截全部 a 标签 ) 、 callback ( 回调函数 )、 callback-phone-only ( 仅电话登陆的回调函数 )
-            Page: ChaosFunctions.Attr(script, "page", "5"), // 页码 ( 电子书 )
+            ID: ChaosFunctions.Attr(script, "chaos-id", "MQ=="), // 活动ID
+            Type: ChaosFunctions.Attr(script, "chaos-type", "lingt"), // 登陆模块类型 light ( 仅定位 ) 、 a-tag ( 拦截 a 标签 ) 、 all-a-tag ( 拦截全部 a 标签 ) 、book ( 电子书 )、 callback ( 回调函数 )、 callback-phone-only ( 仅电话登陆的回调函数 )
+            Page: ChaosFunctions.Attr(script, "chaos-page", "5"), // 页码 ( 电子书 )
         };
 
     // 判断 Dom 是否存在 Chaos 标签
@@ -67,11 +67,11 @@
         // 向 Dom 中添加 Chaos 标签
         let chaosNode = document.createElement("chaos");
         if (config.Type !== "lingt") {
-            chaosNode.setAttribute("id", config.ID)
+            chaosNode.setAttribute("chaos-id", config.ID)
         }
-        chaosNode.setAttribute("type", config.Type)
+        chaosNode.setAttribute("chaos-type", config.Type)
         if (config.Type === "book") {
-            chaosNode.setAttribute("page", config.Page)
+            chaosNode.setAttribute("chaos-page", config.Page)
         }
         document.getElementsByTagName("body")[0].appendChild(chaosNode)
     } else {
