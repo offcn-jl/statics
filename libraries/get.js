@@ -25,4 +25,4 @@ const $_GET = (function() {
     }
 })();
 
-console.warn('Chaos > GET 模块 ( get.js ) 中定义了全局常量 [ $_GET ] ，请注意不要覆盖！')
+console.warn('Chaos > GET 模块 ( get.js ) 中定义了全局变量 [ $_GET ( URL Query 参数 ) ] ，请注意不要覆盖！')

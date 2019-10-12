@@ -70,4 +70,4 @@ const ChaosCodes = {
   ]
 }
 
-console.warn('Chaos > 代码表模块 ( codes.js ) 中定义了全局常量 [ ChaosCodes ] ，请注意不要覆盖！')
+console.warn('Chaos > 代码表模块 ( codes.js ) 中定义了全局变量 [ ChaosCodes ( 代码表 ) ] ，请注意不要覆盖！')
