@@ -60,15 +60,15 @@
         }
     }, 500);
 
-    // 登陆中间件
-    ChaosHandler = function (callback) {
+    // 登陆中间件 ( 携带电话号码 )
+    ChaosHandlerWithPhone = function (callback) {
         if (!ChaosLoginStatus || Cookies.get('ChaosForm_' + ChaosForm + "_Phone") == undefined) {
             ChaosFunctions.ShowByClass("hl-cover,hl-popup"); // 弹出登陆窗口
         } else {
             callback(Cookies.get('ChaosForm_' + ChaosForm + "_Phone")) // 调用回调函数
         }
     };
-    globalVariablesList += " [ ChaosHandler ( 登陆中间件 ) ]";
+    globalVariablesList += " [ ChaosHandlerWithPhone ( 携带电话号码的登陆中间件 ) ]";
 
     console.warn("Chaos > 登陆模块 ( 仅电话登陆的回调函数版 ) 中定义了以下全局变量:\n\n" + globalVariablesList + "\n\n请注意不要覆盖！");
 })();
