@@ -20,7 +20,7 @@
 
     // 覆盖电子书回调函数
     sendvisitinfo = function (type, page) {
-        if (page >= ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "chaos-page", "MQ==")) {
+        if (page >= ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "chaos-page", 5)) {
             if (!ChaosLoginStatus) {
                 ChaosFunctions.ShowByClass("hl-cover,hl-popup"); // 弹出登陆窗口
                 if (loginType == 'w') {
