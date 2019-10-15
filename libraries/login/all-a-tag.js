@@ -17,9 +17,9 @@
         document.getElementsByTagName("a")[key].setAttribute("target", "");
         // 监听点击事件
         document.getElementsByTagName("a")[key].addEventListener("click", function (event) {
-            console.log(event)
+            //console.log(event)
+            event.preventDefault() // 阻止a标签默认事件
             if (!ChaosLoginStatus) {
-                event.preventDefault() // 阻止a标签默认事件
                 ChaosFunctions.ShowByClass("hl-cover,hl-popup"); // 弹出登陆窗口
                 if (loginType === 'w') {
                     WechatInit() // 初始化微信登陆

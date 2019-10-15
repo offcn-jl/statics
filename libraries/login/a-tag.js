@@ -18,8 +18,8 @@
             document.getElementsByClassName("need2login")[keyX].getElementsByTagName("a")[keyY].setAttribute("target", "");
             // 监听点击事件
             document.getElementsByClassName("need2login")[keyX].getElementsByTagName("a")[keyY].addEventListener("click", function (event) {
+                event.preventDefault() // 阻止a标签默认事件
                 if (!ChaosLoginStatus) {
-                    event.preventDefault() // 阻止a标签默认事件
                     ChaosFunctions.ShowByClass("hl-cover,hl-popup"); // 弹出登陆窗口
                     if (loginType === 'w') {
                         WechatInit() // 初始化微信登陆
