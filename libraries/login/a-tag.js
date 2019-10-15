@@ -27,9 +27,10 @@
                     }
                 } else {
                     if ( typeof(event.target.attributes["chaos-href"]) !== "undefined" ) {
-                        window.open(event.target.attributes["chaos-href"].value)
+                        window.open(event.target.attributes["chaos-href"].value);
                     } else {
-                        window.open(event.parentElement.attributes["chaos-href"].value)
+                        // a 标签内嵌套的元素被点击时，event 的主体为内部元素，所以要获取 a 标签的属性需要增加 parentElement
+                        window.open(event.target.parentElement.attributes["chaos-href"].value);
                     }
                 }
             });
