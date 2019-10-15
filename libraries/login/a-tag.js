@@ -18,6 +18,7 @@
             document.getElementsByClassName("need2login")[keyX].getElementsByTagName("a")[keyY].setAttribute("target", "");
             // 监听点击事件
             document.getElementsByClassName("need2login")[keyX].getElementsByTagName("a")[keyY].addEventListener("click", function (event) {
+                console.log(event)
                 event.preventDefault() // 阻止a标签默认事件
                 if (!ChaosLoginStatus) {
                     ChaosFunctions.ShowByClass("hl-cover,hl-popup"); // 弹出登陆窗口
