@@ -9,7 +9,7 @@
 <body>
     <div style="text-align: center;position: fixed;left: 50%;top: 50%;margin-left: -100px;margin-top: -39px;">
         <p>您已经<span id="name">操作</span>成功！</p>
-        <a href="javascript:history.back(-1);">返回上一页 (<span id="count">5</span> 秒后自动返回)</a>
+        <a href="javascript:history.back(-1);window.close();">返回上一页 (<span id="count">5</span> 秒后自动返回)</a>
     </div>
     <script>
         if ( typeof(window.location.href.split("?")[1]) !== "undefined" ) {
@@ -21,7 +21,7 @@
             document.getElementById("count").innerText = time;
             if (time <= 0 ) {
                 clearInterval(timer);
-                //history.back(-1);
+                history.back(-1);
                 window.close();
             }
         }, 1000);
