@@ -18,7 +18,7 @@
             document.getElementsByClassName("need2login")[keyX].getElementsByTagName("a")[keyY].setAttribute("target", "");
             // 监听点击事件
             document.getElementsByClassName("need2login")[keyX].getElementsByTagName("a")[keyY].addEventListener("click", function (event) {
-                console.log(event)
+                //console.log(event)
                 event.preventDefault() // 阻止a标签默认事件
                 if (!ChaosLoginStatus) {
                     ChaosFunctions.ShowByClass("hl-cover,hl-popup"); // 弹出登陆窗口
@@ -26,7 +26,11 @@
                         WechatInit() // 初始化微信登陆
                     }
                 } else {
-                    window.open(event.target.attributes["chaos-href"].value)
+                    if ( typeof(event.target.attributes["chaos-href"].value) !== "undefined" ) {
+                        window.open(event.target.attributes["chaos-href"].value)
+                    } else {
+                        window.open(event.parentElement.attributes["chaos-href"].value)
+                    }
                 }
             });
         });

@@ -25,7 +25,11 @@
                     WechatInit() // 初始化微信登陆
                 }
             } else {
-                window.open(event.target.attributes["chaos-href"].value)
+                if ( typeof(event.target.attributes["chaos-href"].value) !== "undefined" ) {
+                    window.open(event.target.attributes["chaos-href"].value)
+                } else {
+                    window.open(event.parentElement.attributes["chaos-href"].value)
+                }
             }
         });
     });
