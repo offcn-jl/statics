@@ -18,7 +18,7 @@
             document.getElementsByClassName("need2login")[keyX].getElementsByTagName("a")[keyY].setAttribute("target", "");
             // 监听点击事件
             document.getElementsByClassName("need2login")[keyX].getElementsByTagName("a")[keyY].addEventListener("click", function (event) {
-                console.log(event)
+                //console.log(event)
                 event.preventDefault() // 阻止a标签默认事件
                 if (!ChaosLoginStatus) {
                     ChaosFunctions.ShowByClass("hl-cover,hl-popup"); // 弹出登陆窗口
@@ -27,10 +27,10 @@
                     }
                 } else {
                     if ( typeof(event.target.attributes["chaos-href"]) !== "undefined" ) {
-                        window.open(event.target.attributes["chaos-href"].value);
+                        window.location.href = event.target.attributes["chaos-href"].value;
                     } else {
                         // a 标签内嵌套的元素被点击时，event 的主体为内部元素，所以要获取 a 标签的属性需要增加 parentElement
-                        window.open(event.target.parentElement.attributes["chaos-href"].value);
+                        window.location.href = event.target.parentElement.attributes["chaos-href"].value;
                     }
                 }
             });
