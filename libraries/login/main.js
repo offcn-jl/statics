@@ -63,18 +63,19 @@
         };
 
     // 模块路径
-    let path = ChaosFunctions.Attr(script, "src", "./").split("main.js")[0];
+    ChaosPath = ChaosFunctions.Attr(script, "src", "./").split("main.js")[0];
+    globalVariablesList += " [ ChaosPath ( 模块路径 ) ]";
     
     // 接口路径
-    let apiPath = "https://api.2.jilinoffcn.com/events/";  // 默认
-    if (path.split(".")[0]) {
-        
+    ChaosApiPath = "https://api.2.jilinoffcn.com/events/";  // 默认
+    if (ChaosPath.split(".")[0].split("https://")[1] === "test") {
+        ChaosApiPath = "https://api.2.jilinoffcn.com/events/";  // 测试环境
+    } else if (ChaosPath.split(".")[0].split("https://")[1] === "statics") {
+        ChaosApiPath = "https://api.2.jilinoffcn.com/events/";  // 生产环境
+    } else {
+        ChaosApiPath = "https://api.2.jilinoffcn.com/events/";  // 本地环境
     }
-    console.log(path.split(".")[0])
-    console.log(path.split(".")[0].split("https://")[0])
-    console.log(path.split(".")[0].split("https://")[1])
-    console.log(path)
-    //let apiPath = 
+    globalVariablesList += " [ ChaosPath ( 接口路径 ) ]";
 
     let initTimer = setInterval(function () {
         // 等待 Body 被加载到 DOM 树
@@ -105,10 +106,10 @@
             }
 
             // 加载 GET 模块
-            ChaosFunctions.DynamicLoading.JS( path + "../get.js");
+            ChaosFunctions.DynamicLoading.JS( ChaosPath + "../get.js");
 
             // 加载地市定位代码表
-            ChaosFunctions.DynamicLoading.JS("https://api.2.jilinoffcn.com/events/?action=xgpjs");
+            ChaosFunctions.DynamicLoading.JS( ChaosApiPath + "?action=xgpjs");
 
             initTimer = setInterval(function () {
                 if (typeof ($_GET) === "object" && typeof (ChaosPlatformFind) === "function") {
@@ -130,19 +131,19 @@
 
                     switch (config.Type) {
                         case "a-tag": // 拦截 a 标签
-                            ChaosFunctions.DynamicLoading.JS( path + "a-tag.js")
+                            ChaosFunctions.DynamicLoading.JS( ChaosPath + "a-tag.js")
                             break;
                         case "all-a-tag": // 拦截 a 标签
-                            ChaosFunctions.DynamicLoading.JS( path + "all-a-tag.js")
+                            ChaosFunctions.DynamicLoading.JS( ChaosPath + "all-a-tag.js")
                             break;
                         case "book": // 电子书
-                            ChaosFunctions.DynamicLoading.JS( path + "book.js")
+                            ChaosFunctions.DynamicLoading.JS( ChaosPath + "book.js")
                             break;
                         case "callback": // 回调函数
-                            ChaosFunctions.DynamicLoading.JS( path + "callback.js")
+                            ChaosFunctions.DynamicLoading.JS( ChaosPath + "callback.js")
                             break;
                         case "callback-phone-only":
-                            ChaosFunctions.DynamicLoading.JS( path + "callback-phone-only.js")
+                            ChaosFunctions.DynamicLoading.JS( ChaosPath + "callback-phone-only.js")
                             console.warn("Chaos > 登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n" + globalVariablesList + "\n\n请注意不要覆盖！");
                             return;
                         default:
@@ -161,30 +162,30 @@
                     }
 
                     // 加载样式表
-                    ChaosFunctions.DynamicLoading.CSS( path + "style/main.css");
+                    ChaosFunctions.DynamicLoading.CSS( ChaosPath + "style/main.css");
                     // 加载登陆组件 HTML
                     if (loginType === 'w') {
                         // 渲染微信登陆组件
-                        ChaosFunctions.DynamicLoading.JS( path + "template/wechat.js");
+                        ChaosFunctions.DynamicLoading.JS( ChaosPath + "template/wechat.js");
                         let initTimer = setInterval(function () {
                             if (typeof (ChaosTemplate) === "string") {
                                 clearInterval(initTimer);
                                 document.getElementsByTagName('chaos')[0].innerHTML += ChaosTemplate;
                                 console.log("Chaos > 微信登陆模板加载成功");
                                 // 加载处理函数
-                                ChaosFunctions.DynamicLoading.JS( path + "template/wechat-functions.js")
+                                ChaosFunctions.DynamicLoading.JS( ChaosPath + "template/wechat-functions.js")
                             }
                         }, 500);
                     } else {
                         // 渲染手机号登陆组件
-                        ChaosFunctions.DynamicLoading.JS( path + "template/phone.js");
+                        ChaosFunctions.DynamicLoading.JS( ChaosPath + "template/phone.js");
                         let initTimer = setInterval(function () {
                             if (typeof (ChaosTemplate) === "string") {
                                 clearInterval(initTimer);
                                 document.getElementsByTagName('chaos')[0].innerHTML += ChaosTemplate;
                                 console.log("Chaos > 手机号登陆模板加载成功");
                                 // 加载处理函数
-                                ChaosFunctions.DynamicLoading.JS( path + "template/phone-functions.js")
+                                ChaosFunctions.DynamicLoading.JS( ChaosPath + "template/phone-functions.js")
                             }
                         }, 500);
                     }
@@ -196,9 +197,9 @@
                     globalVariablesList += " [ ChaosForm ( ZG99 表单 ID ) ]";
 
                     // 加载 Cookies 插件
-                    ChaosFunctions.DynamicLoading.JS( path + "../js.cookie.min.js");
+                    ChaosFunctions.DynamicLoading.JS( ChaosPath + "../js.cookie.min.js");
                     // 加载 XHR 插件
-                    ChaosFunctions.DynamicLoading.JS( path + "xhr.js");
+                    ChaosFunctions.DynamicLoading.JS( ChaosPath + "xhr.js");
                     // 等待 Cookies 插件，XHR 插件加载
                     clearInterval(initTimer)
                     initTimer = setInterval(function () {
@@ -207,7 +208,7 @@
                             // 初始化登陆函数
                             let initLogin = function () {
                                 // 根据登陆模块 ID 获取表单 ID
-                                ChaosXHR.GET("https://api.2.jilinoffcn.com/events/?action=xgi&id=" + ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "chaos-id", "MQ=="), function (xhr) {
+                                ChaosXHR.GET( ChaosApiPath + "?action=xgi&id=" + ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "chaos-id", "MQ=="), function (xhr) {
                                     //console.log(xhr)
                                     if (typeof (xhr.responseJson) == "object") {
                                         ChaosForm = xhr.responseJson.FormID
@@ -236,7 +237,7 @@
 
                             // 如果存在一次性免登陆key则校验当前key是否有效，如果有效则设置免登陆
                             if ($_GET['ticket'] !== undefined) {
-                                ChaosXHR.GET("https://api.2.jilinoffcn.com/events/?action=xck&ticket=" + $_GET['ticket'], function (xhr) {
+                                ChaosXHR.GET( ChaosApiPath + "?action=xck&ticket=" + $_GET['ticket'], function (xhr) {
                                     if (typeof (xhr.responseJson) == "object") {
                                         if (xhr.responseJson.code === 0) {
                                             ChaosLoginStatus = true; // 设置为已经登陆

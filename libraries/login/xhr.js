@@ -3,7 +3,7 @@
         if (typeof (ChaosFunctions) === "object") {
             clearInterval(initTimer);
             // 加载代码表
-            ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/codes.js");
+            ChaosFunctions.DynamicLoading.JS( ChaosPath + "../codes.js");
             initTimer = setInterval(function () {
                 if (typeof (ChaosCodes) === "object") {
                     clearInterval(initTimer);
