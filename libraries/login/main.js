@@ -62,8 +62,17 @@
             Page: ChaosFunctions.Attr(script, "chaos-page", "5"), // 页码 ( 电子书 )
         };
 
+    // 模块路径
     let path = ChaosFunctions.Attr(script, "src", "./").split("main.js")[0];
-    console.log(path)
+    
+    // 接口路径
+    let apiPath = "https://api.2.jilinoffcn.com/events/";  // 默认
+    if (path.split(".")[0]) {
+        
+    }
+    console.log(path.split(".")[0].split("https://")[0])
+    console.log(1)
+    //let apiPath = 
 
     let initTimer = setInterval(function () {
         // 等待 Body 被加载到 DOM 树
