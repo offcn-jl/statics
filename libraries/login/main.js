@@ -70,8 +70,10 @@
     if (path.split(".")[0]) {
         
     }
+    console.log(path.split(".")[0])
     console.log(path.split(".")[0].split("https://")[0])
-    console.log(1)
+    console.log(path.split(".")[0].split("https://")[1])
+    console.log(path)
     //let apiPath = 
 
     let initTimer = setInterval(function () {
