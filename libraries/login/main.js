@@ -62,6 +62,9 @@
             Page: ChaosFunctions.Attr(script, "chaos-page", "5"), // 页码 ( 电子书 )
         };
 
+    let path = ChaosFunctions.Attr(script, "src", "./").split("main.js")[0];
+    console.log(path)
+
     let initTimer = setInterval(function () {
         // 等待 Body 被加载到 DOM 树
         if (typeof (document.getElementsByTagName("body")[0]) === "object") {
@@ -91,7 +94,7 @@
             }
 
             // 加载 GET 模块
-            ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/get.js");
+            ChaosFunctions.DynamicLoading.JS( path + "../get.js");
 
             // 加载地市定位代码表
             ChaosFunctions.DynamicLoading.JS("https://api.2.jilinoffcn.com/events/?action=xgpjs");
@@ -116,19 +119,19 @@
 
                     switch (config.Type) {
                         case "a-tag": // 拦截 a 标签
-                            ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/a-tag.js")
+                            ChaosFunctions.DynamicLoading.JS( path + "a-tag.js")
                             break;
                         case "all-a-tag": // 拦截 a 标签
-                            ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/all-a-tag.js")
+                            ChaosFunctions.DynamicLoading.JS( path + "all-a-tag.js")
                             break;
                         case "book": // 电子书
-                            ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/book.js")
+                            ChaosFunctions.DynamicLoading.JS( path + "book.js")
                             break;
                         case "callback": // 回调函数
-                            ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/callback.js")
+                            ChaosFunctions.DynamicLoading.JS( path + "callback.js")
                             break;
                         case "callback-phone-only":
-                            ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/callback-phone-only.js")
+                            ChaosFunctions.DynamicLoading.JS( path + "callback-phone-only.js")
                             console.warn("Chaos > 登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n" + globalVariablesList + "\n\n请注意不要覆盖！");
                             return;
                         default:
@@ -147,30 +150,30 @@
                     }
 
                     // 加载样式表
-                    ChaosFunctions.DynamicLoading.CSS("https://statics.jilinoffcn.com/libraries/login/style/main.css");
+                    ChaosFunctions.DynamicLoading.CSS( path + "style/main.css");
                     // 加载登陆组件 HTML
                     if (loginType === 'w') {
                         // 渲染微信登陆组件
-                        ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/template/wechat.js");
+                        ChaosFunctions.DynamicLoading.JS( path + "template/wechat.js");
                         let initTimer = setInterval(function () {
                             if (typeof (ChaosTemplate) === "string") {
                                 clearInterval(initTimer);
                                 document.getElementsByTagName('chaos')[0].innerHTML += ChaosTemplate;
                                 console.log("Chaos > 微信登陆模板加载成功");
                                 // 加载处理函数
-                                ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/template/wechat-functions.js")
+                                ChaosFunctions.DynamicLoading.JS( path + "template/wechat-functions.js")
                             }
                         }, 500);
                     } else {
                         // 渲染手机号登陆组件
-                        ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/template/phone.js");
+                        ChaosFunctions.DynamicLoading.JS( path + "template/phone.js");
                         let initTimer = setInterval(function () {
                             if (typeof (ChaosTemplate) === "string") {
                                 clearInterval(initTimer);
                                 document.getElementsByTagName('chaos')[0].innerHTML += ChaosTemplate;
                                 console.log("Chaos > 手机号登陆模板加载成功");
                                 // 加载处理函数
-                                ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/template/phone-functions.js")
+                                ChaosFunctions.DynamicLoading.JS( path + "template/phone-functions.js")
                             }
                         }, 500);
                     }
@@ -182,9 +185,9 @@
                     globalVariablesList += " [ ChaosForm ( ZG99 表单 ID ) ]";
 
                     // 加载 Cookies 插件
-                    ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/js.cookie.min.js");
+                    ChaosFunctions.DynamicLoading.JS( path + "../js.cookie.min.js");
                     // 加载 XHR 插件
-                    ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/xhr.js");
+                    ChaosFunctions.DynamicLoading.JS( path + "xhr.js");
                     // 等待 Cookies 插件，XHR 插件加载
                     clearInterval(initTimer)
                     initTimer = setInterval(function () {
