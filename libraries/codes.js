@@ -68,6 +68,19 @@ const ChaosCodes = {
     12003,
     12004,
   ]
-}
+};
 
-console.warn('Chaos > 代码表模块 ( codes.js ) 中定义了全局变量 [ ChaosCodes ( 代码表 ) ] ，请注意不要覆盖！')
+(function () {
+  let initTimerInfo = '代码表模块 ( codes.js ) 中定义了全局变量 [ ChaosCodes ( 代码表 ) ] ，请注意不要覆盖！';
+  let initTimerCount = 0;
+  let initTimer = setInterval(function () {
+    if (initTimerCount++ > 20) {
+      clearInterval(initTimer);
+      console.warn('Chaos > ' + initTimerInfo);
+    }
+    if (typeof ChaosFunctions === "object") {
+      clearInterval(initTimer);
+      ChaosFunctions.Logger({ Type: 'warn', Info: initTimerInfo });
+    }
+  }, 500);
+})();

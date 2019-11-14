@@ -1,5 +1,5 @@
 (function () {
-    console.log("Chaos > 当前使用的登陆模块为: 拦截全部 a 标签版");
+    ChaosFunctions.Logger({Type: 'info', Info : '当前使用的登陆模块为: 拦截全部 a 标签版'});
 
     // 获取get参数
     let loginType = $_GET['a'];

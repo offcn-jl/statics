@@ -17,11 +17,11 @@
                                         try {
                                             xhr.responseJson = JSON.parse(xhr.response)
                                         } catch(e){
-                                            console.log(e)
+                                            ChaosFunctions.Logger({Type: 'error', Title: "GET XHR Error：", Info : e});
                                         }
                                         callback(xhr);
                                     } else {
-                                        console.log(xhr);
+                                        ChaosFunctions.Logger({Type: 'log', Info : xhr});
                                         errorHandler(xhr);
                                         return 'request is unsucessful ' + xhr.status;
                                     }
@@ -39,11 +39,11 @@
                                         try {
                                             xhr.response = JSON.parse(xhr.response)
                                         } catch(e){
-                                            console.log(e)
+                                            ChaosFunctions.Logger({Type: 'error', Title: "POST XHR Error：", Info : e});
                                         }
                                         callback(xhr);
                                     } else {
-                                        console.log(xhr);
+                                        ChaosFunctions.Logger({Type: 'log', Info : xhr});
                                         errorHandler(xhr);
                                         return 'request is unsucessful ' + xhr.status;
                                     }
@@ -92,7 +92,7 @@
         try {
             code = JSON.parse(xhr.response).Code
         } catch(e){
-            console.log(e)
+            ChaosFunctions.Logger({Type: 'error', Title: "Handle Error：", Info : e});
         }
 
         let tips = "未知错误";
@@ -138,5 +138,5 @@
         }
     }
 
-    console.warn('Chaos > XHR 模块 ( xhr.js ) 中定义了全局变量 [ ChaosXHR ( XHR 请求工具 ) ] ，请注意不要覆盖！')
+    ChaosFunctions.Logger({Type: 'warn', Info : 'XHR 模块 ( xhr.js ) 中定义了全局变量 [ ChaosXHR ( XHR 请求工具 ) ] ，请注意不要覆盖！'});
 })();

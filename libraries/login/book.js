@@ -1,5 +1,5 @@
 (function () {
-    console.log("Chaos > 当前使用的登陆模块为: 电子书版");
+    ChaosFunctions.Logger({Type: 'info', Info : '当前使用的登陆模块为: 电子书版'});
 
     // 获取get参数
     let loginType = $_GET['a'];
@@ -30,5 +30,5 @@
         }
     };
 
-    console.warn('Chaos > 登陆模块 ( 电子书版 ) 中定义了全局变量 [ sendvisitinfo ( 电子书回调函数 ) ] ，请注意不要覆盖！')
+    ChaosFunctions.Logger({Type: 'warn', Info : 'Chaos > 登陆模块 ( 电子书版 ) 中定义了全局变量 [ sendvisitinfo ( 电子书回调函数 ) ] ，请注意不要覆盖！'});
 })();

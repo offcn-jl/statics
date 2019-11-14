@@ -1,5 +1,64 @@
 (function () {
     ChaosFunctions = {
+        Logger: function (log) {
+            // log = {Type: ''( log / info / warn / error / table ), Info : ''}
+            // https://www.runoob.com/w3cnote/javascript-console-object.html
+            // 日志组件等待时间
+            let waitMillisecond = 1000*5;
+            // 初始化日志对象
+            if (typeof ChaosFunctions.Logs !== 'object') {
+                ChaosFunctions.Logs = {
+                    Log: [],
+                    Timer: null
+                }
+            }
+            if (ChaosFunctions.Logs.Timer === null) {
+                // console.log('初始化日志打印定时器');
+                ChaosFunctions.Logs.Timer = setInterval(function(){
+                    // 判断最后一条日志距离入栈时间是否足够
+                    // console.log((new Date()).valueOf() < (ChaosFunctions.Logs.Log[ChaosFunctions.Logs.Log.length - 1].Time.valueOf() + waitMillisecond));
+                    // console.log((ChaosFunctions.Logs.Log[ChaosFunctions.Logs.Log.length - 1].Time.valueOf() + waitMillisecond));
+                    // console.log((new Date()).valueOf());
+                    if ( (new Date()).valueOf() < (ChaosFunctions.Logs.Log[ChaosFunctions.Logs.Log.length - 1].Time.valueOf() + waitMillisecond)) {
+                        console.log("跳过打印");
+                        return
+                    }
+                    // console.log('开始打印日志');
+                    clearInterval(ChaosFunctions.Logs.Timer); // 结束定时器
+                    ChaosFunctions.Logs.Timer = null; // 清空定时器
+                    // 将显示的信息分组
+                    console.group('哈士齐登陆模块 ( Base on Project Chaos @ 20191114)');
+                    // 遍历日志对象
+                    ChaosFunctions.Logs.Log.forEach(function(log){
+                        switch (log.Type) {
+                            case 'info':
+                                console.info(log.Time + ' >> ' + log.Info)
+                                break;
+                            case 'warn':
+                                console.warn(log.Time + ' >> ' + log.Info)
+                                break;
+                            case 'error':
+                                console.error(log.Time + ' >> ' + log.Title)
+                                console.error(log.Info)
+                                break;
+                            case 'table':
+                                console.info(log.Time + ' >> ' + log.Title)
+                                console.table(log.Info)
+                                break;
+                            default:
+                                console.log(log.Time + ' >> ' + log.Info)
+                        }
+                    });
+                    // 结束分组
+                    console.groupEnd();
+                    // 清空日志对象
+                    ChaosFunctions.Logs.Log = [];
+                },1000*5);
+            }
+            // console.log(this) // == ChaosFunctions
+            log.Time = (new Date()); // 直接使用 Date() 返回的是当前时间的字符串， (new Date()) 才可以获取到当前时间的对象。
+            ChaosFunctions.Logs.Log.push(log);
+        },
         Attr: function (node, attr, default_value) { // 获取节点 attr 属性的值
             return node.getAttribute(attr) || default_value;
         }, // https://github.com/hustcc/ribbon.js/blob/master/src/ribbon.js
@@ -127,7 +186,7 @@
                     ChaosFunctions.ShowByClass(ChaosLoacation.d);
 
                     // 更新资源显示状态成功
-                    console.log("Chaos > 更新资源显示状态成功，当前显示的定位资源 Class 为 " + ChaosLoacation.d + " !")
+                    ChaosFunctions.Logger({Type: 'info', Info : '更新资源显示状态成功，当前显示的定位资源 Class 为 ' + ChaosLoacation.d + ' !'});
 
                     switch (config.Type) {
                         case "a-tag": // 拦截 a 标签
@@ -143,13 +202,13 @@
                             ChaosFunctions.DynamicLoading.JS( ChaosPath + "callback.js")
                             break;
                         case "callback-phone-only":
-                            ChaosFunctions.DynamicLoading.JS( ChaosPath + "callback-phone-only.js")
-                            console.warn("Chaos > 登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n" + globalVariablesList + "\n\n请注意不要覆盖！");
+                            ChaosFunctions.DynamicLoading.JS( ChaosPath + "callback-phone-only.js");
+                            ChaosFunctions.Logger({Type: 'warn', Info : '登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n' + globalVariablesList + '\n\n请注意不要覆盖！'});
                             return;
                         default:
-                            console.warn("Chaos > 登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n" + globalVariablesList + "\n\n请注意不要覆盖！");
+                            ChaosFunctions.Logger({Type: 'warn', Info : '登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n' + globalVariablesList + '\n\n请注意不要覆盖！'});
                             // 加载 light 模块
-                            console.log("Chaos > 当前使用的登陆模块为: 轻量版");
+                            ChaosFunctions.Logger({Type: 'info', Info : '当前使用的登陆模块为: 轻量版'});
                             // 直接结束程序执行
                             return;
                     }
@@ -171,7 +230,7 @@
                             if (typeof (ChaosTemplate) === "string") {
                                 clearInterval(initTimer);
                                 document.getElementsByTagName('chaos')[0].innerHTML += ChaosTemplate;
-                                console.log("Chaos > 微信登陆模板加载成功");
+                                ChaosFunctions.Logger({Type: 'info', Info : '微信登陆模板加载成功'});
                                 // 加载处理函数
                                 ChaosFunctions.DynamicLoading.JS( ChaosPath + "template/wechat-functions.js")
                             }
@@ -183,7 +242,7 @@
                             if (typeof (ChaosTemplate) === "string") {
                                 clearInterval(initTimer);
                                 document.getElementsByTagName('chaos')[0].innerHTML += ChaosTemplate;
-                                console.log("Chaos > 手机号登陆模板加载成功");
+                                ChaosFunctions.Logger({Type: 'info', Info : '手机号登陆模板加载成功'});
                                 // 加载处理函数
                                 ChaosFunctions.DynamicLoading.JS( ChaosPath + "template/phone-functions.js")
                             }
@@ -216,7 +275,7 @@
                                         document.getElementsByTagName('chaos')[0].setAttribute("chaos-name", xhr.responseJson.Name)
                                         document.getElementsByTagName('chaos')[0].setAttribute("chaos-url", xhr.responseJson.URL)
                                     }
-                                    console.log("Chaos > 当前登陆表单 ID ( ChaosForm ) 为: " + ChaosForm)
+                                    ChaosFunctions.Logger({Type: 'info', Info : '当前登陆表单 ID ( ChaosForm ) 为: ' + ChaosForm});
                                 });
 
                                 let initTimer = setInterval(function () {
@@ -246,8 +305,7 @@
                                             initLogin()
                                         }
                                     } else {
-                                        console.log("Chaos > 检查一次性登陆令牌失败，请求详情：");
-                                        console.log(xhr);
+                                        ChaosFunctions.Logger({Type: 'error', Title: "检查一次性登陆令牌失败，请求详情：", Info : xhr});
                                     }
                                 });
                             } else {
@@ -255,7 +313,7 @@
                             }
                         }
                     }, 500)
-                    console.warn("Chaos > 登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n" + globalVariablesList + "\n\n请注意不要覆盖！");
+                    ChaosFunctions.Logger({Type: 'warn', Info : '登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n' + globalVariablesList + '\n\n请注意不要覆盖！'});
                 }
             }, 500);
         }

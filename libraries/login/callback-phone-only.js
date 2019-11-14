@@ -1,5 +1,5 @@
 (function () {
-    console.log("Chaos > 当前使用的登陆模块为: 仅电话登陆的回调函数版");
+    ChaosFunctions.Logger({Type: 'info', Info : '当前使用的登陆模块为: 仅电话登陆的回调函数版'});
 
     // 加载样式表
     ChaosFunctions.DynamicLoading.CSS( ChaosPath + "style/main.css");
@@ -10,7 +10,7 @@
             clearInterval(templateTimer);
             // 加载登陆组件 HTML
             document.getElementsByTagName('chaos')[0].innerHTML += ChaosTemplate;
-            console.log("Chaos > 手机号登陆模板加载成功");
+            ChaosFunctions.Logger({Type: 'info', Info : '手机号登陆模板加载成功'});
             // 加载处理函数
             ChaosFunctions.DynamicLoading.JS( ChaosPath + "template/phone-functions.js")
         }
@@ -39,7 +39,7 @@
                     document.getElementsByTagName('chaos')[0].setAttribute("chaos-name", xhr.responseJson.Name)
                     document.getElementsByTagName('chaos')[0].setAttribute("chaos-url", xhr.responseJson.URL)
                 }
-                console.log("Chaos > 当前登陆表单 ID ( ChaosForm ) 为: " + ChaosForm)
+                ChaosFunctions.Logger({Type: 'info', Info : '当前登陆表单 ID ( ChaosForm ) 为: ' + ChaosForm});
             });
 
             initTimer = setInterval(function () {
@@ -70,5 +70,5 @@
     };
     globalVariablesList += " [ ChaosHandlerWithPhone ( 携带电话号码的登陆中间件 ) ]";
 
-    console.warn("Chaos > 登陆模块 ( 仅电话登陆的回调函数版 ) 中定义了以下全局变量:\n\n" + globalVariablesList + "\n\n请注意不要覆盖！");
+    ChaosFunctions.Logger({Type: 'warn', Info : '登陆模块 ( 仅电话登陆的回调函数版 ) 中定义了以下全局变量:\n\n' + globalVariablesList + '\n\n请注意不要覆盖！'});
 })();
