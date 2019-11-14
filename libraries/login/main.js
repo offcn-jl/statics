@@ -20,7 +20,7 @@
                     // console.log((ChaosFunctions.Logs.Log[ChaosFunctions.Logs.Log.length - 1].Time.valueOf() + waitMillisecond));
                     // console.log((new Date()).valueOf());
                     if ( (new Date()).valueOf() < (ChaosFunctions.Logs.Log[ChaosFunctions.Logs.Log.length - 1].Time.valueOf() + waitMillisecond)) {
-                        console.log("跳过打印");
+                        // console.log("跳过打印");
                         return
                     }
                     // console.log('开始打印日志');
