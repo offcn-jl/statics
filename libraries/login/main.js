@@ -202,7 +202,7 @@
                         ChaosFunctions.Logger({Type: 'info', Info : '开始填充 「 专题 」 定位链接'});
                         count = 0;
                         Object.keys(document.getElementsByClassName("chaos-link-article")).forEach(function (key) {
-                            document.getElementsByClassName("chaos-link-article")[key].href = document.getElementsByClassName("chaos-link-article")[key].href + ChaosLoacation._19;
+                            document.getElementsByClassName("chaos-link-article")[key].href = document.getElementsByClassName("chaos-link-article")[key].href + ChaosLoacation.d;
                             count++;
                         });
                         ChaosFunctions.Logger({Type: 'info', Info : '「 专题 」 定位链接成功，共填充 ' + count + ' 个'});
