@@ -204,7 +204,7 @@
                                 count++;
                             }
                         });
-                        ChaosFunctions.Logger({ Type: 'info', Info: '「 19 课堂 」 定位链接成功，共填充 ' + count + ' 个' });
+                        ChaosFunctions.Logger({ Type: 'info', Info: '「 19 课堂 」 定位链接填充完成，共填充 ' + count + ' 个。' });
                     }
 
                     // 填充 '专题' 定位后缀
@@ -215,7 +215,7 @@
                             document.getElementsByClassName("chaos-link-article")[key].href = document.getElementsByClassName("chaos-link-article")[key].href + ChaosLoacation.d;
                             count++;
                         });
-                        ChaosFunctions.Logger({ Type: 'info', Info: '「 专题 」 定位链接成功，共填充 ' + count + ' 个' });
+                        ChaosFunctions.Logger({ Type: 'info', Info: '「 专题 」 定位链接填充完成，共填充 ' + count + ' 个。' });
                     }
 
                     switch (config.Type) {
