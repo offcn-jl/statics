@@ -188,7 +188,7 @@
                     // 更新资源显示状态成功
                     ChaosFunctions.Logger({Type: 'info', Info : '更新资源显示状态成功，当前显示的定位资源 Class 为 ' + ChaosLoacation.d + ' !'});
 
-                    // 填充 '19 课堂' 定位链接
+                    // 填充 '19 课堂' 定位后缀
                     if (typeof ChaosLoacation._19 === 'string') {
                         ChaosFunctions.Logger({Type: 'info', Info : '开始填充 「 19 课堂 」 定位链接'});
                         let count = 0;
@@ -199,7 +199,7 @@
                         ChaosFunctions.Logger({Type: 'info', Info : '「 19 课堂 」 定位链接成功，共填充 ' + count + ' 个'});
                     }
                     
-                    // 填充 '专题' 定位链接
+                    // 填充 '专题' 定位后缀
                     if (typeof ChaosLoacation.d === 'string') {
                         ChaosFunctions.Logger({Type: 'info', Info : '开始填充 「 专题 」 定位链接'});
                         let count = 0;
