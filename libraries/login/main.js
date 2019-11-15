@@ -27,7 +27,7 @@
                     clearInterval(ChaosFunctions.Logs.Timer); // 结束定时器
                     ChaosFunctions.Logs.Timer = null; // 清空定时器
                     // 将显示的信息分组
-                    console.group('哈士齐登陆模块 ( Base on Project Chaos @ 20191114)');
+                    console.group('哈士齐登陆模块 ( Base on Project Chaos @ 20191115 1155)');
                     // 遍历日志对象
                     ChaosFunctions.Logs.Log.forEach(function(log){
                         switch (log.Type) {
