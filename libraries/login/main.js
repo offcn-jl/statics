@@ -188,9 +188,8 @@
                     // 更新资源显示状态成功
                     ChaosFunctions.Logger({Type: 'info', Info : '更新资源显示状态成功，当前显示的定位资源 Class 为 ' + ChaosLoacation.d + ' !'});
 
-                    // 填充定位链接 ( 分为 '19 课堂' 和 '专题' 两种 )
+                    // 填充 '19 课堂' 定位链接
                     if (typeof ChaosLoacation._19 === 'string') {
-                        // 19 课堂
                         ChaosFunctions.Logger({Type: 'info', Info : '开始填充 「 19 课堂 」 定位链接'});
                         let count = 0;
                         Object.keys(document.getElementsByClassName("chaos-link-19")).forEach(function (key) {
@@ -198,9 +197,12 @@
                             count++;
                         });
                         ChaosFunctions.Logger({Type: 'info', Info : '「 19 课堂 」 定位链接成功，共填充 ' + count + ' 个'});
-                        // 专题
+                    }
+                    
+                    // 填充 '专题' 定位链接
+                    if (typeof ChaosLoacation.d === 'string') {
                         ChaosFunctions.Logger({Type: 'info', Info : '开始填充 「 专题 」 定位链接'});
-                        count = 0;
+                        let count = 0;
                         Object.keys(document.getElementsByClassName("chaos-link-article")).forEach(function (key) {
                             document.getElementsByClassName("chaos-link-article")[key].href = document.getElementsByClassName("chaos-link-article")[key].href + ChaosLoacation.d;
                             count++;
