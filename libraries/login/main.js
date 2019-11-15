@@ -188,6 +188,26 @@
                     // 更新资源显示状态成功
                     ChaosFunctions.Logger({Type: 'info', Info : '更新资源显示状态成功，当前显示的定位资源 Class 为 ' + ChaosLoacation.d + ' !'});
 
+                    // 填充定位链接 ( 分为 '19 课堂' 和 '专题' 两种 )
+                    if (typeof ChaosLoacation._19 === 'string') {
+                        // 19 课堂
+                        ChaosFunctions.Logger({Type: 'info', Info : '开始填充 「 19 课堂 」 定位链接'});
+                        let count = 0;
+                        Object.keys(document.getElementsByClassName("chaos-link-19")).forEach(function (key) {
+                            document.getElementsByClassName("chaos-link-19")[key].href = document.getElementsByClassName("chaos-link-19")[key].href + ChaosLoacation._19;
+                            count++;
+                        });
+                        ChaosFunctions.Logger({Type: 'info', Info : '「 19 课堂 」 定位链接成功，共填充 ' + count + ' 个'});
+                        // 专题
+                        ChaosFunctions.Logger({Type: 'info', Info : '开始填充 「 专题 」 定位链接'});
+                        count = 0;
+                        Object.keys(document.getElementsByClassName("chaos-link-article")).forEach(function (key) {
+                            document.getElementsByClassName("chaos-link-article")[key].href = document.getElementsByClassName("chaos-link-article")[key].href + ChaosLoacation._19;
+                            count++;
+                        });
+                        ChaosFunctions.Logger({Type: 'info', Info : '「 专题 」 定位链接成功，共填充 ' + count + ' 个'});
+                    }
+
                     switch (config.Type) {
                         case "a-tag": // 拦截 a 标签
                             ChaosFunctions.DynamicLoading.JS( ChaosPath + "a-tag.js")
