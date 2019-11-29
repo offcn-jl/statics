@@ -5,8 +5,8 @@ body {
 	background-color: #0099CC;
 }
 .STYLE7 {
-	font-size: 40px;
-	margin-left: 80px;
+	font-size: 30px;
+	margin-top: 0px;
 }
 .STYLE12 {
 	font-size: 80px;
@@ -14,6 +14,8 @@ body {
 }
 
 .link, link:visited, link:hover, link:active, link:link {
+	display: block;
+	text-align: center;
 	font-size: 16px;
 	color: #FFFFFF;
 }
