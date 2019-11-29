@@ -6,12 +6,11 @@ body {
 }
 .STYLE7 {
 	font-size: 40px;
-	font-family: "微软雅黑";
+	margin-left: 80px;
 }
 .STYLE12 {
-	font-size: 100px;
-	font-family: "微软雅黑";
-	margin-left: 52px;
+	font-size: 80px;
+	margin-left: 10px;
 }
 
 .link, link:visited, link:hover, link:active, link:link {
