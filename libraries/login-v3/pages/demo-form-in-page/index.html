@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta itemprop="name" content="2019辽源东辽县事业单位公告预约"/>
+    <meta name="description" itemprop="description" content="2019辽源东辽县事业单位公告预约，2020事业单位笔试备考，事业单位公告预约，事业单位考试。" />
+    <title>2019辽源东辽县事业单位公告预约_吉林中公教育</title>
+    <meta name="keywords" content="2019辽源东辽县事业单位公告预约,2020事业单位笔试备考,事业单位笔试备考,事业单位考试,吉林中公教育">
+    <meta name="description" content="2019辽源东辽县事业单位公告预约，2020事业单位笔试备考，事业单位公告预约，事业单位考试。">
+<link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/xcConfirm.css"/>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/xcConfirm.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="http://jl.offcn.com/zg/ty/js/xiaoneng.js"></script>
+<link rel="stylesheet" type="text/css" href="http://jl.offcn.com/zg/ty/css/xiaoneng.css" />
+<script language="javascript" src="http://www.offcn.com/statics/js/bdtop.js"></script>
+</head>
+<body>
+
+<div class="zg_top" id="top">
+  <iframe src="http://jl.offcn.com/zg/gwy_top/" width="1000px" height="120px" frameborder="0" scrolling="no"></iframe>
+</div>
+
+<div class="banner">
+    <div class="layout">
+        <img src="images/banner1.jpg" alt="吉林中公教育">
+        <img src="images/banner2.jpg" alt="吉林中公教育">
+    </div>
+</div>
+
+<div class="main1">
+    <div class="yyue layout">
+        <div class="left fl">
+            <form class="clearfix" action="http://zg99.offcn.com/index/biaodan/zjregister" enctype="post">
+                <input type="hidden" name="actid" value="6790">
+                <ul class="fm_list">
+                    <br>
+                    <li>
+                        <label>姓名</label>
+                        <input type="text" name="name" id="name" value="">
+                    </li>
+                    <li>
+                        <label>电话</label>
+                        <input type="text" name="phone" id="phone" value="">
+                    </li>
+                    <li>
+                        <label>项目</label>
+                        <select id="xm" name="xm" style=" width: 320px;">
+                            <option value="">----请选择项目----</option>
+                            <option value="综合岗">综合岗</option>
+                            <option value="教师岗">教师岗</option>
+                            <option value="医疗岗">医疗岗</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>地市</label>
+                        <select id="ds" name="ds"  style=" width: 320px;">
+                            <option value="">----请选择地市----</option>
+                            <option value="辽源中公教育">辽源中公教育</option>
+                            <option value="东丰中公教育">东丰中公教育</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>验证码</label>
+                        <input type="text" name="yzm" id="yzm" value="" class="yzm">
+
+                        <a href="javascript:;" id="getyzm" class="djs" >获取验证码</a>
+                        <span id="daojishi" class="djs" style="display:none;">120s后重新获取</span>
+                    </li>
+                    <li>
+                        <label>定位</label>
+                        <input class="chaos-postfix-name" type="text" name="dw">
+                    </li>
+                    <li>
+                        <label>隐藏定位</label>
+                        <input class="chaos-postfix-name" type="text" name="ycdw" style="display: none;">
+                    </li>
+                    <li>
+                        <input type="submit" name="dosubmit" id="dosubmit" value="提交领取" class="sbtn">
+                        <br>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div class="right fr">
+            <h1>填写左侧信息<br>获取预约服务</h1>
+            <p>提交后，可以<span>免费领取2019辽源事业单位备考<br>资料</span>哦！</p>
+            <p>出公告会及时通知您~<br>节省您的时间，让您安心备战考试；</p>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="offcn-copy offcn-gwarp" id="lx">
+     <p align="center">
+        <iframe src="http://jl.offcn.com/zg/dizhi4/" width="1000px" height="480px"  frameborder="0" scrolling="no"></iframe>
+    </p>
+</div>
+
+<div class="copyright">
+    <iframe src="http://jl.offcn.com/zg/ty_bottom/" width="1000px" height="140px" frameborder="0" scrolling="no"></iframe><br />
+</div>
+<script type="text/javascript">
+
+    $(".gb").click(function(event) {
+        $(".mask").hide();
+        $(".tc").hide();
+    });
+
+    //获取验证码
+    $("#getyzm").click(function(event) {
+
+        var phone = $("#phone").val();
+        if (!phone) {
+
+            window.wxc.xcConfirm('请输入手机号');
+            return false;
+        }
+        var phone_re = /^0?1[3456789]\d{9}$/;
+        if (!phone_re.test(phone)) {
+
+            window.wxc.xcConfirm('请输入正确的手机号');
+            return false;
+        }
+        $.ajax({
+            url: 'http://zg99.offcn.com/index/biaodan/sendmsg?actid=6790&callback=?',
+            type: 'GET',
+            dataType: 'jsonp',
+            data: {phone: phone},
+            success: function(data) {
+                if (data.status=="1") {
+                    //alert('正在发送请稍后...');
+                    window.wxc.xcConfirm('正在发送请稍后...');
+                    var sec = 120;
+                    $("#getyzm").text(sec+'s后重试');
+                    var timer = setInterval(function (){
+                        sec--;
+                        $("#getyzm").text(sec+'s后重试');
+                        if (sec<1) {
+                            $("#getyzm").text('获取验证码');
+                            clearInterval(timer);
+
+                        }
+                    }, 1000);
+                } else {
+                    //alert(data.msg);
+                    window.wxc.xcConfirm(data.msg);
+
+                }
+            }
+        });
+
+    });
+
+</script>
+
+<script chaos-id="MQ==" chaos-type="callback" src="../../main.js">/* 哈士齐登陆模块 V3 测试 */</script>
+
+
+<script>
+    var autoCon_1   =  new  autoEle('auto-con-1');
+    autoCon_1.autoBtn({speed:1500});
+</script>
+<div style="display: none">
+    <script type="text/javascript" src='http://s115.uu.ujiuye.com/stat.php?id=448157&web_id=448157&show=pic' charset='gb2312'></script>
+</div>
+
+<script type="text/javaScript" src="http://jl.offcn.com/statics/js/zgjs/xiaoneng.js"></script>
+<script type="text/javascript" src="http://jl.offcn.com/index.php?m=dbsource&c=call&a=get&id=61"></script>
+<script type="text/javascript" src="http://www.offcn.com/statics/js/jhlltj.js"></script>
+<script type="text/javascript" src="http://www.offcn.com/statics/js/bdtj_jl.js"></script>
+<script type="text/javascript" src="http://www.offcn.com/statics/js/bdbot.js"></script>
+</body>
+</html>
+
+
+
