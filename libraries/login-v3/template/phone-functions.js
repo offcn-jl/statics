@@ -5,7 +5,7 @@
     document.getElementsByClassName("ad-button")[0].setAttribute("href", ChaosLoacation.URL); // 广告位URL地址
 
     // 隐藏窗口函数
-    ChaosHideLogin = function() {
+    ChaosHideLogin = function () {
         // 隐藏窗口
         ChaosFunctions.HideByClass("hl-cover,hl-popup");
     }
@@ -15,30 +15,30 @@
     document.getElementsByClassName("hl-cover")[0].addEventListener("click", ChaosHideLogin);
     document.getElementsByClassName("hl-close")[0].addEventListener("click", ChaosHideLogin);
     // 菜单栏登陆按钮
-    document.getElementById("hlp_sign_in").addEventListener("click", function(){
+    document.getElementById("hlp_sign_in").addEventListener("click", function () {
         document.getElementById("hlp_sign_in").classList.add("hlpt-current");
         document.getElementById("hlp_sign_up").classList.remove("hlpt-current");
         ChaosFunctions.ShowByClass("hlpm sign-in");
         ChaosFunctions.HideByClass("hlpm sign-up");
     });
     // 菜单栏注册按钮
-    document.getElementById("hlp_sign_up").addEventListener("click", function(){
+    document.getElementById("hlp_sign_up").addEventListener("click", function () {
         document.getElementById("hlp_sign_up").classList.add("hlpt-current");
         document.getElementById("hlp_sign_in").classList.remove("hlpt-current");
         ChaosFunctions.ShowByClass("hlpm sign-up");
         ChaosFunctions.HideByClass("hlpm sign-in");
     });
     // 登陆按钮
-    document.getElementById("sign-in").addEventListener("click", function(){
+    document.getElementById("sign-in").addEventListener("click", function () {
         // 获取用户输入的手机号
         let phone = document.getElementById("loginPhone").value;
         // 验证手机号是否合法
         if (check(phone)) {
             Cookies.set('ChaosForm_' + ChaosForm + "_Phone", phone);// 保存手机号
             // 提交验证
-            ChaosCallback = function(data) {
-                if (typeof(data) === "object") {
-                    if (typeof(data.status) !== "undefined") {
+            ChaosCallback = function (data) {
+                if (typeof (data) === "object") {
+                    if (typeof (data.status) !== "undefined") {
                         if (data.status == 1) {
                             // 存在
                             alert("登录成功！");
@@ -46,8 +46,18 @@
                             ChaosLoginStatus = true;
                             Cookies.set('ChaosForm_' + ChaosForm, 'isLogin');// 保存登陆状态
                         } else {
-                            // 错误
-                            alert(data.msg + " ( Status Code " + data.status + " )")
+                            // 判断错误类型
+                            if (data.status === 2) {
+                                // 未注册
+                                alert("请您先进行注册！");
+                                document.getElementById("hlp_sign_up").classList.add("hlpt-current");
+                                document.getElementById("hlp_sign_in").classList.remove("hlpt-current");
+                                ChaosFunctions.ShowByClass("hlpm sign-up");
+                                ChaosFunctions.HideByClass("hlpm sign-in");
+                            } else {
+                                // 其他错误错误
+                                alert(data.msg + " ( Status Code " + data.status + " )")
+                            }
                         }
                     } else {
                         alert("ZG99 接口错误");
@@ -61,7 +71,7 @@
         // 结束
     });
     // 注册按钮
-    document.getElementById("sign-up").addEventListener("click", function(){
+    document.getElementById("sign-up").addEventListener("click", function () {
         // 获取用户输入的手机号
         let phone = document.getElementById("phone").value;
         // 验证手机号是否合法
@@ -74,9 +84,9 @@
             }
             Cookies.set('ChaosForm_' + ChaosForm + "_Phone", phone);// 保存手机号
             // 都合法则继续提交
-            ChaosCallback = function(data) {
-                if (typeof(data) === "object") {
-                    if (typeof(data.status) !== "undefined") {
+            ChaosCallback = function (data) {
+                if (typeof (data) === "object") {
+                    if (typeof (data.status) !== "undefined") {
                         if (data.status == 1) {
                             // 存在
                             alert("注册成功！");
@@ -98,7 +108,7 @@
         }
     });
     // 获取验证码按钮
-    document.getElementById("sendcode").addEventListener("click", function(){
+    document.getElementById("sendcode").addEventListener("click", function () {
         // 获取用户输入的手机号
         let phone = document.getElementById("phone").value;
         // 验证手机号是否合法
@@ -107,9 +117,9 @@
             document.getElementById("sendcode").style.display = "none";
             document.getElementById("countdown").style.display = "block";
             // 都合法则继续提交
-            ChaosCallback = function(data) {
-                if (typeof(data) === "object") {
-                    if (typeof(data.status) !== "undefined") {
+            ChaosCallback = function (data) {
+                if (typeof (data) === "object") {
+                    if (typeof (data.status) !== "undefined") {
                         if (data.status == 1) {
                             alert('发送验证码成功！');
                             runCount(120); // 倒计时
@@ -165,6 +175,6 @@
         }
     }
 
-    ChaosFunctions.Logger({Type: 'warn', Info : '手机号登陆模块 ( 处理函数 ) 中定义了全局变量 [ ChaosCallback ( Jsonp 回调函数 ) ] [ ChaosHideLogin ( 隐藏登陆模块函数 ) ] ，请注意不要覆盖！'});
-    ChaosFunctions.Logger({Type: 'info', Info : '手机号登陆模块处理函数 ( phone-functions.js ) 加载成功'});
+    ChaosFunctions.Logger({ Type: 'warn', Info: '手机号登陆模块 ( 处理函数 ) 中定义了全局变量 [ ChaosCallback ( Jsonp 回调函数 ) ] [ ChaosHideLogin ( 隐藏登陆模块函数 ) ] ，请注意不要覆盖！' });
+    ChaosFunctions.Logger({ Type: 'info', Info: '手机号登陆模块处理函数 ( phone-functions.js ) 加载成功' });
 })();
