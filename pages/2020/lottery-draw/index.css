@@ -1,0 +1,168 @@
+body {
+    background: #FF6666;
+    margin: 0;
+}
+
+header {
+    font-size: 3vh;
+    color: white;
+    text-align: center;
+    width: 100vw;
+}
+
+header .room {
+    color: gray;
+    font-size: 2vh;
+    position: fixed;
+    right: 5px;
+    top: 5px;
+}
+
+.login {
+    text-align: center;
+    margin: 30vh auto;
+    color: white;
+}
+
+.login b {
+    font-size: 120%;
+}
+
+.content {
+    display: none;
+}
+
+.content .cover {
+    display: block;
+    width: 60vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -30vh;
+    margin-top: -15vh;
+    opacity: 0.5;
+    z-index: 9999;
+}
+
+.content .left {
+    width: 78vw;
+    height: 92vh;
+    float: left;
+    margin: 0 5px 0 15px;
+    border: 0.25vh solid white;
+    border-radius: 20px;
+    color: white;
+    padding-left: 15px;
+    overflow: auto;
+}
+
+.content .right {
+    width: 20vw;
+    height: 94vh;
+    float: left;
+}
+
+.content .right .qr-code {
+    width: 18vw;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50%;
+}
+
+.content .right .tips {
+    color: white;
+    font-weight: 900;
+    text-align: center;
+    display: block;
+    font-size: 2vh;
+}
+
+.content .right .list {
+    border: 0.25vh solid white;
+    border-radius: 20px;
+    color: white;
+    margin: 0.25vh;
+    height: 50vh;
+}
+
+.content .right .list .title {
+    font-size: 1.5vh;
+    text-align: center;
+}
+
+.content .right .list .before {
+    text-align: center;
+    margin-top: 20vh;
+}
+
+.content .right .list .after {
+    display: none;
+}
+
+.content .right .list .after .round {
+    text-align: center;
+    font-size: 1vh;
+}
+
+.content .right .list .after .items {
+    margin: 0 5px;
+    overflow: auto;
+    height: 46vh;
+}
+
+.item {
+    background: #F96;
+    margin-top: 5px;
+    animation: fadeInLeft;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    width: 9vw;
+    display: inline-block;
+    border: 2px solid;
+    border-radius: 20px;
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.item img {
+    height: 2vh;
+    border-radius: 50%;
+    margin: 5px 5px 2px 5px;
+}
+
+.item span {
+    font-size: 2vh;
+    display: block;
+    margin: -2.4vh 0 0 4vh;
+}
+
+.content .right .operations {
+    margin: 0 5px;
+    color: white;
+    float: right;
+}
+
+footer {
+    font-size: 1.2vh;
+    width: 100vw;
+    position: fixed;
+    bottom: 0vh;
+    text-align: center;
+    color: white;
+}
+
+footer a {
+    text-decoration: none;
+    color: #0066CC;
+}
+
