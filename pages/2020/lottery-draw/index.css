@@ -14,8 +14,9 @@ header .room {
     color: gray;
     font-size: 2vh;
     position: fixed;
-    right: 5px;
-    top: 5px;
+    width: 13vh;
+    right: 2vw;
+    top: 1vh;
 }
 
 .login {
