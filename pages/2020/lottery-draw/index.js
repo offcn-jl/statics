@@ -86,8 +86,13 @@ $(function () {
 
     // 抽奖
     $("#do").click(function () {
-        let 开奖代码 = (new Date()).valueOf();
         if ($("#num").val() * 1 > 0) {
+            if ( $("#do").val() !== "抽 奖" ) {
+                alert("正在抽奖中, 请稍候！")
+                return
+            }
+            $("#do").val("抽奖中...");
+            let 开奖代码 = (new Date()).valueOf();
             // $.get("https://api.chaos.jilinoffcn.com/release/events/public/2020/lottery-draw/" + 房间代码 + "/lottery/" + 开奖代码 + "/" + $("#num").val() * 1, function (响应内容, 请求状态) {
             //     console.log("Status: " + 请求状态 + "\nData:");
             //     console.log(响应内容);
@@ -118,6 +123,7 @@ $(function () {
                         // 请求失败
                         处理错误(响应内容)
                     }
+                    $("#do").val("抽 奖");
                 }
             });
         } else {
