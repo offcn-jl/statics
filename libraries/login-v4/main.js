@@ -355,7 +355,7 @@
                             ChaosSingleSignOnModuleInfo.CRMUser = xhr.responseJson.Details.CRMUser
                             ChaosSingleSignOnModuleInfo.CRMOID = xhr.responseJson.Details.CRMOID
                             ChaosSingleSignOnModuleInfo.CRMOName = xhr.responseJson.Details.CRMOName
-                            if (xhr.responseJson.Details.Key419 + "".length > 1) {
+                            if (xhr.responseJson.Details.Key419.length > 1) {
                                 ChaosSingleSignOnModuleInfo.Key419 = xhr.responseJson.Details.Key419
                             } else {
                                 ChaosSingleSignOnModuleInfo.Key419 = "0"
@@ -367,7 +367,7 @@
                             }
 
                             // 填充 专题 后缀
-                            if (ChaosSingleSignOnModuleInfo.Key419 + "".length > 1) {
+                            if ( ChaosSingleSignOnModuleInfo.Key419 !== "0" ) {
                                 ChaosFunctions.Logger({ Type: 'info', Info: '开始填充 「 专题 」 个人后缀.' });
                                 let count = 0, doms = document.getElementsByClassName("chaos-v4-link-article");
                                 Object.keys(doms).forEach(function (key) {
@@ -378,7 +378,7 @@
                             }
 
                             // 填充 19课堂 后缀
-                            if (ChaosSingleSignOnModuleInfo.Key419 + "".length > 1) {
+                            if ( ChaosSingleSignOnModuleInfo.Key419 !== "0" ) {
                                 ChaosFunctions.Logger({ Type: "info", Info: "开始填充 「 19 课堂 」 个人后缀." });
                                 let count = 0, doms = document.getElementsByClassName("chaos-v4-link-19");
                                 Object.keys(doms).forEach(function (key) {
