@@ -297,6 +297,7 @@
         IsLogin: false,
         NeedToRegister: true,
         CRMID: 0,
+        CRMChannel: 7,
         CRMUser: "",
         CRMOID: 0,
         CRMOName: "",
@@ -351,6 +352,7 @@
                         if (typeof (xhr.responseJson) == "object") {
                             ChaosSingleSignOnModuleInfo.IsLogin = xhr.responseJson.IsLogin
                             ChaosSingleSignOnModuleInfo.NeedToRegister = xhr.responseJson.NeedToRegister
+                            ChaosSingleSignOnModuleInfo.CRMChannel = xhr.responseJson.Details.CRMChannel
                             ChaosSingleSignOnModuleInfo.CRMID = xhr.responseJson.Details.CRMID
                             ChaosSingleSignOnModuleInfo.CRMUser = xhr.responseJson.Details.CRMUser
                             ChaosSingleSignOnModuleInfo.CRMOID = xhr.responseJson.Details.CRMOID
