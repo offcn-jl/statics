@@ -290,7 +290,7 @@
     ChaosSingleSignOnModuleInfo = {
         Path: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "src", "./").split("main.js")[0],
         ApiPath: "https://api.chaos.jilinoffcn.com/test",
-        MID: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "chaos-v4-id", 0) * 1,
+        MID: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "chaos-v4-id", 1) * 1,
         Type: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "chaos-v4-type", "lite"),
         // Page: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "chaos-v4-page", 0) * 1,
         Phone: getPhone(),
