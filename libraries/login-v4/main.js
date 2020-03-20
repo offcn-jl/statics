@@ -399,7 +399,7 @@
                                 Object.keys(imageDoms).forEach(function (key) {
                                     if (typeof imageDoms[key].getAttribute("src") === "string" && imageDoms[key].getAttribute("src").length > 0) { // 判断是否填写了图片链接 ( 先判断 src 属性是否为字符串，即是否设置了该属性，可以避免判断长度时报错 )
                                         let filePath = imageDoms[key].getAttribute("src").substring(0, imageDoms[key].getAttribute("src").lastIndexOf("/") + 1),
-                                            fileExtension = imageDoms[key].getAttribute("src").substring(imageDoms[key].getAttribute("src").lastIndexOf(".") + 1);
+                                            fileExtension = imageDoms[key].getAttribute("src").substring(imageDoms[key].getAttribute("src").lastIndexOf("."));
                                         imageDoms[key].src = filePath + ChaosSingleSignOnModuleInfo.Key419 + fileExtension;
                                         count++;
                                     }
