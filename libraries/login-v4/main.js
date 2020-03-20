@@ -291,7 +291,7 @@
         Path: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "src", "./").split("main.js")[0],
         ApiPath: "https://api.chaos.jilinoffcn.com/test",
         MID: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "chaos-v4-id", 0) * 1,
-        Type: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "chaos-v4-type", "all-a-tag"),
+        Type: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "chaos-v4-type", "lite"),
         // Page: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "chaos-v4-page", 0) * 1,
         Phone: getPhone(),
         IsLogin: false,
@@ -393,19 +393,19 @@
                             }
 
                             // 设置 图片链接
-                            // if (ChaosSingleSignOnModuleInfo.CRMID !== 0 && ChaosSingleSignOnModuleInfo.CRMID !== "0") {
-                            //     ChaosFunctions.Logger({ Type: "info", Info: "开始设置 「图片链接」." });
-                            //     let count = 0, imageDoms = document.getElementsByClassName("chaos-v4-image");
-                            //     Object.keys(imageDoms).forEach(function (key) {
-                            //         if (typeof imageDoms[key].getAttribute("src") === "string" && imageDoms[key].getAttribute("src").length > 0) { // 判断是否填写了图片链接 ( 先判断 src 属性是否为字符串，即是否设置了该属性，可以避免判断长度时报错 )
-                            //             let filePath = imageDoms[key].getAttribute("src").substring(0, imageDoms[key].getAttribute("src").lastIndexOf("/") + 1),
-                            //                 fileExtension = imageDoms[key].getAttribute("src").substring(imageDoms[key].getAttribute("src").lastIndexOf(".") + 1);
-                            //             imageDoms[key].src = filePath + ChaosSingleSignOnModuleInfo.CRMID + fileExtension;
-                            //             count++;
-                            //         }
-                            //     });
-                            //     ChaosFunctions.Logger({ Type: "info", Info: "「图片链接」 设置完成，共设置 " + count + " 个." });
-                            // }
+                            if ( ChaosSingleSignOnModuleInfo.Key419 !== "0" ) {
+                                ChaosFunctions.Logger({ Type: "info", Info: "开始设置 「图片链接」." });
+                                let count = 0, imageDoms = document.getElementsByClassName("chaos-v4-image");
+                                Object.keys(imageDoms).forEach(function (key) {
+                                    if (typeof imageDoms[key].getAttribute("src") === "string" && imageDoms[key].getAttribute("src").length > 0) { // 判断是否填写了图片链接 ( 先判断 src 属性是否为字符串，即是否设置了该属性，可以避免判断长度时报错 )
+                                        let filePath = imageDoms[key].getAttribute("src").substring(0, imageDoms[key].getAttribute("src").lastIndexOf("/") + 1),
+                                            fileExtension = imageDoms[key].getAttribute("src").substring(imageDoms[key].getAttribute("src").lastIndexOf(".") + 1);
+                                        imageDoms[key].src = filePath + ChaosSingleSignOnModuleInfo.Key419 + fileExtension;
+                                        count++;
+                                    }
+                                });
+                                ChaosFunctions.Logger({ Type: "info", Info: "「图片链接」 设置完成，共设置 " + count + " 个." });
+                            }
 
                             // 如果未登过该专题，则根据登陆模块类型进入拦截逻辑
                             if (ChaosSingleSignOnModuleInfo.IsLogin && ChaosSingleSignOnModuleInfo.Type !== "callback-phone-only" && ChaosSingleSignOnModuleInfo.Type !== "page") {
@@ -529,11 +529,10 @@
                                             return;
                                         }
                                     default:
-                                        alert("登陆模块配置有误！");
-                                        // ChaosFunctions.Logger({ Type: 'warn', Info: '登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n' + globalVariablesList + '\n\n请注意不要覆盖！' });
-                                        // // 加载 light 模块
-                                        // ChaosFunctions.Logger({ Type: 'info', Info: '当前使用的登陆模块为: 轻量版.' });
-                                        // // 直接结束后续程序执行
+                                        ChaosFunctions.Logger({ Type: 'warn', Info: '登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n' + globalVariablesList + '\n\n请注意不要覆盖！' });
+                                        // 加载 light 模块
+                                        ChaosFunctions.Logger({ Type: 'info', Info: '当前使用的登陆模块为: 轻量版.' });
+                                        // 直接结束后续程序执行
                                         return;
                                 }
 
