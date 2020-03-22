@@ -1,0 +1,232 @@
+<!-- Base On https://www.cnblogs.com/jiqing9006/p/5396335.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>个人后缀列表</title>
+    <style type="text/css">
+        body {
+            font-family: arial;
+        }
+
+        table {
+            border: 1px solid #ccc;
+            width: 80%;
+            margin: 0;
+            padding: 0;
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 0 auto;
+        }
+
+        table tr {
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+
+        table th,
+        table td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            table {
+                border: 0;
+            }
+
+            table thead {
+                display: none;
+            }
+
+            table tr {
+                margin-bottom: 10px;
+                display: block;
+                border-bottom: 2px solid #ddd;
+            }
+
+            table td {
+                display: block;
+                text-align: right;
+                font-size: 13px;
+                border-bottom: 1px dotted #ccc;
+            }
+
+            table td:last-child {
+                border-bottom: 0;
+            }
+
+            table td:before {
+                content: attr(data-label);
+                float: left;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+        }
+
+        .note {
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .content {
+            display: none;
+        }
+
+
+        .loading {
+            width: 80px;
+            height: 40px;
+            margin-top: -20px;
+            position: fixed;
+            left: 50vw;
+            top: 50vh;
+            margin-left: -40px;
+            font-size: 30px;
+        }
+
+        .loading span {
+            display: inline-block;
+            width: 8px;
+            height: 100%;
+            border-radius: 4px;
+            background: lightgreen;
+            -webkit-animation: load 1s ease infinite;
+        }
+
+        @-webkit-keyframes load {
+
+            0%,
+            100% {
+                height: 40px;
+                background: lightgreen;
+            }
+
+            50% {
+                height: 70px;
+                margin: -15px 0;
+                background: lightblue;
+            }
+        }
+
+        .loading span:nth-child(2) {
+            -webkit-animation-delay: 0.2s;
+        }
+
+        .loading span:nth-child(3) {
+            -webkit-animation-delay: 0.4s;
+        }
+
+        .loading span:nth-child(4) {
+            -webkit-animation-delay: 0.6s;
+        }
+
+        .loading span:nth-child(5) {
+            -webkit-animation-delay: 0.8s;
+        }
+    </style>
+
+    <script src="https://statics.jilinoffcn.com/libraries/jquery/jquery-3.4.1.min.js"></script>
+
+    <script>
+        $(() => {
+            $.get("https://api.chaos.jilinoffcn.com/release/events/SSO/name-list", result => {
+                $(".loading").hide();
+                $(".content").show();
+                result.forEach(element => {
+                    let channel = "未知";
+                    switch (element.CRMChannel) {
+                        case 7:
+                            channel = "19课堂";
+                            break;
+                        case 104:
+                            channel = "无特定渠道";
+                            break;
+                    }
+                    $("tbody").append('<tr>\
+                    <td data-label="哈士齐系统用户组 ID">'+ element.GID + '</td>\
+                    <td data-label="哈士齐系统用户组名称">'+ element.GName + '</td>\
+                    <td data-label="哈士齐系统用户 ID">'+ element.ID + '</td>\
+                    <td data-label="哈士齐系统用户名">'+ element.UserName + '</td>\
+                    <td data-label="哈士齐系统用户姓名">'+ element.NickName + '</td>\
+                    <td data-label="CRM 系统用户 ID">'+ element.CRMID + '</td>\
+                    <td data-label="哈士齐系统 CRM 组织对照 ID">'+ element.CRMHOID + '</td>\
+                    <td data-label="CRM 系统组织 ID">'+ element.CRMOID + '</td>\
+                    <td data-label="CRM 系统组织名称">'+ element.CRMOName + '</td>\
+                    <td data-label="CRM 系统所属渠道代码">'+ element.CRMChannel + '</td>\
+                    <td data-label="CRM 系统所属渠道">'+ channel + '</td>\
+                    <td data-label="19课堂个人后缀">'+ element.KeyFor19 + '</td>\
+                </tr>')
+                });
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="content">
+
+        <div class="note">
+            <h1>个人后缀列表</h1>
+            <p>实时更新，仅供内部备忘使用。</p>
+        </div>
+
+        <table>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th>哈士齐系统用户组 ID</th>
+                    <th>哈士齐系统用户组名称</th>
+                    <th>哈士齐系统用户 ID</th>
+                    <th>哈士齐系统用户名</th>
+                    <th>哈士齐系统用户姓名</th>
+                    <th>CRM 系统用户 ID</th>
+                    <th>哈士齐系统 CRM 组织对照 ID</th>
+                    <th>CRM 系统组织 ID</th>
+                    <th>CRM 系统组织名称</th>
+                    <th>CRM 系统所属渠道代码</th>
+                    <th>CRM 系统所属渠道</th> <!-- 需要自行计算 -->
+                    <th>19课堂个人后缀</th>
+                </tr>
+            </thead>
+            <!-- 表格主体 -->
+            <tbody>
+                <!-- <tr>
+                    <td data-label="哈士齐系统用户组 ID">哈士齐</td>
+                    <td data-label="哈士齐系统用户组名称">哈士齐</td>
+                    <td data-label="哈士齐系统用户 ID">哈士齐</td>
+                    <td data-label="哈士齐系统用户名">哈士齐</td>
+                    <td data-label="哈士齐系统用户姓名">哈士齐</td>
+                    <td data-label="CRM 系统用户 ID">哈士齐</td>
+                    <td data-label="哈士齐系统 CRM 组织对照 ID">哈士齐</td>
+                    <td data-label="CRM 系统组织 ID">哈士齐</td>
+                    <td data-label="CRM 系统组织名称">哈士齐</td>
+                    <td data-label="CRM 系统所属渠道代码">哈士齐</td>
+                    <td data-label="CRM 系统所属渠道">哈士齐</td>
+                    <td data-label="19课堂个人后缀">哈士齐</td>
+                </tr> -->
+            </tbody>
+        </table>
+
+    </div>
+
+
+</body>
+
+</html>
