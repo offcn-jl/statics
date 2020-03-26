@@ -537,6 +537,7 @@
                                 }
 
                                 // 加载样式表
+                                ChaosFunctions.DynamicLoading.CSS(ChaosSingleSignOnModuleInfo.Path + "template/page.css");
                                 ChaosFunctions.DynamicLoading.CSS(ChaosSingleSignOnModuleInfo.Path + "template/phone.css");
                                 // 渲染手机号登陆组件
                                 ChaosFunctions.DynamicLoading.JS(ChaosSingleSignOnModuleInfo.Path + "template/phone.js");

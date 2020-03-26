@@ -45,11 +45,15 @@
     display: flex;
     font-size: 24px;
     line-height: 50px;
-    cursor: pointer;
+    -moz-user-select:none; /*火狐*/
+    -webkit-user-select:none; /*webkit浏览器*/
+    -ms-user-select:none; /*IE10*/
+    -khtml-user-select:none; /*早期浏览器*/
+    user-select:none;
 }
 
 .hlp-top span{
-    width: 100px;
+    width: 150px;
     text-align: center;
     margin: 0 auto;
     color: #989898;
@@ -60,8 +64,26 @@
     border-bottom: 2px solid #EC414D !important ;
 }
 
+.chaos-tips {
+    margin-top: 8px;
+    margin-left: 5px;
+}
+
+.chaos-tips span{
+    display: block;
+    float: left;
+}
+
+.chaos-tips div{
+    display: block;
+    font-size: 15px;
+    float: left;
+    margin-top: -3px;
+    padding-left: 5px;
+}
+
 .hlp-middle{
-    width: 75%;
+    width: 85%;
     margin: auto;
 }
 
@@ -85,12 +107,13 @@
     cursor: pointer;
 }
 
-.hlpm-yzm{
+.chaos-code-line{
     position: relative;
+    display: none;
 }
 
-.hlpm-yzm #sendcode, #countdown{
-    width: 140px;
+.chaos-code-line #chaos-get-code {
+    width: 150px;
     height: 46px;
     position: absolute;
     right: 0px;
@@ -103,6 +126,7 @@
     background: #EC414D;
     color: #fff;
     border-radius: 25px;
+    margin-top: 19px;
 }
 /* 手机号登陆 结束 */
 

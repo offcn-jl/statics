@@ -5,24 +5,19 @@ const ChaosTemplate =
     <div class="hl-popup hl-phone">
         <div class="hl-close"></div>
         <div class="hlp-top">
-            <span id="hlp_sign_in" class="hlpt-current">登 录</span>
-            <span id="hlp_sign_up" class="">注 册</span>
+            <span class="hlpt-current">中 公 教 育</span>
         </div>
         <div class="hlp-middle">
-            <input type="text" name="Phone" id="phone" placeholder="手机号码" AUTOCOMPLETE="off">
-            <div class="hlpm sign-in">
-                <input type="button" value="登 录" id="sign-in" class="submintBtn">
+            <input type="text" id="chaos-phone" placeholder="手机号码" AUTOCOMPLETE="off">
+            <div class="chaos-tips"></div>
+            <div class="chaos-code-line">
+                <input type="text" id="chaos-code" placeholder="验证码" required="" AUTOCOMPLETE="off">
+                <div id="chaos-get-code">获取验证码</div>
             </div>
-            <div class="hlpm sign-up" style="display: none;">
-                <form>
-                    <div class="hlpm-yzm"><input type="text" id="code" placeholder="验证码" required="" AUTOCOMPLETE="off">
-                        <div id="sendcode">获取</div>
-                        <div id="countdown" style="display:none;">120s后重新获取</div>
-                    </div>
-                    <input type="button" id="sign-up" value="免费注册" class="submintBtn">
-                    <input type="text" id="location" value="" readonly style="text-align: center;border: 0px;font-size: 15px;height: 25px;color: gray;">
-                </form>
+            <div class="hlpm">
+                <input type="button" value="登 陆" id="chaos-submit" class="submintBtn">
             </div>
+            <input type="text" id="location" value="" readonly style="text-align: center;border: 0px;font-size: 15px;height: 25px;color: gray;">
         </div>
         <div class="hlp-bottom">
             <h3></h3>
