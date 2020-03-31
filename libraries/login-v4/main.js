@@ -292,7 +292,7 @@
         ApiPath: "https://api.chaos.jilinoffcn.com/test",
         MID: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "chaos-v4-id", 1) * 1,
         Type: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "chaos-v4-type", "lite"),
-        // Page: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "chaos-v4-page", 0) * 1,
+        Page: ChaosFunctions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "chaos-v4-page", 0) * 1,
         Phone: getPhone(),
         IsLogin: false,
         NeedToRegister: true,
@@ -326,17 +326,17 @@
                 let chaosNode = document.createElement("chaos-v4");
                 chaosNode.setAttribute("chaos-v4-id", ChaosSingleSignOnModuleInfo.MID)
                 chaosNode.setAttribute("chaos-v4-type", ChaosSingleSignOnModuleInfo.Type)
-                // if (ChaosSingleSignOnModuleInfo.Type === "book") {
-                //     chaosNode.setAttribute("chaos-v4-page", ChaosSingleSignOnModuleInfo.Page)
-                // }
+                if (ChaosSingleSignOnModuleInfo.Type === "book") {
+                    chaosNode.setAttribute("chaos-v4-page", ChaosSingleSignOnModuleInfo.Page)
+                }
                 document.getElementsByTagName("body")[0].appendChild(chaosNode)
             } else {
                 // 设置 Chaos 标签的属性
                 document.getElementsByTagName('chaos-v4')[0].setAttribute("chaos-v4-id", ChaosSingleSignOnModuleInfo.MID)
                 document.getElementsByTagName('chaos-v4')[0].setAttribute("chaos-v4-type", ChaosSingleSignOnModuleInfo.Type)
-                // if (ChaosSingleSignOnModuleInfo.Type === "book") {
-                //     document.getElementsByTagName('chaos-v4')[0].setAttribute("chaos-v4-page", ChaosSingleSignOnModuleInfo.Page)
-                // }
+                if (ChaosSingleSignOnModuleInfo.Type === "book") {
+                    document.getElementsByTagName('chaos-v4')[0].setAttribute("chaos-v4-page", ChaosSingleSignOnModuleInfo.Page)
+                }
             }
 
             // 加载代码表
@@ -369,7 +369,7 @@
                             }
 
                             // 填充 专题 后缀
-                            if ( ChaosSingleSignOnModuleInfo.Key419 !== "0" ) {
+                            if (ChaosSingleSignOnModuleInfo.Key419 !== "0") {
                                 ChaosFunctions.Logger({ Type: 'info', Info: '开始填充 「 专题 」 个人后缀.' });
                                 let count = 0, doms = document.getElementsByClassName("chaos-v4-link-article");
                                 Object.keys(doms).forEach(function (key) {
@@ -380,7 +380,7 @@
                             }
 
                             // 填充 19课堂 后缀
-                            if ( ChaosSingleSignOnModuleInfo.Key419 !== "0" ) {
+                            if (ChaosSingleSignOnModuleInfo.Key419 !== "0") {
                                 ChaosFunctions.Logger({ Type: "info", Info: "开始填充 「 19 课堂 」 个人后缀." });
                                 let count = 0, doms = document.getElementsByClassName("chaos-v4-link-19");
                                 Object.keys(doms).forEach(function (key) {
@@ -393,7 +393,7 @@
                             }
 
                             // 设置 图片链接
-                            if ( ChaosSingleSignOnModuleInfo.Key419 !== "0" ) {
+                            if (ChaosSingleSignOnModuleInfo.Key419 !== "0") {
                                 ChaosFunctions.Logger({ Type: "info", Info: "开始设置 「图片链接」." });
                                 let count = 0, imageDoms = document.getElementsByClassName("chaos-v4-image");
                                 Object.keys(imageDoms).forEach(function (key) {
@@ -465,9 +465,26 @@
                                         });
                                         ChaosFunctions.Logger({ Type: 'info', Info: '当前使用的登陆模块为: 拦截全部 a 标签版.' });
                                         break;
-                                    // case "book": // 电子书
-                                    //     ChaosFunctions.DynamicLoading.JS(ChaosPath + "book.js")
-                                    //     break;
+                                    case "book": // 电子书
+                                        // 禁止关闭弹窗
+                                        let initTimer = setInterval(function () {
+                                            if (typeof (ChaosHideLogin) === "function") {
+                                                clearInterval(initTimer);
+                                                ChaosFunctions.HideByClass("hl-close"); // 移除关闭按钮
+                                                document.getElementsByClassName("hl-cover")[0].removeEventListener("click", ChaosHideLogin) // 解绑关闭事件
+                                                document.getElementsByClassName("hl-close")[0].removeEventListener("click", ChaosHideLogin) // 解绑关闭事件
+                                            }
+                                        }, 500);
+                                        // 覆盖电子书回调函数
+                                        sendvisitinfo = function (type, page) {
+                                            if (page >= ChaosFunctions.Attr(document.getElementsByTagName('chaos-v4')[0], "chaos-v4-page", ChaosSingleSignOnModuleInfo.Page)) {
+                                                if (!ChaosSingleSignOnModuleInfo.IsLogin) {
+                                                    ChaosFunctions.ShowByClass("hl-cover,hl-popup"); // 弹出登陆窗口
+                                                }
+                                            }
+                                        };
+                                        ChaosFunctions.Logger({ Type: 'info', Info: '当前使用的登陆模块为: 电子书版.' });
+                                        break;
                                     case "callback-phone-only":
                                         // 登陆中间件 ( 携带电话号码 )
                                         ChaosHandlerWithPhone = function (callback) {
@@ -489,7 +506,7 @@
                                         }
                                     case "page":
                                         // 判断是否存在组件
-                                        if ( document.getElementsByClassName("chaos-login-page-form").length === 0 || document.getElementsByClassName("chaos-login-page-is-login").length === 0 ) {
+                                        if (document.getElementsByClassName("chaos-login-page-form").length === 0 || document.getElementsByClassName("chaos-login-page-is-login").length === 0) {
                                             alert("哈士齐登陆模块配置有误, 缺少页面元素!");
                                             return
                                         }
@@ -497,7 +514,7 @@
                                         if (ChaosSingleSignOnModuleInfo.IsLogin) {
                                             // 已登陆
                                             // 调用 提交后事件处理钩子
-                                            if ( typeof ChaosPageAfterSubmitHook === "function" ) {
+                                            if (typeof ChaosPageAfterSubmitHook === "function") {
                                                 ChaosPageAfterSubmitHook(ChaosSingleSignOnModuleInfo.Phone);
                                             } else {
                                                 ChaosFunctions.Logger({ Type: 'info', Info: '未定义 ChaosPageAfterSubmitHook ( 提交后事件处理钩子 ) , 跳过登陆回调.' });
