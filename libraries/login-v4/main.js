@@ -535,8 +535,15 @@
                                             let templateTimer = setInterval(function () {
                                                 if (typeof (ChaosTemplate) === "string") {
                                                     clearInterval(templateTimer);
-                                                    // 加载登陆组件 HTML
-                                                    document.getElementsByClassName("chaos-login-page-form")[0].innerHTML = ChaosTemplate;
+                                                    // 判断是否存在可选组件
+                                                    if (document.getElementsByClassName("chaos-login-page-optional").length !== 0) {
+                                                        // 拼接可选组件后，加载登陆组件 HTML
+                                                        document.getElementsByClassName("chaos-login-page-form")[0].innerHTML = document.getElementsByClassName("chaos-login-page-optional")[0].innerHTML + ChaosTemplate;
+                                                        document.getElementsByClassName("chaos-login-page-optional")[0].remove();
+                                                    } else {
+                                                        // 直接加载登陆组件 HTML
+                                                        document.getElementsByClassName("chaos-login-page-form")[0].innerHTML = ChaosTemplate;
+                                                    }
                                                     ChaosFunctions.Logger({ Type: 'info', Info: '手机号登陆模板 ( 页面版 ) 加载成功.' });
                                                     // 加载处理函数
                                                     ChaosFunctions.DynamicLoading.JS(ChaosSingleSignOnModuleInfo.Path + "template/page-functions.js")

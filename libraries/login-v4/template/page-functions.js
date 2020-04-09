@@ -106,7 +106,7 @@
                     return false;
                 }
                 // 都合法则继续提交
-                ChaosFunctions.XHR.POST(ChaosSingleSignOnModuleInfo.ApiPath + "/events/SSO/register/" + ChaosSingleSignOnModuleInfo.MID + "/" + ChaosSingleSignOnModuleInfo.Key419 + "/" + phone + "/" + code, { "URL": location.href }, function (xhr) {
+                ChaosFunctions.XHR.POST(ChaosSingleSignOnModuleInfo.ApiPath + "/events/SSO/register/" + ChaosSingleSignOnModuleInfo.MID + "/" + ChaosSingleSignOnModuleInfo.Key419 + "/" + phone + "/" + code, { "URL": location.href, ...getOptionalParameters() }, function (xhr) {
                     if (typeof (xhr.responseJson) == "object") {
                         ChaosSingleSignOnModuleInfo.Phone = phone * 1;
                         ChaosFunctions.Cookies.Set("chaos-v4-phone", ChaosSingleSignOnModuleInfo.Phone, 30 * 24 * 60 * 60 * 1000); // 保存 cookies
@@ -126,7 +126,7 @@
                 });
             } else {
                 // 调用登陆接口
-                ChaosFunctions.XHR.POST(ChaosSingleSignOnModuleInfo.ApiPath + "/events/SSO/login/" + ChaosSingleSignOnModuleInfo.MID + "/" + ChaosSingleSignOnModuleInfo.Key419 + "/" + phone, { "URL": location.href }, function (xhr) {
+                ChaosFunctions.XHR.POST(ChaosSingleSignOnModuleInfo.ApiPath + "/events/SSO/login/" + ChaosSingleSignOnModuleInfo.MID + "/" + ChaosSingleSignOnModuleInfo.Key419 + "/" + phone, { "URL": location.href, ...getOptionalParameters() }, function (xhr) {
                     if (typeof (xhr.responseJson) == "object") {
                         ChaosSingleSignOnModuleInfo.Phone = phone * 1;
                         ChaosFunctions.Cookies.Set("chaos-v4-phone", ChaosSingleSignOnModuleInfo.Phone, 30 * 24 * 60 * 60 * 1000); // 保存 cookies
@@ -194,5 +194,26 @@
         } else {
             document.getElementById("chaos-get-code").innerHTML = "获取验证码";
         }
+    }
+
+    // 获取可选参数函数
+    function getOptionalParameters() {
+        let optionalParameters = {}
+        if ( document.getElementById("chaos-customer-name") !== null && document.getElementById("chaos-customer-name").value !== "") {
+            optionalParameters.CustomerName = document.getElementById("chaos-customer-name").value;
+        }
+        if ( document.getElementById("chaos-customer-identity") !== null && document.getElementById("chaos-customer-identity").value * 1 !== NaN) {
+            optionalParameters.CustomerIdentity = document.getElementById("chaos-customer-identity").value;
+        }
+        if ( document.getElementById("chaos-customer-colleage") !== null && document.getElementById("chaos-customer-colleage").value !== "") {
+            optionalParameters.CustomerColleage = document.getElementById("chaos-customer-colleage").value;
+        }
+        if ( document.getElementById("chaos-customer-mayor") !== null && document.getElementById("chaos-customer-mayor").value !== "") {
+            optionalParameters.CustomerMayor = document.getElementById("chaos-customer-mayor").value;
+        }
+        if ( document.getElementById("chaos-remark") !== null && document.getElementById("chaos-remark").value !== "") {
+            optionalParameters.Remark = document.getElementById("chaos-remark").value;
+        }
+        return optionalParameters
     }
 })();
