@@ -410,6 +410,7 @@
                             // 如果未登过该专题，则根据登陆模块类型进入拦截逻辑
                             if (ChaosSingleSignOnModuleInfo.IsLogin && ChaosSingleSignOnModuleInfo.Type !== "callback-phone-only" && ChaosSingleSignOnModuleInfo.Type !== "page") {
                                 ChaosFunctions.Logger({ Type: 'info', Info: '用户已经登陆，跳过拦截逻辑.' });
+                                ChaosSingleSignOnModuleInfo.Completed = true;
                             } else {
                                 switch (ChaosSingleSignOnModuleInfo.Type) {
                                     case "a-tag": // 拦截 a 标签
@@ -553,6 +554,7 @@
                                             return;
                                         }
                                     default:
+                                        ChaosSingleSignOnModuleInfo.Completed = true;
                                         ChaosFunctions.Logger({ Type: 'warn', Info: '登陆模块 ( 主程序 ) 中定义了以下全局变量:\n\n' + globalVariablesList + '\n\n请注意不要覆盖！' });
                                         // 加载 light 模块
                                         ChaosFunctions.Logger({ Type: 'info', Info: '当前使用的登陆模块为: 轻量版.' });
