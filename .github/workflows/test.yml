@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: 安装 COSCLI
-      run: pip install coscmd
+      run: sudo pip install coscmd
 
     - name: 配置 COSCLI
       run: coscmd config -a ${{secrets.TencentSecretId}} -s ${{secrets.TencentSecretKey}} -b ${{secrets.TencentBucketName}} -r ap-beijing
