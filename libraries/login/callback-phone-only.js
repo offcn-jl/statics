@@ -1,18 +1,18 @@
 (function () {
-    console.log("Chaos > 当前使用的登陆模块为: 仅电话登陆的回调函数版");
+    ChaosFunctions.Logger({Type: 'info', Info : '当前使用的登陆模块为: 仅电话登陆的回调函数版'});
 
     // 加载样式表
-    ChaosFunctions.DynamicLoading.CSS("https://statics.jilinoffcn.com/libraries/login/style/main.css");
+    ChaosFunctions.DynamicLoading.CSS( ChaosPath + "style/main.css");
     // 渲染手机号登陆组件
-    ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/template/phone.js");
+    ChaosFunctions.DynamicLoading.JS( ChaosPath + "template/phone.js");
     let templateTimer = setInterval(function () {
         if (typeof (ChaosTemplate) === "string") {
             clearInterval(templateTimer);
             // 加载登陆组件 HTML
             document.getElementsByTagName('chaos')[0].innerHTML += ChaosTemplate;
-            console.log("Chaos > 手机号登陆模板加载成功");
+            ChaosFunctions.Logger({Type: 'info', Info : '手机号登陆模板加载成功'});
             // 加载处理函数
-            ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/template/phone-functions.js")
+            ChaosFunctions.DynamicLoading.JS( ChaosPath + "template/phone-functions.js")
         }
     }, 500);
 
@@ -23,15 +23,15 @@
     globalVariablesList += " [ ChaosForm ( ZG99 表单 ID ) ]";
 
     // 加载 Cookies 插件
-    ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/js.cookie.min.js");
+    ChaosFunctions.DynamicLoading.JS( ChaosPath + "../js.cookie.min.js");
     // 加载 XHR 插件
-    ChaosFunctions.DynamicLoading.JS("https://statics.jilinoffcn.com/libraries/login/xhr.js");
+    ChaosFunctions.DynamicLoading.JS( ChaosPath + "xhr.js");
     // 等待 Cookies 插件，XHR 插件加载
     let initTimer = setInterval(function () {
         if (typeof (Cookies) === "function" && typeof ChaosXHR === "object") {
             clearInterval(initTimer)
             // 根据登陆模块 ID 获取表单 ID
-            ChaosXHR.GET("https://api.2.jilinoffcn.com/events/?action=xgi&id=" + ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "chaos-id", "MQ=="), function (xhr) {
+            ChaosXHR.GET( ChaosApiPath + "?action=xgi&id=" + ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "chaos-id", "MQ=="), function (xhr) {
                 //console.log(xhr)
                 if (typeof (xhr.responseJson) == "object") {
                     ChaosForm = xhr.responseJson.FormID
@@ -39,7 +39,7 @@
                     document.getElementsByTagName('chaos')[0].setAttribute("chaos-name", xhr.responseJson.Name)
                     document.getElementsByTagName('chaos')[0].setAttribute("chaos-url", xhr.responseJson.URL)
                 }
-                console.log("Chaos > 当前登陆表单 ID ( ChaosForm ) 为: " + ChaosForm)
+                ChaosFunctions.Logger({Type: 'info', Info : '当前登陆表单 ID ( ChaosForm ) 为: ' + ChaosForm});
             });
 
             initTimer = setInterval(function () {
@@ -70,5 +70,5 @@
     };
     globalVariablesList += " [ ChaosHandlerWithPhone ( 携带电话号码的登陆中间件 ) ]";
 
-    console.warn("Chaos > 登陆模块 ( 仅电话登陆的回调函数版 ) 中定义了以下全局变量:\n\n" + globalVariablesList + "\n\n请注意不要覆盖！");
+    ChaosFunctions.Logger({Type: 'warn', Info : '登陆模块 ( 仅电话登陆的回调函数版 ) 中定义了以下全局变量:\n\n' + globalVariablesList + '\n\n请注意不要覆盖！'});
 })();

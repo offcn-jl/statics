@@ -1,0 +1,149 @@
+@charset "gb2312";
+
+html,body {
+    height:100%;
+}
+/*zg_cover*/
+.zg_cover{
+    width:100%;
+    height: 100%;
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    right: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 9998;
+}
+/*zg_cover END*/
+nav {
+    width:60%;
+    height:60px;
+    margin:0 auto;
+    display: flex;
+    justify-content: flex-end;
+}
+nav div {
+    width:100px;
+    height:48px;
+    line-height: 48px;
+    text-align: center;
+    border:2px solid #000;
+    border-radius: 25px;
+    margin-top: 4px;
+    color:#000;
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+#loginName,#loginPhone,.province,#name,#phone,#yzm {
+    text-align: left;
+}
+section {
+    width:450px;
+    min-height:300px;
+    background: #FFF;
+    border-radius: 15px;
+    position: fixed;
+    left:50%;
+    top:50%;
+    margin-top: -210px;
+    margin-left: -225px;
+    z-index: 9999;
+}
+.bd_close {
+    width:30px;
+    height: 30px;
+    background: url(../images/close.png) no-repeat center center;
+    cursor: pointer;
+    position: absolute;
+    right:5px;
+    top:5px;
+}
+.nav {
+    width: 100%;
+    height:50px;
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 50px;
+    cursor: pointer;
+}
+.nav span {
+    width:100px;
+    height:50px;
+    color:#989898;
+    text-align: center;
+}
+.nav .current {
+    color:#EC414D;
+    border-bottom: 2px solid #EC414D;
+}
+.content {
+    padding-bottom: 20px;
+}
+#login_con {
+    width:75%;
+    padding-top: 30px;
+    margin:0 auto;
+}
+#login_con input {
+    box-sizing:border-box;
+    width:100%;
+    height:48px;
+    border-radius: 25px;
+    font-size: 20px;
+    border:1px solid gray;
+    padding-left: 10px;
+    margin-top: 15px;
+    outline: none;
+}
+#login_con input[type="button"] {
+    background: #EC414D;
+    color:#fff;
+    border:1px solid #fff;
+    padding:0;
+}
+#reg_con {
+    width:75%;
+    padding-top: 30px;
+    margin:0 auto;
+}
+#reg_con input {
+    box-sizing:border-box;
+    width:100%;
+    height:48px;
+    border-radius: 25px;
+    font-size: 20px;
+    border:1px solid gray;
+    padding-left: 10px;
+    margin-top: 15px;
+    outline: none;
+
+}
+#reg_con input[type="button"] {
+    background: #EC414D;
+    color:#fff;
+    border:1px solid #fff;
+    padding:0;
+}
+.yzm_wrap {
+    width:100%;
+    position: relative;
+}
+.yzm_btn,#daojishi{
+    width:120px;
+    height:49px;
+    color: #999999;
+    position: absolute;
+    right:10px;
+    top:15px;
+    text-align: center;
+    line-height:49px;
+    font-size:19px;
+    transition: all 1s;
+}
+#daojishi {
+    font-size: 14px;
+}

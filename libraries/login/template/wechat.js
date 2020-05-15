@@ -13,4 +13,4 @@ const ChaosTemplate =
 </div>
 `;
 
-console.warn('Chaos > 登陆模块 ( 微信登陆模板 ) 中定义了全局变量 [ ChaosTemplate ( 登陆模块 HTML 模板 ) ] ，请注意不要覆盖！')
+ChaosFunctions.Logger({Type: 'warn', Info : '登陆模块 ( 微信登陆模板 ) 中定义了全局变量 [ ChaosTemplate ( 登陆模块 HTML 模板 ) ] ，请注意不要覆盖！'});

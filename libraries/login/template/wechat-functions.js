@@ -16,21 +16,19 @@
 
     WechatInit = function () {
         // 根据登陆模块 ID 获取表单 ID
-        ChaosXHR.GET("https://api.2.jilinoffcn.com/events/?action=xgq&eid=" + ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "chaos-id", "MQ==") + "&appid=" + ChaosLoacation.a, function (xhr) {
+        ChaosXHR.GET( ChaosApiPath + "?action=xgq&eid=" + ChaosFunctions.Attr(document.getElementsByTagName('chaos')[0], "chaos-id", "MQ==") + "&appid=" + ChaosLoacation.a, function (xhr) {
             if (typeof (xhr.responseJson) == "object") {
                 if (typeof (xhr.responseJson.ticket) == "string") {
                     document.getElementsByClassName("hlwm-qrcode")[0].setAttribute("src", "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + xhr.responseJson.ticket)
                     // 监听 ticket ，获取登陆状态
                     wechatMonitor(xhr.responseJson.ticket)
-                    console.log("Chaos > 微信登陆二维码加载成功");
+                    ChaosFunctions.Logger({Type: 'info', Info : '微信登陆二维码加载成功'});
                 } else {
-                    console.log("Chaos > 微信登陆二维码加载失败，请求详情：");
-                    console.log(xhr);
+                    ChaosFunctions.Logger({Type: 'error', Title: "微信登陆二维码加载失败，请求详情：", Info : xhr});
                     alert("微信登陆二维码加载失败");
                 }
             } else {
-                console.log("Chaos > 微信登陆二维码加载失败，请求详情：");
-                console.log(xhr);
+                ChaosFunctions.Logger({Type: 'error', Title: "微信登陆二维码加载失败，请求详情：", Info : xhr});
                 alert("微信登陆二维码加载失败");
             }
         });
@@ -39,7 +37,7 @@
         function wechatMonitor(ticket) {
             wechatLonginInterval = setInterval(function () {
                 // 监听扫码登陆是否成功
-                ChaosXHR.GET("https://api.2.jilinoffcn.com/events/?action=xcs&ticket=" + ticket, function (xhr) {
+                ChaosXHR.GET( ChaosApiPath + "?action=xcs&ticket=" + ticket, function (xhr) {
                     if (typeof (xhr.responseJson) == "object") {
                         if (typeof (xhr.responseJson.code) == "number") {
                             if (xhr.responseJson.code == 0) {
@@ -91,17 +89,15 @@
                                 }
                             }
                         } else {
-                            console.log("Chaos > 获取扫码状态失败，请求详情：");
-                            console.log(xhr);
+                            ChaosFunctions.Logger({Type: 'error', Title: "获取扫码状态失败，请求详情：", Info : xhr});
                         }
                     } else {
-                        console.log("Chaos > 获取扫码状态失败，请求详情：");
-                        console.log(xhr);
+                        ChaosFunctions.Logger({Type: 'error', Title: "获取扫码状态失败，请求详情：", Info : xhr});
                     }
                 });
             }, 1000)
         }
     }
-    console.warn('Chaos > 微信登陆模块 ( 处理函数 ) 中定义了全局变量 [ WechatInit ( 二维码登陆初始化函数 ) ] [ ChaosHideLogin ( 隐藏登陆模块函数 ) ] ，请注意不要覆盖！')
-    console.log('Chaos > 微信登陆模块处理函数 ( wechat-functions.js ) 加载成功')
+    ChaosFunctions.Logger({Type: 'warn', Info : '微信登陆模块 ( 处理函数 ) 中定义了全局变量 [ WechatInit ( 二维码登陆初始化函数 ) ] [ ChaosHideLogin ( 隐藏登陆模块函数 ) ] ，请注意不要覆盖！'});
+    ChaosFunctions.Logger({Type: 'info', Info : '微信登陆模块处理函数 ( wechat-functions.js ) 加载成功'});
 })();

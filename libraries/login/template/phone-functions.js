@@ -165,6 +165,6 @@
         }
     }
 
-    console.warn('Chaos > 手机号登陆模块 ( 处理函数 ) 中定义了全局变量 [ ChaosCallback ( Jsonp 回调函数 ) ] [ ChaosHideLogin ( 隐藏登陆模块函数 ) ] ，请注意不要覆盖！')
-    console.log('Chaos > 手机号登陆模块处理函数 ( phone-functions.js ) 加载成功')
+    ChaosFunctions.Logger({Type: 'warn', Info : '手机号登陆模块 ( 处理函数 ) 中定义了全局变量 [ ChaosCallback ( Jsonp 回调函数 ) ] [ ChaosHideLogin ( 隐藏登陆模块函数 ) ] ，请注意不要覆盖！'});
+    ChaosFunctions.Logger({Type: 'info', Info : '手机号登陆模块处理函数 ( phone-functions.js ) 加载成功'});
 })();

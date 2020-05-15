@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./template/page.css"> -->
+    <!-- <script src="./template/page-functions.js"></script> -->
+    <script src="../main.js" chaos-v4-type="page" chaos-v4-id="1"></script>
+</head>
+
+<body>
+    <style>
+        .optional{
+            border: 2px dotted red;
+            padding: 10px;
+        }
+        .optional::before{
+            content: "可选字段";
+            color: red;
+            position: fixed;
+            background: white;
+            top: 0px;
+        }
+        .optional input{
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+    <div class="chaos-login-page-optional" style="display: none;">
+        <div class="optional">
+            <p>可以使用任意类型的 input 元素、 可以任意编写样式、 可以任意组合, 只需添加设置了字段对应的 id 的 input 元素到配置有 class 名称为 chaos-login-page-optional 的 div 元素中可。<br/>( 注意：需要自行编写每个 input 对应的校验规则。 )</p>
+            <input type="text" id="chaos-customer-name" placeholder="客户姓名">
+            <input type="text" id="chaos-customer-identity" placeholder="客户身份ID, 来自 CRM 中的客户身份字典表">
+            <input type="text" id="chaos-customer-colleage" placeholder="客户毕业院校">
+            <input type="text" id="chaos-customer-mayor" placeholder="客户专业">
+            <input type="text" id="chaos-remark" placeholder="备注">
+        </div>
+    </div>
+    <div class="chaos-login-page-form" style="display: none;"></div>
+    <div class="chaos-login-page-is-login" style="display: none;">您已经参与过此活动！</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <!-- <div class="chaos-login-page-form1">
+        <div class="chaos-line">
+            <label for="chaos-phone" class="chaos-phone-label">手机号</label>
+            <input type="text" id="chaos-phone">
+        </div>
+        <div class="chaos-line">
+            <div class="chaos-tips"><span class="chaos-checked"></span>您的手机号已经注册, 直接点击提交即可完成操作!</div>
+            <div class="chaos-tips"><span class="chaos-uncheck"></span> 您的手机号未注册, 请获取并填写验证码!</div>
+        </div>
+        <div class="chaos-line chaos-code-line">
+            <label for="chaos-code" class="chaos-code-label">验证码</label>
+            <input type="text" id="chaos-code">
+            <button id="chaos-get-code">获取验证码</button>
+        </div>
+        <div class="chaos-line">
+            <button id="chaos-submit">提 交</button>
+        </div>
+        <div class="chaos-line">
+            <div class="chaos-ascription">归属分部</div>
+        </div>
+    </div> -->
+</body>
+
+</html>

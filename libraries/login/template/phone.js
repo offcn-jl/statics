@@ -27,7 +27,7 @@ const ChaosTemplate =
         </div>
         <div class="hlp-bottom">
             <h3></h3>
-            关注中公教育，获取新鲜考试资讯与备考服务<br>免费咨询答疑，中公承诺5分钟内给出满意答复
+            关注中公教育，获取新鲜考试资讯与备考服务<br>免费咨询答疑，我们会在5分钟内给您答复
             <br><br>
             <a href="#" target="_blank" rel="nofollow" class="ad-button">点击关注</a>
         </div>
@@ -35,4 +35,4 @@ const ChaosTemplate =
 </div>
 `;
 
-console.warn('Chaos > 登陆模块 ( 手机号登陆模板 ) 中定义了全局变量 [ ChaosTemplate ( 登陆模块 HTML 模板 ) ] ，请注意不要覆盖！')
+ChaosFunctions.Logger({Type: 'warn', Info : '登陆模块 ( 手机号登陆模板 ) 中定义了全局变量 [ ChaosTemplate ( 登陆模块 HTML 模板 ) ] ，请注意不要覆盖！'});
