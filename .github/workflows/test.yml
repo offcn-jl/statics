@@ -17,7 +17,7 @@ jobs:
       run: sudo pip install coscmd
 
     - name: 配置 COSCLI
-      run: coscmd config -a ${{secrets.TencentSecretId}} -s ${{secrets.TencentSecretKey}} -b ${{secrets.TencentBucketName}} -r ap-beijing
+      run: coscmd config -a ${{secrets.TencentSecretId}} -s ${{secrets.TencentSecretKey}} -b ${{secrets.TencentTestBucketName}} -r ap-beijing
 
     - name: 删除无用内容
       run: |
