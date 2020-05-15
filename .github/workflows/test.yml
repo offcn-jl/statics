@@ -1,0 +1,20 @@
+name: 部署到测试环境
+
+on:
+  push:
+    branches: [ new-feature ]
+
+jobs:
+  build:
+    name: 部署
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: 安装 COSCLI
+      run: pip install coscmd
+
+    - name: 配置 COSCLI
+      run: echo 配置。。。
+
+    - name: 上传到 COS
+      run: ls -la
