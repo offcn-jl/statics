@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    - name: 检出代码
+      uses: actions/checkout@v2
+
     - name: 安装 COSCLI
       run: pip install coscmd
 
