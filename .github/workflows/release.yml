@@ -23,7 +23,8 @@ jobs:
       run: |
         rm -rf .git
         rm -rf .github
-        rm -rf .gitignore
+        rm .gitignore
+        rm LICENSE
 
     - name: 上传到 COS
       run: coscmd upload -rsf --delete ./ / --ignore *.md
@@ -32,7 +33,7 @@ jobs:
       run: sudo pip install tccli
 
     - name: 配置 TCCLI
-      run: tccli configure set secretId ${{secrets.TencentSecretId}} secretIKey ${{secrets.TencentSecretKey}} region ap-beijing
+      run: tccli configure set secretId ${{secrets.TencentSecretId}} secretKey ${{secrets.TencentSecretKey}} region ap-beijing
 
     - name: 使用 TCCLI 进行目录刷新 ( 资源预热 )
-      run: tccli cdn PurgePathCache --Paths https://${{secrets.TencentReleaseBucketName}}.file.myqcloud.com/ --FlushType delete
+      run: tccli cdn PurgePathCache --Paths https://statics.jilinoffcn.com/ --FlushType delete
