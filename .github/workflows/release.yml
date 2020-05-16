@@ -36,4 +36,4 @@ jobs:
       run: tccli configure set secretId ${{secrets.TencentSecretId}} secretKey ${{secrets.TencentSecretKey}} region ap-beijing
 
     - name: 使用 TCCLI 进行目录刷新 ( 资源预热 )
-      run: tccli cdn PurgePathCache --Paths https://statics.jilinoffcn.com/ --FlushType delete
+      run: tccli cdn PurgePathCache --Paths '["https://statics.jilinoffcn.com/]' --FlushType delete
