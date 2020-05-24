@@ -1,0 +1,88 @@
+<!-- Base On https://www.cnblogs.com/jiqing9006/p/5396335.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>个人后缀列表 V2</title>
+    <link rel="stylesheet" href="../../public/style/form.css">
+    <link rel="stylesheet" href="../../public/style/loading.css">
+    <script src="https://statics.jilinoffcn.com/libraries/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../public/javascript/environment-variables.js"></script>
+    <script>
+        $(() => {
+            $.get(ChaosEnvironmentVariables.Apis.TSF + "/sso/v2/suffix/list", result => {
+                $(".loading").hide();
+                $(".content").show();
+                result.forEach(element => {
+                    let channel = "未知";
+                    switch (element.CRMChannel) {
+                        case 7:
+                            channel = "19课堂";
+                            break;
+                        case 22:
+                            channel = "校园、户外推广";
+                            break;
+                        case 104:
+                            channel = "无特定渠道";
+                            break;
+                    }
+                    $("tbody").append('<tr>\
+                    <td data-label="ID">'+ element.ID + '</td>\
+                    <td data-label="后缀">'+ element.Suffix + '</td>\
+                    <td data-label="后缀名称">'+ element.Name + '</td>\
+                    <td data-label="CRM 用户名">'+ element.CRMUser + '</td>\
+                    <td data-label="CRM 用户代码">'+ element.CRMUID + '</td>\
+                    <td data-label="CRM 组织 ID">'+ element.CRMOID + '</td>\
+                    <td data-label="CRM 上级组织 ID">'+ element.CRMOFID + '</td>\
+                    <td data-label="CRM 组织代码">'+ element.CRMOCode + '</td>\
+                    <td data-label="CRM 组织名称">'+ element.CRMOName + '</td>\
+                    <td data-label="CRM 所属渠道代码">'+ element.CRMChannel + '</td>\
+                    <td data-label="CRM 所属渠道">'+ channel + '</td>\
+                </tr>')
+                });
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="content">
+
+        <div class="note">
+            <h1>个人后缀列表 V2</h1>
+            <p>实时更新，仅供内部备忘使用。</p>
+        </div>
+
+        <table>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>后缀</th>
+                    <th>后缀名称</th>
+                    <th>CRM 用户名</th>
+                    <th>CRM 用户代码</th>
+                    <th>CRM 组织 ID</th>
+                    <th>CRM 上级组织 ID</th>
+                    <th>CRM 组织代码</th>
+                    <th>CRM 组织名称</th>
+                    <th>CRM 所属渠道代码</th>
+                    <th>CRM 所属渠道</th> <!-- 需要自行计算 -->
+                </tr>
+            </thead>
+            <!-- 表格主体 -->
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+
+</html>
