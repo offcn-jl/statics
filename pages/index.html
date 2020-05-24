@@ -4,80 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>服务列表t</title>
-    <style type="text/css">
-        body {
-            font-family: arial;
-        }
-
-        table {
-            border: 1px solid #ccc;
-            width: 80%;
-            margin: 0;
-            padding: 0;
-            border-collapse: collapse;
-            border-spacing: 0;
-            margin: 0 auto;
-        }
-
-        table tr {
-            border: 1px solid #ddd;
-            padding: 5px;
-        }
-
-        table th,
-        table td {
-            padding: 10px;
-            text-align: center;
-        }
-
-        table th {
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-
-        @media screen and (max-width: 600px) {
-
-            table {
-                border: 0;
-            }
-
-            table thead {
-                display: none;
-            }
-
-            table tr {
-                margin-bottom: 10px;
-                display: block;
-                border-bottom: 2px solid #ddd;
-            }
-
-            table td {
-                display: block;
-                text-align: right;
-                font-size: 13px;
-                border-bottom: 1px dotted #ccc;
-            }
-
-            table td:last-child {
-                border-bottom: 0;
-            }
-
-            table td:before {
-                content: attr(data-label);
-                float: left;
-                text-transform: uppercase;
-                font-weight: bold;
-            }
-        }
-
-        .note {
-            max-width: 80%;
-            margin: 0 auto;
-        }
-    </style>
-
+    <title>服务列表</title>
+    <link rel="stylesheet" href="./public/style/form.css">
+    <link rel="stylesheet" href="./public/style/color.css">
 </head>
 
 <body>
@@ -106,7 +35,7 @@
                 <td data-label="名称">营销平台接口</td>
                 <td data-label="地址">https://api.2.jilinoffcn.com/</td>
                 <td data-label="仓库"> - </td>
-                <td data-label="状态">下线</td>
+                <td data-label="状态" class="gray">下线</td>
             </tr>
             <tr>
                 <td data-label="项目">哈士齐</td>
