@@ -42,7 +42,7 @@
                     deleting.forEach(element => {
                         $(".deleting").append('<tr>\
                             <td data-label="ID">'+ element.ID + '</td>\
-                            <td data-label="删除时间">'+ element.DeletedAt + '</td>\
+                            <td data-label="删除时间">'+ element.DeletedAt.slice(0,10) + '</td>\
                             <td data-label="后缀">'+ element.Suffix + '</td>\
                             <td data-label="后缀名称">'+ element.Name + '</td>\
                             <td data-label="CRM 用户名">'+ element.CRMUser + '</td>\
@@ -77,7 +77,7 @@
             position: relative;
         }
 
-        .available tr:first-child:after {
+        .available tr:first-child::after {
             color: red;
             content: "默认后缀";
             position: absolute;
@@ -86,9 +86,26 @@
             font-size: 18px;
             left: 50%;
             margin-left: -40px;
-            top: 50%;
-            margin-top: -15px;
             opacity: 0.7;
+        }
+
+        /* Firefox */
+        @-moz-document url-prefix() {
+            .available tr:first-child::after {
+                top: 50%;
+                margin-top: -15px;
+            }
+        }
+
+        /* Chrome */
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            .available tr:first-child::after {
+                margin-top: 5px;
+            }
+            /* 修复 Chrome 中缺少右边框 */
+            tr::after {
+                content: "";
+            }
         }
 
         .deleting {
@@ -109,7 +126,7 @@
     <div class="content">
 
         <div class="note">
-            <h1>个人后缀列表 V2</h1>
+            <h1>个人后缀表</h1>
             <p>实时更新，仅供内部备忘使用。</p>
         </div>
 
