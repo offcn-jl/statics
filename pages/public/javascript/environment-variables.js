@@ -1,5 +1,15 @@
-// 
-if (window.location.href.indexOf("file") === -1 && window.location.href.indexOf("test.") === -1) {
+// 环境变量
+
+if (window.location.href.indexOf("file") !== -1) {
+    // 本地环境
+    ChaosEnvironmentVariables = {
+        Apis: {
+            TKE: "http://localhost:8080/test",
+            SCF: "https://scf.tencent.jilinoffcn.com/release",
+            TSF: "http://localhost:8080"
+        }
+    }
+} else if (window.location.href.indexOf("test.") === -1) {
     // 生产环境
     ChaosEnvironmentVariables = {
         Apis: {
