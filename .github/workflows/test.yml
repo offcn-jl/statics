@@ -16,8 +16,9 @@ jobs:
     - name: 构建 第五代登陆模块
       run: |
         sudo npm i uglify-js -g
-        sh ./libraries/login/v5/bulid.sh
-        rm ./libraries/login/v5/bulid.sh
+        cd libraries/login/v5
+        sh ./bulid.sh
+        rm bulid.sh
         rm .gitignore
         rm README.md
 
