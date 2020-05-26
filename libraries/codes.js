@@ -24,6 +24,9 @@ const ChaosCodes = {
   10021: '将字符串进行 RSA 加密时发生错误',
   10022: '将字符串进行 RSA 解密时发生错误',
   10023: '从上下文中获取会话信息时发生错误',
+  10024: '获取微信开放平台配置失败',
+  10025: '获取微信开放平台预授权码失败',
+  10026: '解码链接中的参数失败',
 
   /* 数据不合规 */
   11000: '数据不合规',
@@ -40,6 +43,8 @@ const ChaosCodes = {
   12002: '页面不存在',
   12003: '轮播图不存在',
   12004: '课程不存在',
+  12005: '微信公众平台不存在',
+  12006: '令牌不存在',
 
   /* 授权错误 */
   13000: '未授权',
@@ -50,6 +55,7 @@ const ChaosCodes = {
   13005: '会话已过期',
   13006: 'OffcnMIS 口令码已过期',
   13007: '用户没有此操作的权限',
+  13008: '令牌已未注册或已过期',
 
   /* 操作错误 */
   14000: '操作错误',
@@ -61,6 +67,8 @@ const ChaosCodes = {
   14006: '已经向您发送过验证码',
   14007: '验证码已过期',
   14008: '验证码不正确',
+  14009: '分组已经存在',
+  14010: '缺少鉴权信息',
 
   /* 需要忽略的状态码 ( 不弹出提示 ) */
   IgnoreCodes: [
@@ -81,6 +89,10 @@ const ChaosCodes = {
     if (typeof ChaosFunctions === "object") {
       clearInterval(initTimer);
       ChaosFunctions.Logger({ Type: 'warn', Info: initTimerInfo });
+    }
+    if (typeof Chaos === "object") {
+      clearInterval(initTimer);
+      Chaos.Functions.Logger({ Type: 'warn', Info: initTimerInfo });
     }
   }, 500);
 })();

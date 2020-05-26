@@ -1,0 +1,175 @@
+<!-- Base On https://www.cnblogs.com/jiqing9006/p/5396335.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>个人后缀表</title>
+    <link rel="stylesheet" href="../../public/style/form.css">
+    <link rel="stylesheet" href="../../public/style/loading.css">
+    <script src="https://statics.jilinoffcn.com/libraries/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../public/javascript/environment-variables.js"></script>
+    <script>
+        $(() => {
+            let available, deleting = null;
+            $.get(ChaosEnvironmentVariables.Apis.TSF + "/sso/v2/suffix/list/available", result => {
+                available = result;
+            });
+            $.get(ChaosEnvironmentVariables.Apis.TSF + "/sso/v2/suffix/list/deleting", result => {
+                deleting = result;
+            });
+
+            let initTimer = setInterval(() => {
+                if (available !== null && deleting !== null) {
+                    clearInterval(initTimer);
+                    $(".loading").hide();
+                    $(".content").show();
+                    available.forEach(element => {
+                        $(".available").append('<tr>\
+                            <td data-label="ID">'+ element.ID + '</td>\
+                            <td data-label="后缀">'+ element.Suffix + '</td>\
+                            <td data-label="后缀名称">'+ element.Name + '</td>\
+                            <td data-label="CRM 用户名">'+ element.CRMUser + '</td>\
+                            <td data-label="CRM 用户代码">'+ element.CRMUID + '</td>\
+                            <td data-label="CRM 组织 ID">'+ element.CRMOID + '</td>\
+                            <td data-label="CRM 上级组织 ID">'+ element.CRMOFID + '</td>\
+                            <td data-label="CRM 组织代码">'+ element.CRMOCode + '</td>\
+                            <td data-label="CRM 组织名称">'+ element.CRMOName + '</td>\
+                            <td data-label="CRM 所属渠道代码">'+ element.CRMChannel + '</td>\
+                            <td data-label="CRM 所属渠道">'+ getChannel(element.CRMChannel) + '</td>\
+                        </tr>')
+                    });
+                    deleting.forEach(element => {
+                        $(".deleting").append('<tr>\
+                            <td data-label="ID">'+ element.ID + '</td>\
+                            <td data-label="删除时间">'+ element.DeletedAt.slice(0, 10) + '</td>\
+                            <td data-label="后缀">'+ element.Suffix + '</td>\
+                            <td data-label="后缀名称">'+ element.Name + '</td>\
+                            <td data-label="CRM 用户名">'+ element.CRMUser + '</td>\
+                            <td data-label="CRM 用户代码">'+ element.CRMUID + '</td>\
+                            <td data-label="CRM 组织名称">'+ element.CRMOName + '</td>\
+                            <td data-label="CRM 所属渠道">'+ getChannel(element.CRMChannel) + '</td>\
+                        </tr>')
+                    });
+                }
+            }, 500);
+
+            let getChannel = (code) => {
+                let channel = "未知";
+                switch (code) {
+                    case 7:
+                        channel = "19课堂";
+                        break;
+                    case 22:
+                        channel = "校园、户外推广";
+                        break;
+                    case 104:
+                        channel = "无特定渠道";
+                        break;
+                }
+                return channel
+            }
+        });
+    </script>
+    <style>
+        .available tr:first-child {
+            color: blue;
+            position: relative;
+        }
+
+        .available tr:first-child::after {
+            color: red;
+            content: "默认后缀";
+            position: absolute;
+            display: inline-block;
+            width: 80px;
+            font-size: 18px;
+            left: 50%;
+            margin-left: -40px;
+            margin-top: 5px;
+            opacity: 0.7;
+        }
+
+        /* 修复 Chrome 中缺少右边框 */
+        tr::after {
+            content: "";
+        }
+
+        /* Firefox 可以在行内上下居中, 得到最好的显示效果 */
+        @-moz-document url-prefix() {
+            .available tr:first-child::after {
+                top: 50%;
+                margin-top: -15px;
+            }
+        }
+
+        .deleting {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="content">
+
+        <div class="note">
+            <h1>个人后缀表</h1>
+            <p>实时更新，仅供内部备忘使用。</p>
+        </div>
+
+        <div class="note">
+            <h2>可用后缀</h2>
+        </div>
+        <table>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>后缀</th>
+                    <th>后缀名称</th>
+                    <th>CRM 用户名</th>
+                    <th>CRM 用户代码</th>
+                    <th>CRM 组织 ID</th>
+                    <th>CRM 上级组织 ID</th>
+                    <th>CRM 组织代码</th>
+                    <th>CRM 组织名称</th>
+                    <th>CRM 所属渠道代码</th>
+                    <th>CRM 所属渠道</th> <!-- 需要自行计算 -->
+                </tr>
+            </thead>
+            <!-- 表格主体 -->
+            <tbody class="available"></tbody>
+        </table>
+
+        <div class="note">
+            <h2>即将<span style="color: red;">禁用</span>的后缀</h2>
+        </div>
+        <table>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>删除时间</th>
+                    <th>后缀</th>
+                    <th>后缀名称</th>
+                    <th>CRM 用户名</th>
+                    <th>CRM 用户代码</th>
+                    <th>CRM 组织名称</th>
+                    <th>CRM 所属渠道</th> <!-- 需要自行计算 -->
+                </tr>
+            </thead>
+            <!-- 表格主体 -->
+            <tbody class="deleting"></tbody>
+        </table>
+    </div>
+</body>
+
+</html>

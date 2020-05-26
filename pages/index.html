@@ -4,80 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>服务列表t</title>
-    <style type="text/css">
-        body {
-            font-family: arial;
-        }
-
-        table {
-            border: 1px solid #ccc;
-            width: 80%;
-            margin: 0;
-            padding: 0;
-            border-collapse: collapse;
-            border-spacing: 0;
-            margin: 0 auto;
-        }
-
-        table tr {
-            border: 1px solid #ddd;
-            padding: 5px;
-        }
-
-        table th,
-        table td {
-            padding: 10px;
-            text-align: center;
-        }
-
-        table th {
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-
-        @media screen and (max-width: 600px) {
-
-            table {
-                border: 0;
-            }
-
-            table thead {
-                display: none;
-            }
-
-            table tr {
-                margin-bottom: 10px;
-                display: block;
-                border-bottom: 2px solid #ddd;
-            }
-
-            table td {
-                display: block;
-                text-align: right;
-                font-size: 13px;
-                border-bottom: 1px dotted #ccc;
-            }
-
-            table td:last-child {
-                border-bottom: 0;
-            }
-
-            table td:before {
-                content: attr(data-label);
-                float: left;
-                text-transform: uppercase;
-                font-weight: bold;
-            }
-        }
-
-        .note {
-            max-width: 80%;
-            margin: 0 auto;
-        }
-    </style>
-
+    <title>服务列表</title>
+    <link rel="stylesheet" href="./public/style/form.css">
+    <link rel="stylesheet" href="./public/style/color.css">
 </head>
 
 <body>
@@ -99,21 +28,38 @@
             </tr>
         </thead>
         <tbody>
-            <!-- 第一代哈士齐英营销平台 -->
+            <!-- Serverless -->
             <tr>
-                <td data-label="项目">哈士齐</td>
+                <td data-label="项目">Serverless</td>
                 <td data-label="类型">接口</td>
-                <td data-label="名称">营销平台接口</td>
-                <td data-label="地址">https://api.2.jilinoffcn.com/</td>
-                <td data-label="仓库"> - </td>
-                <td data-label="状态">下线</td>
+                <td data-label="名称">SCF</td>
+                <td data-label="地址">https://scf.tencent.jilinoffcn.com/release</td>
+                <td data-label="仓库">https://github.com/offcn-jl/serverless-apis/tree/master/base-on-serverless</td>
+                <td data-label="状态" class="green">正常</td>
             </tr>
             <tr>
-                <td data-label="项目">哈士齐</td>
-                <td data-label="类型">站点</td>
-                <td data-label="名称">营销平台</td>
-                <td data-label="地址">https://2.jilinoffcn.com/</td>
-                <td data-label="仓库"> - </td>
+                <td data-label="项目">Serverless</td>
+                <td data-label="类型">接口</td>
+                <td data-label="名称">SCF - Test</td>
+                <td data-label="地址">https://scf.tencent.jilinoffcn.com/test</td>
+                <td data-label="仓库">https://github.com/offcn-jl/serverless-apis/tree/new-feature/base-on-serverless</td>
+                <td data-label="状态" class="green">正常</td>
+            </tr>
+            <tr>
+                <td data-label="项目">Serverless</td>
+                <td data-label="类型">接口</td>
+                <td data-label="名称">TSF</td>
+                <td data-label="地址">https://tsf.tencent.jilinoffcn.com/release</td>
+                <td data-label="仓库">https://github.com/offcn-jl/serverless-apis/tree/master/base-on-tsf</td>
+                <td data-label="状态" class="green">正常</td>
+            </tr>
+            <tr>
+                <td data-label="项目">Serverless</td>
+                <td data-label="类型">接口</td>
+                <td data-label="名称">TSF - Test</td>
+                <td data-label="地址">https://service-13mae2rr-1258962498.bj.apigw.tencentcs.com</td>
+                <td data-label="仓库">https://github.com/offcn-jl/serverless-apis/tree/new-feature/base-on-tsf</td>
+                <td data-label="状态" class="green">正常</td>
             </tr>
 
             <!-- 系统接口 -->
@@ -123,6 +69,7 @@
                 <td data-label="名称">Service</td>
                 <td data-label="地址">https://api.chaos.jilinoffcn.com/release/service/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-api/d/chaos-api/git/tree/master/src/project-chaos/service</td>
+                <td data-label="状态" class="green">正常</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos API</td>
@@ -130,6 +77,7 @@
                 <td data-label="名称">Service - Test</td>
                 <td data-label="地址">https://api.chaos.jilinoffcn.com/test/service/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-api/d/chaos-api/git/tree/new-feature/src/project-chaos/service</td>
+                <td data-label="状态" class="green">正常</td>
             </tr>
 
             <!-- BMS 接口 -->
@@ -139,6 +87,7 @@
                 <td data-label="名称">Manage</td>
                 <td data-label="地址">https://api.chaos.jilinoffcn.com/release/manage/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-api/d/chaos-api/git/tree/master/src/project-chaos/manage</td>
+                <td data-label="状态" class="green">正常</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos API</td>
@@ -146,6 +95,7 @@
                 <td data-label="名称">Manage - Test</td>
                 <td data-label="地址">https://api.chaos.jilinoffcn.com/test/manage/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-api/d/chaos-api/git/tree/new-feature/src/project-chaos/manage</td>
+                <td data-label="状态" class="green">正常</td>
             </tr>
 
             <!-- 活动页 接口 -->
@@ -155,6 +105,7 @@
                 <td data-label="名称">Events</td>
                 <td data-label="地址">https://api.chaos.jilinoffcn.com/release/events/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-api/d/chaos-api/git/tree/master/src/project-chaos/events</td>
+                <td data-label="状态" class="green">正常</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos API</td>
@@ -162,6 +113,7 @@
                 <td data-label="名称">Events - Test</td>
                 <td data-label="地址">https://api.chaos.jilinoffcn.com/test/events/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-api/d/chaos-api/git/tree/new-feature/src/project-chaos/events</td>
+                <td data-label="状态" class="green">正常</td>
             </tr>
 
             <!-- 独立项目 接口 -->
@@ -171,6 +123,35 @@
                 <td data-label="名称">国考参谋官</td>
                 <td data-label="地址">https://api.chaos.jilinoffcn.com/release/offcn-indie-proj/gkcmg/</td>
                 <td data-label="仓库">https://reb.coding.net/p/indie-proj/d/Indie-Proj/git/tree/master/gkcmg/server</td>
+                <td data-label="状态" class="green">正常</td>
+            </tr>
+
+            <!-- 对象存储 -->
+            <tr>
+                <td data-label="项目">COS</td>
+                <td data-label="类型">站点</td>
+                <td data-label="名称">下载</td>
+                <td data-label="地址">https://download.cos.jilinoffcn.com</td>
+                <td data-label="仓库">-</td>
+                <td data-label="状态" class="green">正常 CDN</td>
+            </tr>
+
+            <!-- 静态资源 -->
+            <tr>
+                <td data-label="项目">Project Chaos Statics</td>
+                <td data-label="类型">站点</td>
+                <td data-label="名称">静态资源 - 生产环境</td>
+                <td data-label="地址">https://statics.jilinoffcn.com</td>
+                <td data-label="仓库">https://github.com/offcn-jl/statics</td>
+                <td data-label="状态" class="green">正常 CDN</td>
+            </tr>
+            <tr>
+                <td data-label="项目">Project Chaos Statics</td>
+                <td data-label="类型">站点</td>
+                <td data-label="名称">静态资源 - 测试环境</td>
+                <td data-label="地址">http://test.statics.jilinoffcn.com</td>
+                <td data-label="仓库">https://github.com/offcn-jl/statics/tree/new-feature</td>
+                <td data-label="状态" class="red">降级 HTTP</td>
             </tr>
 
             <!-- 哈士齐营销平台 -->
@@ -180,13 +161,15 @@
                 <td data-label="名称">哈士齐营销平台 V2</td>
                 <td data-label="地址">https://chaos.jilinoffcn.com/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-bms/d/chaos-bms/git/tree/master</td>
+                <td data-label="状态" class="green">正常 CDN</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos BMS</td>
                 <td data-label="类型">站点</td>
                 <td data-label="名称">哈士齐营销平台 V2 - 测试环境</td>
-                <td data-label="地址">https://test.chaos.jilinoffcn.com/</td>
+                <td data-label="地址">http://test.chaos.jilinoffcn.com/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-bms/d/chaos-bms/git/tree/new-feature</td>
+                <td data-label="状态" class="red">降级 HTTP</td>
             </tr>
 
             <!-- 活动页 -->
@@ -196,6 +179,7 @@
                 <td data-label="名称">精品好课</td>
                 <td data-label="地址">https://events.jilinoffcn.com/excellent-courses/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-ewp/d/chaos-ewp/git/tree/master/excellent-courses</td>
+                <td data-label="状态" class="red">待下线</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos EWP</td>
@@ -203,6 +187,7 @@
                 <td data-label="名称">精品好课 - 测试环境</td>
                 <td data-label="地址">https://test.events.jilinoffcn.com/excellent-courses/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-ewp/d/chaos-ewp/git/tree/new-feature/excellent-courses</td>
+                <td data-label="状态" class="red">待下线</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos EWP</td>
@@ -210,6 +195,7 @@
                 <td data-label="名称">精品好课 V2</td>
                 <td data-label="地址">https://events.jilinoffcn.com/excellent-courses-v2/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-ewp/d/chaos-ewp/git/tree/master/excellent-courses-v2</td>
+                <td data-label="状态" class="red">待下线</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos EWP</td>
@@ -217,6 +203,34 @@
                 <td data-label="名称">精品好课 V2 - 测试环境</td>
                 <td data-label="地址">https://test.events.jilinoffcn.com/excellent-courses-v2/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-ewp/d/chaos-ewp/git/tree/new-feature/excellent-courses-v2</td>
+                <td data-label="状态" class="red">待下线</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note">
+        <h3>已迁移</h3>
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>项目</th>
+                <th>类型</th>
+                <th>名称</th>
+                <th>地址</th>
+                <th>仓库</th>
+                <th>状态</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="项目">Project Chaos BMS</td>
+                <td data-label="类型">站点</td>
+                <td data-label="名称">哈士齐营销平台 V2 - 测试环境</td>
+                <td data-label="地址">https://test.chaos.jilinoffcn.com/</td>
+                <td data-label="仓库">https://reb.coding.net/p/chaos-bms/d/chaos-bms/git/tree/new-feature</td>
+                <td data-label="状态" class="blue">迁移部署环境</td>
             </tr>
 
             <!-- 静态资源 -->
@@ -226,6 +240,7 @@
                 <td data-label="名称">登陆模块</td>
                 <td data-label="地址">https://statics.jilinoffcn.com/libraries/login/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-statics/d/chaos-resources/git/tree/master/libraries/login</td>
+                <td data-label="状态" class="blue">迁移仓库及部署环境</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos Statics</td>
@@ -233,6 +248,7 @@
                 <td data-label="名称">登陆模块 - 测试环境</td>
                 <td data-label="地址">https://test.statics.jilinoffcn.com/libraries/login/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-statics/d/chaos-resources/git/tree/new-feature/libraries/login</td>
+                <td data-label="状态" class="blue">迁移仓库及部署环境</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos Statics</td>
@@ -240,6 +256,7 @@
                 <td data-label="名称">图床</td>
                 <td data-label="地址">https://statics.jilinoffcn.com/images/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-statics/d/chaos-resources/git/tree/master/images</td>
+                <td data-label="状态" class="blue">迁移仓库及部署环境</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos Statics</td>
@@ -247,6 +264,7 @@
                 <td data-label="名称">图床 - 测试环境</td>
                 <td data-label="地址">https://test.statics.jilinoffcn.com/images/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-statics/d/chaos-resources/git/tree/new-feature/images</td>
+                <td data-label="状态" class="blue">迁移仓库及部署环境</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos Statics</td>
@@ -254,6 +272,7 @@
                 <td data-label="名称">JS库</td>
                 <td data-label="地址">https://statics.jilinoffcn.com/images/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-statics/d/chaos-resources/git/tree/master/libraries</td>
+                <td data-label="状态" class="blue">迁移仓库及部署环境</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos Statics</td>
@@ -261,6 +280,7 @@
                 <td data-label="名称">JS库 - 测试环境</td>
                 <td data-label="地址">https://test.statics.jilinoffcn.com/images/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-statics/d/chaos-resources/git/tree/new-feature/libraries</td>
+                <td data-label="状态" class="blue">迁移仓库及部署环境</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos Statics</td>
@@ -268,6 +288,7 @@
                 <td data-label="名称">公共页面</td>
                 <td data-label="地址">https://statics.jilinoffcn.com/pages/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-statics/d/chaos-resources/git/tree/master/pages</td>
+                <td data-label="状态" class="blue">迁移仓库及部署环境</td>
             </tr>
             <tr>
                 <td data-label="项目">Project Chaos Statics</td>
@@ -275,6 +296,42 @@
                 <td data-label="名称">公共页面 - 测试环境</td>
                 <td data-label="地址">https://test.statics.jilinoffcn.com/pages/</td>
                 <td data-label="仓库">https://reb.coding.net/p/chaos-statics/d/chaos-resources/git/tree/new-feature/pages</td>
+                <td data-label="状态" class="blue">迁移仓库及部署环境</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note">
+        <h3>已下线</h3>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>项目</th>
+                <th>类型</th>
+                <th>名称</th>
+                <th>地址</th>
+                <th>仓库</th>
+                <th>状态</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 第一代哈士齐英营销平台 -->
+            <tr>
+                <td data-label="项目">哈士齐</td>
+                <td data-label="类型">接口</td>
+                <td data-label="名称">营销平台接口</td>
+                <td data-label="地址">https://api.2.jilinoffcn.com/</td>
+                <td data-label="仓库"> - </td>
+                <td data-label="状态" class="gray">下线</td>
+            </tr>
+            <tr>
+                <td data-label="项目">哈士齐</td>
+                <td data-label="类型">站点</td>
+                <td data-label="名称">第一代哈士齐英营销平台</td>
+                <td data-label="地址">https://2.jilinoffcn.com/</td>
+                <td data-label="仓库"> - </td>
+                <td data-label="状态" class="gray">下线</td>
             </tr>
 
             <!-- 反向代理等 -->
@@ -284,6 +341,7 @@
                 <td data-label="名称">哈士齐营销平台接口</td>
                 <td data-label="地址">http://api.fd.rebeta.cn/</td>
                 <td data-label="仓库">源站 -> https://api.2.jilinoffcn.com</td>
+                <td data-label="状态" class="gray">下线</td>
             </tr>
             <tr>
                 <td data-label="项目"> - </td>
@@ -291,6 +349,7 @@
                 <td data-label="名称">ZG99</td>
                 <td data-label="地址">http://api-99.fd.rebeta.cn/</td>
                 <td data-label="仓库">源站 -> http://zg99.offcn.com</td>
+                <td data-label="状态" class="gray">下线</td>
             </tr>
             <tr>
                 <td data-label="项目"> - </td>
@@ -298,6 +357,7 @@
                 <td data-label="名称">Chaos 接口</td>
                 <td data-label="地址">http://api-bd.fd.rebeta.cn/</td>
                 <td data-label="仓库">源站 -> https://api.chaos.jilinoffcn.com</td>
+                <td data-label="状态" class="gray">下线</td>
             </tr>
             <tr>
                 <td data-label="项目"> - </td>
@@ -305,10 +365,10 @@
                 <td data-label="名称">第三方页面</td>
                 <td data-label="地址">http://hd.fd.rebeta.cn/</td>
                 <td data-label="仓库"> - </td>
+                <td data-label="状态" class="gray">下线</td>
             </tr>
         </tbody>
     </table>
-
 </body>
 
 </html>
