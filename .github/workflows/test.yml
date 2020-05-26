@@ -13,6 +13,14 @@ jobs:
     - name: 检出代码
       uses: actions/checkout@v2
 
+    - name: 构建 第五代登陆模块
+      run: |
+        npm i uglify-js -g
+        sh ./libraries/login/v5/bulid.sh
+        rm ./libraries/login/v5/bulid.sh
+        rm .gitignore
+        rm README.md
+
     - name: 安装 COSCLI
       run: sudo pip install coscmd
 
@@ -25,6 +33,7 @@ jobs:
         rm -rf .github
         rm .gitignore
         rm LICENSE
+        rm README.md
 
     - name: 上传到 COS
       run: coscmd upload -rsf --delete ./ / --ignore *.md,*.gitignore,*.sh
