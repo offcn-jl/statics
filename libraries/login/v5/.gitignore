@@ -1,0 +1,2 @@
+# 压缩后的 JS 及其 Source Map
+*.min.*

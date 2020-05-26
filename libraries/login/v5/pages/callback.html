@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆中间件 回调函数</title>
+    <!--
+        此处不需要判断环境的逻辑
+        因为是使用相对路径引入的模块
+        所以模块的 src 中不存在 https 所以不管本页面在生产环境还是测试环境, 模块所处的环境都是测试环境
+    -->
+    <script src="../main.min.js" data-id="10001" data-type="callback"></script>
+</head>
+
+<body>
+    <button>测试回调函数</button>
+    <script>
+        document.getElementsByTagName("button")[0].addEventListener("click", function () {
+            if (Chaos && Chaos.Hooks && Chaos.Hooks.Login) {
+                Chaos.Hooks.Login(function(phone){
+                    alert("您已登陆, 使用的手机号码是 : " + phone)
+                })
+            } else {
+                alert("正在努力加载中～")
+            }
+        })
+    </script>
+    <br>
+    <a class="chaos-v5-link" href="http://19.offcn.com/class-78723/" target="_blank">19 课堂 个人后缀 链接 填充测试</a>
+    <br>
+    <a class="chaos-v5-link" href="http://jl.offcn.com/zg/lydlhz/" target="_blank">专题 个人后缀 链接 填充测试</a>
+    <br>
+    <img class="chaos-v5-image" src="path/example.jpg" alt="个人后缀 图片 填充测试">
+</body>
+
+</html>
