@@ -37,6 +37,7 @@
                             <td data-label="CRM 组织名称">'+ element.CRMOName + '</td>\
                             <td data-label="CRM 所属渠道代码">'+ element.CRMChannel + '</td>\
                             <td data-label="CRM 所属渠道">'+ getChannel(element.CRMChannel) + '</td>\
+                            <td data-label="小能咨询组">'+ element.NTalkerGID + '</td>\
                         </tr>')
                     });
                     deleting.forEach(element => {
@@ -140,6 +141,7 @@
                     <th>CRM 组织名称</th>
                     <th>CRM 所属渠道代码</th>
                     <th>CRM 所属渠道</th> <!-- 需要自行计算 -->
+                    <th>小能咨询组</th>
                 </tr>
             </thead>
             <!-- 表格主体 -->
