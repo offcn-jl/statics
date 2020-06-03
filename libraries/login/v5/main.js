@@ -471,6 +471,7 @@ Chaos.Infos = {
                                         alert("正在努力加载中～")
                                     }
                                 })
+                                count++;
                             });
                             Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 小能咨询组 填充完成，共填充 " + count + " 个." });
                         }
