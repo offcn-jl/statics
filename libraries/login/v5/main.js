@@ -458,7 +458,7 @@ Chaos.Infos = {
                         }
 
                         // 加载小能咨询插件
-                        Chaos.Functions.DynamicLoading.JS("http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_10353");
+                        Chaos.Functions.DynamicLoading.JS("https://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_10353");
                         // 填充 个人后缀 小能咨询组
                         if (Chaos.Infos.Suffix !== null) {
                             Chaos.Functions.Logger({ Type: "info", Info: "开始填充 个人后缀 小能咨询组." });
