@@ -333,6 +333,8 @@ Chaos.Infos = {
     Sign: null,
     // 后缀 ( 19课堂个人后缀 )
     Suffix: Chaos.Functions.GetQueryString("scode"),
+    // 小能咨询组
+    NTalkerGID: null,
     // 是否登陆
     IsLogin: false,
     // 是否需要注册
@@ -407,6 +409,8 @@ Chaos.Infos = {
                         Chaos.Infos.CRM.SID = XHR.responseJson.CRMSID // 活动表单ID
                         Chaos.Infos.CRM.UID = XHR.responseJson.CRMUID // 用户代码
                         Chaos.Infos.CRM.User = XHR.responseJson.CRMUser // 用户名
+                        // 更新小能咨询组
+                        Chaos.Infos.NTalkerGID = XHR.responseJson.NTalkerGID
                         // 打印配置
                         Chaos.Functions.Logger({
                             Type: "table", Title: "模块及后缀配置", Info: {
@@ -415,7 +419,8 @@ Chaos.Infos = {
                                 "活动代码": Chaos.Infos.CRM.EID,
                                 "活动表单": Chaos.Infos.CRM.SID,
                                 "所属组织": Chaos.Infos.CRM.OName,
-                                "归属人": Chaos.Infos.CRM.User
+                                "归属人": Chaos.Infos.CRM.User,
+                                "小能咨询组": Chaos.Infos.NTalkerGID
                             }
                         });
 
@@ -450,6 +455,24 @@ Chaos.Infos = {
                                 }
                             });
                             Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 图片 填充完成，共填充 " + count + " 个." });
+                        }
+
+                        // 加载小能咨询插件
+                        Chaos.Functions.DynamicLoading.JS("http://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_10353");
+                        // 填充 个人后缀 小能咨询组
+                        if (Chaos.Infos.Suffix !== null) {
+                            Chaos.Functions.Logger({ Type: "info", Info: "开始填充 个人后缀 小能咨询组." });
+                            var count = 0, ntalkerDoms = document.getElementsByClassName("chaos-v5-ntalker");
+                            Object.keys(ntalkerDoms).forEach(function (key) {
+                                ntalkerDoms[key].addEventListener("click", function () {
+                                    if (typeof NTKF === "function") {
+                                        NTKF.im_openInPageChat(Chaos.Infos.NTalkerGID)
+                                    } else {
+                                        alert("正在努力加载中～")
+                                    }
+                                })
+                            });
+                            Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 小能咨询组 填充完成，共填充 " + count + " 个." });
                         }
 
                         // 如果未登过该活动，则根据登陆模块类型进入拦截逻辑
