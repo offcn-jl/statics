@@ -1,7 +1,15 @@
+/* 全局样式 */
+*{ margin:0 auto; padding:0; list-style:none; text-decoration:none;}
+ul,ul li,dl,dl dt,dl dd { display:block; margin:0; padding:0; }
+h1,h2,h3,h4,h5,h6 { font-size:100%; }
+img { border:none; }
+a { cursor:pointer; text-decoration:none; }
+body{ padding:0; margin:0; font-family:"Microsoft YaHei"; }
+
 .chaos-folat {
   position: fixed;
-  right: 25px;
-  top: 30%;
+  right: -15px;
+  top: 32%;
   width: 86px;
   padding: 6px 0 0;
   z-index: 9999;
@@ -9,8 +17,8 @@
 
 .chaos-folat .chaos-folat-girl {
   position: absolute;
-  left: -60px;
-  margin-top: 25px;
+  left: -98px;
+  margin-top: 15px;
   width: 100px;
   animation: girl-move 2s infinite;
 }
