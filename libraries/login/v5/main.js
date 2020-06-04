@@ -314,7 +314,7 @@ Chaos.Infos = {
     // 模块路径
     Path: Chaos.Functions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "src", "./").split("main.min.js")[0].split("main.js")[0],
     // 当前环境, 由于只有 RELEASE 环境配置了 HTTPS, 所以通过判断 Path 中是否包含 https 来进行区分
-    Environment: (this.Path + "").indexOf("https") === -1 ? "TEST" : "RELEASE",
+    Environment: Chaos.Functions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "src", "./").split("main.min.js")[0].split("main.js")[0].indexOf("https") === -1 ? "TEST" : "RELEASE",
     // 接口
     Apis: this.Environment === "RELEASE" ? {
         SCF: "https://scf.tencent.jilinoffcn.com/release",
