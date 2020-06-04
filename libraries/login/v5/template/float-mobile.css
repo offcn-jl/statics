@@ -1,0 +1,64 @@
+.chaos-folat {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  left: 0;
+}
+
+.chaos-fade-in {
+  transition: all 1.5s;
+  opacity: 1;
+}
+
+.chaos-fade-out {
+  transition: all 1.5s;
+  opacity: 0;
+}
+
+.chaos-folat a {
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  background: #313131;
+  text-decoration: none;
+}
+
+.chaos-folat p a {
+  vertical-align: middle;
+  box-sizing: border-box;
+  padding: 0;
+  line-height: 3;
+  height: 38px;
+  width: 34.5%;
+}
+
+.chaos-folat p {
+  background: #313131;
+  width: 100%;
+  margin: 0;
+}
+
+.chaos-float-right {
+  float: right;
+}
+
+.chaos-folat .chaos-float-middle {
+  width: 30.9%;
+  background: url(http://jl.offcn.com/statics/wap/dishi17images/off_xfa.png)
+    no-repeat center top;
+  background-size: 100% 10px;
+  position: absolute;
+  left: 34.5%;
+  top: -10px;
+  padding-top: 10px;
+}
+
+.chaos-float-middle span {
+  display: block;
+  width: 89.6%;
+  background: #ef1e33;
+  color: #fff;
+  margin: 0 auto;
+  line-height: 2.3;
+}
