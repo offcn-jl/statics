@@ -20,7 +20,6 @@ window.onscroll = function () {
   // 为了保证兼容性，这里取两个值，哪个有值取哪一个
   // scrollTop就是触发滚轮事件时滚轮的高度
   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-  console.log("滚动距离" + scrollTop);
   // 判断是否大于屏幕高度的四分之一
   if (scrollTop > document.documentElement.clientHeight / 4 && (document.body.clientHeight - document.documentElement.scrollTop - document.documentElement.clientHeight) > 300) {
     // 显示悬浮
