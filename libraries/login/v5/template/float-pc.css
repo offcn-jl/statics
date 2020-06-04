@@ -1,6 +1,10 @@
+/* 专题中会产生影响的全局样式 */
+*{ padding:0; }
+ul,ul li { margin:0; }
+
 .chaos-folat {
   position: fixed;
-  right: 25px;
+  right: -15px;
   top: 30%;
   width: 86px;
   padding: 6px 0 0;
@@ -9,8 +13,8 @@
 
 .chaos-folat .chaos-folat-girl {
   position: absolute;
-  left: -60px;
-  margin-top: 25px;
+  left: -98px;
+  margin-top: 15px;
   width: 100px;
   animation: girl-move 2s infinite;
 }
@@ -36,6 +40,7 @@
   position: fixed;
   right: 10px;
   top: 30%;
+  margin-top: -15px;
 }
 
 .chaos-folat-close:hover {
