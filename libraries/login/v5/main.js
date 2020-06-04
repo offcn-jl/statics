@@ -316,12 +316,12 @@ Chaos.Infos = {
     // 当前环境, 由于只有 RELEASE 环境配置了 HTTPS, 所以通过判断 Path 中是否包含 https 来进行区分
     Environment: Chaos.Functions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "src", "./").split("main.min.js")[0].split("main.js")[0].indexOf("https") === -1 ? "TEST" : "RELEASE",
     // 接口
-    Apis: this.Environment === "RELEASE" ? {
-        SCF: "https://scf.tencent.jilinoffcn.com/release",
-        TSF: "https://tsf.tencent.jilinoffcn.com/release"
+    Apis: Chaos.Functions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "src", "./").split("main.min.js")[0].split("main.js")[0].indexOf("https") === -1 ? {
+        SCF: "https://scf.tencent.jilinoffcn.com/test",
+        TSF: "https://service-13mae2rr-1258962498.bj.apigw.tencentcs.com"
     } : {
-            SCF: "https://scf.tencent.jilinoffcn.com/test",
-            TSF: "https://service-13mae2rr-1258962498.bj.apigw.tencentcs.com"
+            SCF: "https://scf.tencent.jilinoffcn.com/release",
+            TSF: "https://tsf.tencent.jilinoffcn.com/release"
         },
     // 登陆模块 ID
     ID: Chaos.Functions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "data-id", 1) * 1,
