@@ -459,9 +459,9 @@ Chaos.Infos = {
 
                         // 加载小能咨询插件
                         Chaos.Functions.DynamicLoading.JS("https://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_10353");
-                        // 填充 个人后缀 小能咨询组
+                        // 填充 个人后缀 小能
                         if (Chaos.Infos.Suffix !== null) {
-                            Chaos.Functions.Logger({ Type: "info", Info: "开始填充 个人后缀 小能咨询组." });
+                            Chaos.Functions.Logger({ Type: "info", Info: "开始填充 个人后缀 小能." });
                             var count = 0, ntalkerDoms = document.getElementsByClassName("chaos-v5-ntalker");
                             Object.keys(ntalkerDoms).forEach(function (key) {
                                 ntalkerDoms[key].addEventListener("click", function () {
@@ -473,7 +473,7 @@ Chaos.Infos = {
                                 })
                                 count++;
                             });
-                            Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 小能咨询组 填充完成，共填充 " + count + " 个." });
+                            Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 小能 填充完成，共填充 " + count + " 个." });
                         }
 
                         // 如果未登过该活动，则根据登陆模块类型进入拦截逻辑
