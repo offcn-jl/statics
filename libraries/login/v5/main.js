@@ -328,7 +328,7 @@ Chaos.Infos = {
     // 登陆模块类型
     Type: Chaos.Functions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "data-type", "lite"),
     // 用户手机号码
-    Phone: Chaos.Functions.Cookies.Get("chaos-v5-phone") * 1 === NaN ? 0 : Chaos.Functions.Cookies.Get("chaos-v5-phone") * 1,
+    Phone: isNaN(Chaos.Functions.Cookies.Get("chaos-v5-phone") * 1) ? 0 : Chaos.Functions.Cookies.Get("chaos-v5-phone") * 1,
     // 发信签名
     Sign: null,
     // 后缀 ( 19课堂个人后缀 )
