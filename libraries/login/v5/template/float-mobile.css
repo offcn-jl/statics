@@ -4,6 +4,7 @@
   bottom: 0;
   z-index: 99;
   left: 0;
+  font-size: 40px;
 }
 
 .chaos-fade-in {
@@ -29,7 +30,7 @@
   box-sizing: border-box;
   padding: 0;
   line-height: 3;
-  height: 38px;
+  height: 105px;
   width: 34.5%;
 }
 
