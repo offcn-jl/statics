@@ -22,7 +22,7 @@ window.onscroll = function () {
   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   console.log("滚动距离" + scrollTop);
   // 判断是否大于屏幕高度的四分之一
-  if (scrollTop > document.documentElement.clientHeight / 4) {
+  if (scrollTop > document.documentElement.clientHeight / 4 && (document.body.clientHeight - document.documentElement.scrollTop - document.documentElement.clientHeight) > 300) {
     // 显示悬浮
     document.getElementsByClassName("chaos-folat")[0].classList.remove("chaos-fade-out")
     document.getElementsByClassName("chaos-folat")[0].classList.add("chaos-fade-in")
