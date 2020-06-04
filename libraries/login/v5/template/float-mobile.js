@@ -2,14 +2,14 @@
 document.getElementsByTagName("chaos-v5")[0].innerHTML += `
 <div class="chaos-folat chaos-fade-out">
 	<p>
-		<a onclick="NTKF.im_openInPageChat(Chaos.Infos.NTalkerGID)">
-			在线咨询
+		<a rel="nofollow" href="http://jl.offcn.com/zg/ksrl/ksrlz/">
+      招聘公告
 		</a>
 		<a class="chaos-float-right" rel="nofollow" href="http://jl.offcn.com/zg/gzkswbl/">
 			“微”部落
 		</a>
 	</p>
-	<a class="chaos-float-middle" rel="nofollow" href="http://jl.offcn.com/zg/ksrl/ksrlz/"><span>招聘公告</span></a>
+	<a class="chaos-float-middle" onclick="NTKF.im_openInPageChat(Chaos.Infos.NTalkerGID)"><span>在线咨询</span></a>
 </div>
 `;
 
@@ -22,8 +22,8 @@ window.onscroll = function () {
   //scrollTop就是触发滚轮事件时滚轮的高度
   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   console.log("滚动距离" + scrollTop);
-  // 判断是否大于屏幕高度的二分之一
-  if (scrollTop > document.documentElement.clientHeight / 2) {
+  // 判断是否大于屏幕高度的四分之一
+  if (scrollTop > document.documentElement.clientHeight / 4) {
     // 显示悬浮
     document.getElementsByClassName("chaos-folat")[0].classList.remove("chaos-fade-out")
     document.getElementsByClassName("chaos-folat")[0].classList.add("chaos-fade-in")
