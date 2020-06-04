@@ -316,19 +316,19 @@ Chaos.Infos = {
     // 当前环境, 由于只有 RELEASE 环境配置了 HTTPS, 所以通过判断 Path 中是否包含 https 来进行区分
     Environment: Chaos.Functions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "src", "./").split("main.min.js")[0].split("main.js")[0].indexOf("https") === -1 ? "TEST" : "RELEASE",
     // 接口
-    Apis: this.Environment === "RELEASE" ? {
-        SCF: "https://scf.tencent.jilinoffcn.com/release",
-        TSF: "https://tsf.tencent.jilinoffcn.com/release"
+    Apis: Chaos.Functions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "src", "./").split("main.min.js")[0].split("main.js")[0].indexOf("https") === -1 ? {
+        SCF: "https://scf.tencent.jilinoffcn.com/test",
+        TSF: "https://service-13mae2rr-1258962498.bj.apigw.tencentcs.com"
     } : {
-            SCF: "https://scf.tencent.jilinoffcn.com/test",
-            TSF: "https://service-13mae2rr-1258962498.bj.apigw.tencentcs.com"
+            SCF: "https://scf.tencent.jilinoffcn.com/release",
+            TSF: "https://tsf.tencent.jilinoffcn.com/release"
         },
     // 登陆模块 ID
     ID: Chaos.Functions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "data-id", 1) * 1,
     // 登陆模块类型
     Type: Chaos.Functions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "data-type", "lite"),
     // 用户手机号码
-    Phone: Chaos.Functions.Cookies.Get("chaos-v5-phone") * 1 === NaN ? 0 : Chaos.Functions.Cookies.Get("chaos-v5-phone") * 1,
+    Phone: isNaN(Chaos.Functions.Cookies.Get("chaos-v5-phone") * 1) ? 0 : Chaos.Functions.Cookies.Get("chaos-v5-phone") * 1,
     // 发信签名
     Sign: null,
     // 后缀 ( 19课堂个人后缀 )
@@ -459,9 +459,9 @@ Chaos.Infos = {
 
                         // 加载小能咨询插件
                         Chaos.Functions.DynamicLoading.JS("https://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_10353");
-                        // 填充 个人后缀 小能咨询组
+                        // 填充 个人后缀 小能
                         if (Chaos.Infos.Suffix !== null) {
-                            Chaos.Functions.Logger({ Type: "info", Info: "开始填充 个人后缀 小能咨询组." });
+                            Chaos.Functions.Logger({ Type: "info", Info: "开始填充 个人后缀 小能." });
                             var count = 0, ntalkerDoms = document.getElementsByClassName("chaos-v5-ntalker");
                             Object.keys(ntalkerDoms).forEach(function (key) {
                                 ntalkerDoms[key].addEventListener("click", function () {
@@ -473,7 +473,7 @@ Chaos.Infos = {
                                 })
                                 count++;
                             });
-                            Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 小能咨询组 填充完成，共填充 " + count + " 个." });
+                            Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 小能 填充完成，共填充 " + count + " 个." });
                         }
 
                         // 如果未登过该活动，则根据登陆模块类型进入拦截逻辑
