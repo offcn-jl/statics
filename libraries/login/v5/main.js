@@ -3,7 +3,7 @@ var Chaos = {
     // 模块基本信息
     Product: {
         Name: "单点登录模块 ( Single Sign On Module )",
-        Ver: "20200603"
+        Ver: "20200604"
     },
     // 公共函数
     Functions: {
@@ -476,6 +476,17 @@ Chaos.Infos = {
                             Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 小能 填充完成，共填充 " + count + " 个." });
                         }
 
+                        // 判断终端类型, 加载对应悬浮
+                        if (navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)) {
+                            Chaos.Functions.DynamicLoading.CSS(Chaos.Infos.Path + "template/float-mobile.css");
+                            Chaos.Functions.DynamicLoading.JS(Chaos.Infos.Path + "template/float-mobile.js");
+                            Chaos.Functions.Logger({ Type: "info", Info: "当前终端类型为移动端, 已加载移动端悬浮." });
+                        }else{
+                            Chaos.Functions.DynamicLoading.CSS(Chaos.Infos.Path + "template/float-pc.css");
+                            Chaos.Functions.DynamicLoading.JS(Chaos.Infos.Path + "template/float-pc.js");
+                            Chaos.Functions.Logger({ Type: "info", Info: "当前终端类型为PC端, 已加载PC端悬浮." });
+                        }
+                         
                         // 如果未登过该活动，则根据登陆模块类型进入拦截逻辑
                         if (Chaos.Infos.IsLogin && Chaos.Infos.Type !== "callback-phone-only" && Chaos.Infos.Type !== "page") {
                             Chaos.Functions.Logger({ Type: "info", Info: "用户已经登陆，跳过拦截逻辑." });
