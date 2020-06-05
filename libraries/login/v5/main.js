@@ -488,7 +488,7 @@ Chaos.Infos = {
                         }
                          
                         // 如果未登过该活动，则根据登陆模块类型进入拦截逻辑
-                        if (Chaos.Infos.IsLogin && Chaos.Infos.Type !== "callback-phone-only" && Chaos.Infos.Type !== "page") {
+                        if (Chaos.Infos.IsLogin && Chaos.Infos.Type !== "callback" && Chaos.Infos.Type !== "page") {
                             Chaos.Functions.Logger({ Type: "info", Info: "用户已经登陆，跳过拦截逻辑." });
                             // 登陆模块加载状态 完成
                             Chaos.Infos.Completed = true;
