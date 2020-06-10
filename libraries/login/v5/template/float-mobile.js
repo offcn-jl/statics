@@ -34,9 +34,11 @@ window.onscroll = function () {
 
 // 适配屏幕大小函数
 function chaosFloatResize(){
-    var deviceWidth = document.documentElement.clientWidth;
-    if(deviceWidth > 750) deviceWidth = 750;
-    document.getElementsByClassName("chaos-folat")[0].style.fontSize = deviceWidth / 7.5 + 'px';
+    var size = document.documentElement.clientWidth / 7.5;
+    if(size > 100) size = 100;
+    document.getElementsByClassName("chaos-folat")[0].style.fontSize = size * 0.4 + 'px';
+    document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("p")[0].getElementsByTagName("a")[0].style.height = size * 0.7 + 'px';
+    document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("p")[0].getElementsByTagName("a")[1].style.height = size * 0.7 + 'px';
 }
 
 // 执行适配屏幕大小操作
