@@ -22,7 +22,6 @@
   text-align: center;
   background: #313131;
   text-decoration: none;
-  font-size: 0.4rem;
 }
 
 .chaos-folat p a {
@@ -30,7 +29,6 @@
   box-sizing: border-box;
   padding: 0;
   line-height: 2.1;
-  height: 0.8rem;
   width: 34.5%;
 }
 
@@ -38,7 +36,6 @@
   background: #313131;
   width: 100%;
   margin: 0;
-  font-size: 0.4rem;
 }
 
 .chaos-float-right {
@@ -49,11 +46,11 @@
   width: 30.9%;
   background: url(http://jl.offcn.com/statics/wap/dishi17images/off_xfa.png)
     no-repeat center top;
-  background-size: 100% 0.2rem;
+  background-size: 100% 10px;
   position: absolute;
   left: 34.5%;
-  top: -0.2rem;
-  padding-top: 0.2rem;
+  top: -10px;
+  padding-top: 5px;
 }
 
 .chaos-float-middle span {
@@ -63,5 +60,4 @@
   color: #fff;
   margin: 0 auto;
   line-height: 1.8;
-  margin-top: -0.1rem;
 }
