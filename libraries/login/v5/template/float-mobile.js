@@ -21,7 +21,7 @@ window.onscroll = function () {
   // scrollTop就是触发滚轮事件时滚轮的高度
   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   // 判断是否大于屏幕高度的四分之一
-  if (scrollTop > document.documentElement.clientHeight / 4 && (document.body.clientHeight - document.documentElement.scrollTop - document.documentElement.clientHeight) > 300) {
+  if (scrollTop > document.documentElement.clientHeight / 5 && (document.body.clientHeight - document.documentElement.scrollTop - document.documentElement.clientHeight) > 150) {
     // 显示悬浮
     document.getElementsByClassName("chaos-folat")[0].classList.remove("chaos-fade-out")
     document.getElementsByClassName("chaos-folat")[0].classList.add("chaos-fade-in")
@@ -31,3 +31,16 @@ window.onscroll = function () {
     document.getElementsByClassName("chaos-folat")[0].classList.add("chaos-fade-out")
   }
 };
+
+// 适配屏幕大小函数
+function chaosFloatResize(){
+    var deviceWidth = document.documentElement.clientWidth;
+    if(deviceWidth > 750) deviceWidth = 750;
+    document.getElementsByClassName("chaos-folat")[0].style.fontSize = deviceWidth / 7.5 + 'px';
+}
+
+// 执行适配屏幕大小操作
+chaosFloatResize()
+
+// 在窗口大小发生改变时重新适配屏幕大小
+window.addEventListener("resize", chaosFloatResize);
