@@ -36,8 +36,6 @@ window.onscroll = function () {
 function chaosFloatResize(){
     var size = document.documentElement.clientWidth / 7.5;
     document.getElementsByClassName("chaos-folat")[0].style.fontSize = size * 0.4 + 'px';
-    document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("p")[0].getElementsByTagName("a")[0].style.height = size * 0.7 + 'px';
-    document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("p")[0].getElementsByTagName("a")[1].style.height = size * 0.7 + 'px';
 }
 
 // 执行适配屏幕大小操作
