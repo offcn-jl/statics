@@ -17,12 +17,12 @@
     <button>测试回调函数</button>
     <script>
         document.getElementsByTagName("button")[0].addEventListener("click", function () {
-            if (Chaos && Chaos.Hooks && Chaos.Hooks.Login) {
+            if (typeof Chaos === "object" && typeof Chaos.Hooks.Login === "function") {
                 Chaos.Hooks.Login(function(phone){
                     alert("您已登陆, 使用的手机号码是 : " + phone)
                 })
             } else {
-                alert("正在努力加载中～")
+                alert("正在努力加载中，请稍后再试～")
             }
         })
     </script>
