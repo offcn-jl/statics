@@ -4,10 +4,9 @@ document.getElementsByTagName("chaos-v5")[0].innerHTML +=
 <div class="chaos-folat">
     <a class="chaos-folat-close" href="javascript:void(0);" onclick="Chaos.Functions.HideByClass('chaos-folat')">
     </a>
-    <img class="chaos-folat-girl" src="http://jl.offcn.com/zg/xiaonengpop/xiaonengPerson.png" onclick="openNtalker()" />
     <ul>
         <li class="li1">
-            <a href="javascript:void(0);" onclick="openNtalker()" class="on">在线咨询</a>
+            <a href="javascript:void(0);" onclick="openNtalker()">在线咨询</a>
         </li>
         <li class="li2">
             <a href="http://jl.offcn.com/zg/kfqrcode/v2/" target="_blank">微信咨询</a>
@@ -36,7 +35,6 @@ document.getElementsByTagName("chaos-v5")[0].innerHTML +=
 function openNtalker() {
   NTKF.im_openInPageChat(Chaos.Infos.NTalkerGID);
   Chaos.Functions.HideByClass("chaos-popup");
-  Chaos.Functions.ShowByClass("chaos-folat-girl");
 }
 
 // 关闭弹窗
@@ -44,15 +42,11 @@ function chaosPopupClose() {
   document.getElementsByClassName("chaos-popup")[0].style.left = "100%";
   document.getElementsByClassName("chaos-popup")[0].style.marginLeft = "0";
   document.getElementsByClassName("chaos-popup")[0].style.height = "0";
-  setTimeout(function () {
-    Chaos.Functions.ShowByClass("chaos-folat-girl");
-  }, 1900);
 }
 
 // 20s 后显示弹窗
 setTimeout(function () {
   if (Chaos.Functions.Cookies.Get("chaos-v5-popup") !== "disable") {
-    Chaos.Functions.HideByClass("chaos-folat-girl");
     document.getElementsByClassName("chaos-popup")[0].style.left = "50%";
     document.getElementsByClassName("chaos-popup")[0].style.marginLeft = "-245px";
     document.getElementsByClassName("chaos-popup")[0].style.height = "417px";
@@ -71,3 +65,58 @@ function chaosPopupDoNotShow() {
   );
   chaosPopupClose();
 }
+
+// todo 跑马灯效果
+(function(){
+  var chaosFloatRun = true;
+  var chaosFloatNow = 0;
+  function nextMove() {
+    setTimeout(function(){
+      if (chaosFloatRun) {
+        for (var i = 0; i < document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("li").length; i++){
+          if ( i !== chaosFloatNow ) {
+            // 移除效果
+            document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("li")[i].getElementsByTagName("a")[0].classList.remove("hover");
+          } else {
+            // 添加效果
+            document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("li")[i].getElementsByTagName("a")[0].classList.add("hover");
+          }
+        }
+        // 归零
+        if (++chaosFloatNow > document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("li").length) {
+          chaosFloatNow = 0;
+        }
+      }
+      // 递归
+      nextMove()
+    },1000);
+  }
+  // 触发跑马灯
+  nextMove()
+  // 鼠标经过时暂停跑马灯
+  setTimeout(function(){
+    // 添加鼠标经过事件
+    for (var i = 0; i < document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("li").length; i++){
+      document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("li")[i].onmouseover=function(){
+        // 暂停跑马灯
+        chaosFloatRun = false;
+        // 熄灭已经点亮的元素
+        for (var i = 0; i < document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("li").length; i++){
+          // 移除效果
+          document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("li")[i].getElementsByTagName("a")[0].classList.remove("hover");
+        }
+        // 记录当前位置
+        chaosFloatNow = this.classList[0].slice(2) - 1;
+      };
+    }
+    // 添加鼠标离开事件
+    for (var i = 0; i < document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("li").length; i++){
+      document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("li")[i].onmouseleave=function(){
+        // 开启跑马灯
+        chaosFloatRun = true;
+        // 保持当前元素点亮
+        document.getElementsByClassName("chaos-folat")[0].getElementsByTagName("li")[chaosFloatNow].getElementsByTagName("a")[0].classList.add("hover");
+      };
+    }
+  },500)
+}());

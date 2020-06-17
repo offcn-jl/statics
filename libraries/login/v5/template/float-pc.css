@@ -11,26 +11,6 @@ ul,ul li { margin:0; }
   z-index: 9999;
 }
 
-.chaos-folat .chaos-folat-girl {
-  position: absolute;
-  left: -98px;
-  margin-top: 15px;
-  width: 100px;
-  animation: girl-move 2s infinite;
-}
-
-@keyframes girl-move {
-  0% {
-    top: -80px;
-  }
-  50% {
-    top: -60px;
-  }
-  100% {
-    top: -80px;
-  }
-}
-
 .chaos-folat-close {
   display: block;
   width: 12px;
@@ -70,16 +50,21 @@ ul,ul li { margin:0; }
   color: #505e65;
   display: block;
   padding: 40px 0 5px;
+  transition: all 0.3s;
 }
 
-.chaos-folat li a:hover {
+.chaos-folat li a:hover, .chaos-folat li a.hover {
   color: #fff;
 }
 
-.chaos-folat li.li1 a.on {
+.chaos-folat li.li1 a {
+  background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
+    no-repeat -194px -181px;
+}
+
+.chaos-folat li.li1 a:hover, .chaos-folat li.li1 a.hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -194px -253px #e60012;
-  color: #fff;
 }
 
 .chaos-folat li.li2 a {
@@ -87,7 +72,7 @@ ul,ul li { margin:0; }
     no-repeat -114px -178px;
 }
 
-.chaos-folat li.li2 a:hover {
+.chaos-folat li.li2 a:hover, .chaos-folat li.li2 a.hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -114px -250px #e60012;
 }
@@ -97,7 +82,7 @@ ul,ul li { margin:0; }
     no-repeat -55px -180px;
 }
 
-.chaos-folat li.li3 a:hover {
+.chaos-folat li.li3 a:hover, .chaos-folat li.li3 a.hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -55px -252px #e60012;
 }
@@ -107,7 +92,7 @@ ul,ul li { margin:0; }
     no-repeat 50% 10px;
 }
 
-.chaos-folat li.li4 a:hover {
+.chaos-folat li.li4 a:hover, .chaos-folat li.li4 a.hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/20181120113140239.png)
     no-repeat 50% 10px #e60012;
 }
