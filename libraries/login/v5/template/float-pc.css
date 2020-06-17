@@ -50,6 +50,7 @@ ul,ul li { margin:0; }
   color: #505e65;
   display: block;
   padding: 40px 0 5px;
+  transition: all 0.3s;
 }
 
 .chaos-folat li a:hover, .chaos-folat li a.hover {
