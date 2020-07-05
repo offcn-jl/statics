@@ -121,21 +121,21 @@ ul,ul li { margin:0; }
 }
 
 .chaos-folat .chaos-popup-close-top {
-  top: -35px;
+  top: -28px;
   right: 0;
 }
 
 .chaos-folat .chaos-popup-do-not-show {
   color: gainsboro;
-  left: 10px;
-  bottom: 8px;
+  left: 14px;
+  bottom: 12px;
   font-size: 14px;
 }
 
 .chaos-folat .chaos-popup-input {
   display: none;
   position: absolute;
-  top: 316px;
+  top: 312px;
   color: #999999;
-  text-indent: 10px;
+  text-indent: 18px;
 }
