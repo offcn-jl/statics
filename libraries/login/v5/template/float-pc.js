@@ -19,11 +19,11 @@ document.getElementsByTagName("chaos-v5")[0].innerHTML +=
         </li>
     </ul>
     <div class="chaos-popup">
-        <img class="chaos-popup-img" src="http://jl.offcn.com/zg/xiaonengpop/xiaonengPop.png" onclick="openNtalker()" />
-        <div class="chaos-popup-close chaos-popup-close-top" onclick="chaosPopupClose()"></div>
-        <div class="chaos-popup-close chaos-popup-close-bottom" onclick="chaosPopupClose()"></div>
+        <img class="chaos-popup-close chaos-popup-close-top" src="../../../../images/login-module/close.png" onclick="chaosPopupClose()" />
+        <img class="chaos-popup-img" src="../../../../images/login-module/pc-popup-20200705.png" onclick="openNtalker()" />
+        <div class="chaos-popup-input">您可以直接在此处输入您的问题</div>
         <div class="chaos-popup-close chaos-popup-do-not-show" onclick="chaosPopupDoNotShow()">
-            30天内不再提示
+            30天内不再显示
         </div>
     </div>
 </div>
@@ -42,19 +42,36 @@ function chaosPopupClose() {
   document.getElementsByClassName("chaos-popup")[0].style.left = "100%";
   document.getElementsByClassName("chaos-popup")[0].style.marginLeft = "0";
   document.getElementsByClassName("chaos-popup")[0].style.height = "0";
+  // 清空弹窗文字输入提示, 避免影响关闭弹窗动画效果
+  document.getElementsByClassName("chaos-popup-input")[0].innerHTML = ""
+  // 关闭弹窗文字输入提示动画
+  clearInterval(chaosPopupInputInterval);
 }
 
 // 20s 后显示弹窗
 setTimeout(function () {
   if (Chaos.Functions.Cookies.Get("chaos-v5-popup") !== "disable") {
     document.getElementsByClassName("chaos-popup")[0].style.left = "50%";
-    document.getElementsByClassName("chaos-popup")[0].style.marginLeft = "-245px";
-    document.getElementsByClassName("chaos-popup")[0].style.height = "417px";
+    document.getElementsByClassName("chaos-popup")[0].style.marginLeft = "-166.5px";
+    document.getElementsByClassName("chaos-popup")[0].style.height = "402px";
     Chaos.Functions.Logger({ Type: "info", Info: "用户未禁用弹窗, 弹出咨询引流弹窗."});
   } else {
     Chaos.Functions.Logger({ Type: "info", Info: "用户已禁用引流弹窗." });
   }
+  setTimeout(function () {
+    document.getElementsByClassName("chaos-popup-input")[0].style.display = "block"
+  }, 2 * 1000);
 }, 20 * 1000);
+
+// 弹窗文字输入动画
+var chaosPopupInputInterval = setInterval(function () {
+  // 如果有 6 个 '.' 则清空全部 '.'
+  if ( document.getElementsByClassName("chaos-popup-input")[0].innerHTML === "您可以直接在此处输入您的问题......" ) {
+    document.getElementsByClassName("chaos-popup-input")[0].innerHTML = "您可以直接在此处输入您的问题"
+  }
+  // 增加 1 个 '.'
+  document.getElementsByClassName("chaos-popup-input")[0].innerHTML += "."
+}, 1000);
 
 // 30天内不再提示
 function chaosPopupDoNotShow() {
@@ -66,7 +83,7 @@ function chaosPopupDoNotShow() {
   chaosPopupClose();
 }
 
-// todo 跑马灯效果
+// 跑马灯效果
 (function(){
   var chaosFloatRun = true;
   var chaosFloatNow = 0;

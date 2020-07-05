@@ -101,11 +101,10 @@ ul,ul li { margin:0; }
   position: fixed;
   top: 30%;
   left: 100%;
-  width: 490px;
+  width: 333px;
   height: 0;
   transition-property: height, left, margin-left;
   transition-duration: 2s, 2s, 2s;
-  border-radius: 25px;
   z-index: 9999;
   cursor: pointer;
 }
@@ -122,17 +121,8 @@ ul,ul li { margin:0; }
 }
 
 .chaos-folat .chaos-popup-close-top {
-  width: 15px;
-  height: 15px;
-  top: 9px;
-  right: 9px;
-}
-
-.chaos-folat .chaos-popup-close-bottom {
-  width: 55px;
-  height: 18px;
-  right: 88px;
-  bottom: 9px;
+  top: -35px;
+  right: 0;
 }
 
 .chaos-folat .chaos-popup-do-not-show {
@@ -140,4 +130,12 @@ ul,ul li { margin:0; }
   left: 10px;
   bottom: 8px;
   font-size: 14px;
+}
+
+.chaos-folat .chaos-popup-input {
+  display: none;
+  position: absolute;
+  top: 316px;
+  color: #999999;
+  text-indent: 10px;
 }
