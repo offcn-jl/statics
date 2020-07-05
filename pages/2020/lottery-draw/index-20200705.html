@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线抽奖</title>
+    <script src="https://statics.jilinoffcn.com/libraries/jquery/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <header>
+        <b>在线抽奖</b>
+        <span class="room"></span>
+    </header>
+    <div class="login">
+        <label for="room">房 间 代 码 :</label>
+        <input id="room" type="text" placeholder="请输入房间代码">
+        <input type="button" value="确 认" id="login">
+        <p>请在确认进入房间前 <b>妥善保存房间代码</b>!<br>后续 <b>进行数据导出</b> 或 <b>在页面刷新后重新进入房间</b> 时将会需要您提供 <b>与活动对应的</b> 房间代码。</p>
+    </div>
+    <div class="content">
+        <img class="cover" src="https://statics.jilinoffcn.com/images/public/logo.png">
+        <div class="left" style="width: 76vw;"></div>
+        <div class="right">
+            <img class="qr-code" src="https://statics.jilinoffcn.com/images/public/logo.jpg">
+            <span class="tips">使用微信扫码签到参加抽奖</span>
+            <div class="list" style="height: 47vh;">
+                <div class="title">中奖名单</div>
+                <div class="before">尚未开始抽奖</div>
+                <div class="after">
+                    <div class="round"></div>
+                    <div class="items"></div>
+                </div>
+            </div>
+            <div class="operations">
+                <label for="num">奖品个数 :</label>
+                <input id="num" type="text" placeholder="奖品个数">
+                <input type="button" value="抽 奖" id="do" style="height: 35px;width: 80px;">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <a href="http://chaos.jilinoffcn.com" target="_blank" rel="noopener noreferrer">吉林中公教育哈士齐营销平台</a> © 2020. <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">吉ICP备19002052号</a> Designed by <a href="http://www.rebeta.cn" target="_blank" rel="noopener noreferrer">Rebeta</a>
+    </footer>
+</body>
+
+</html>
