@@ -24,6 +24,7 @@
                     clearInterval(initTimer);
                     $(".loading").hide();
                     $(".content").show();
+                    $(".available-title").html("可用后缀 [ 共 " + available.length + " 个 ]");
                     available.forEach(element => {
                         $(".available").append('<tr>\
                             <td data-label="ID">'+ element.ID + '</td>\
@@ -40,6 +41,7 @@
                             <td data-label="小能咨询组">'+ element.NTalkerGID + '</td>\
                         </tr>')
                     });
+                    $(".deleting-title").html("即将<span style=\"color: red;\">禁用</span>的后缀 [ 共 " + deleting.length + " 个 ]");
                     deleting.forEach(element => {
                         $(".deleting").append('<tr>\
                             <td data-label="ID">'+ element.ID + '</td>\
@@ -127,7 +129,7 @@
         </div>
 
         <div class="note">
-            <h2>可用后缀</h2>
+            <h2 class="available-title">可用后缀</h2>
         </div>
         <table>
             <!-- 表头 -->
@@ -152,7 +154,7 @@
         </table>
 
         <div class="note">
-            <h2>即将<span style="color: red;">禁用</span>的后缀</h2>
+            <h2 class="deleting-title">即将<span style="color: red;">禁用</span>的后缀</h2>
         </div>
         <table>
             <!-- 表头 -->
