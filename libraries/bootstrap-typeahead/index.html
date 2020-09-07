@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>演示页面 bootstrap-typeahead</title>
+
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <script src="bootstrap-typeahead.js"></script>
+    <script>
+        $(()=>{
+            $("input").typeahead({source:[{id:1,name:"测试1"},{id:2,name:"测试2"},{id:3,name:"测试3"},{id:4,name:"测试4"}]})
+        })
+    </script>
+
+    <link rel="stylesheet" href="bootstrap-typeahead-basic.css">
+</head>
+<body>
+    <input type="text" placeholder="请输入 ‘测试’">
+</body>
+</html>
