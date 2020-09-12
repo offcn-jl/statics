@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物料下载平台 - 哈士齐营销平台 - 吉林中公教育</title>
+
+    <script src="../../libraries/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../libraries/bootstrap-typeahead/bootstrap-typeahead.js"></script>
+    <script src="../../libraries/get.js"></script>
+    <script src="../public/javascript/environment-variables.js"></script>
+    <script src="index.js"></script>
+
+    <link rel="stylesheet" href="../public/style/loading.css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-typeahead/bootstrap-typeahead-basic.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <strong class="title">个人后缀宣传物料下载平台</strong>
+    <a href="../personal-suffix-list/v2/" class="suffix-link" target="_blank" rel="noopener noreferrer">点击前往 -> 个人后缀花名册</a>
+    <br>
+    <br>
+    <div class="content">
+        <input type="text" id="suffix" placeholder="宣传人 ( 可搜索 )" autocomplete="off">
+        <input type="text" id="advertising-materials" placeholder="物料名称 ( 可搜索 )" autocomplete="off">
+        <div id="current-suffix">当前后缀: <span style="color: orange;">无</span></div>
+        <div id="current-orgnazition">所属组织: <span style="color: orange;">无</span></div>
+        <div id="current-name">所属人: <span style="color: orange;">无</span></div>
+        <div id="current-event">当前物料名称: <span style="color: orange;">无</span></div>
+        <div id="current-event-link">当前物料专属链接: <span style="color: orange;">无</span></div>
+        <button>下载物料</button>
+    </div>
+
+    <div class="poster">
+        <a class="poster-link" target="_blank" rel="noopener noreferrer">点击下载个人后缀物料</a>
+        <div class="poster-link-path">个人后缀物料链接 ( 有效期 5 天 ): <br><span></span></div>
+        <a class="poster-template-link" target="_blank" rel="noopener noreferrer">点击下载物料模板</a>
+        <img class="poster-img">
+    </div>
+</body>
+</html>
