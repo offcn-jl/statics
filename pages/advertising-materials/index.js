@@ -26,11 +26,11 @@ $(() => {
             if (当前元素.name === $("#suffix").val()) {
                 当前选中宣传人下标 = 当前元素下标
                 $("#current-suffix span").html(花名册[当前选中宣传人下标].Suffix)
-                $("#current-suffix span").css("color", "green")
+                $("#current-suffix span").css("color", "#FF3000")
                 $("#current-orgnazition span").html(花名册[当前选中宣传人下标].CRMOName)
-                $("#current-orgnazition span").css("color", "green")
+                $("#current-orgnazition span").css("color", "#FF3000")
                 $("#current-name span").html(花名册[当前选中宣传人下标].Name)
-                $("#current-name span").css("color", "green")
+                $("#current-name span").css("color", "#FF3000")
             }
         })
     })
@@ -112,5 +112,4 @@ $(() => {
 
     $(".loading").fadeOut(1000);
     $(".content").fadeIn(1000);
-    $("body").css("background", "skyblue");
 })
