@@ -92,7 +92,7 @@ $(() => {
         $.ajax({
             type: "GET",
             url: ChaosEnvironmentVariables.Apis.TKE+"/events/advertising-materials/poster/amid/"+物料列表[当前选中物料下标].id+"/suffix/"+花名册[当前选中宣传人下标].Suffix,
-            async: false, // 设置为同步模式
+            // async: false, // 设置为同步模式 // 202009171804 同步模式会导致 Safari 及 搜狗浏览器无法正常显示 Loading
             complete: (响应) => {
                 $(".loading").hide();
                 if (响应.responseJSON.Code === -1) {
