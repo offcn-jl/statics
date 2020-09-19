@@ -318,10 +318,12 @@ Chaos.Infos = {
     // 接口
     Apis: Chaos.Functions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "src", "./").split("main.min.js")[0].split("main.js")[0].indexOf("https") === -1 ? {
         SCF: "https://scf.tencent.jilinoffcn.com/test",
-        TSF: "https://service-13mae2rr-1258962498.bj.apigw.tencentcs.com"
+        TSF: "https://service-13mae2rr-1258962498.bj.apigw.tencentcs.com",
+        TKE: "https://api.chaos.jilinoffcn.com/test"
     } : {
             SCF: "https://scf.tencent.jilinoffcn.com/release",
-            TSF: "https://tsf.tencent.jilinoffcn.com/release"
+            TSF: "https://tsf.tencent.jilinoffcn.com/release",
+            TKE: "https://api.chaos.jilinoffcn.com/release"
         },
     // 登陆模块 ID
     ID: Chaos.Functions.Attr(document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1], "data-id", 1) * 1,
@@ -455,6 +457,20 @@ Chaos.Infos = {
                                 }
                             });
                             Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 图片 填充完成，共填充 " + count + " 个." });
+                        }
+
+                        // 填充 个人后缀 微信小程序码
+                        if (Chaos.Infos.Suffix !== null) {
+                            Chaos.Functions.Logger({ Type: "info", Info: "开始填充 个人后缀 微信小程序码." });
+                            var count = 0, imageDoms = document.getElementsByClassName("chaos-v5-wechat-mp-qr-code");
+                            Object.keys(imageDoms).forEach(function (key) {
+                                if (typeof imageDoms[key].getAttribute("data-appid") === "string" && imageDoms[key].getAttribute("data-appid").length > 0 && typeof imageDoms[key].getAttribute("data-page") === "string" && imageDoms[key].getAttribute("data-page").length > 0) { // 判断是否填写了 AppID 及 Page ( 先判断属性是否为字符串，即是否设置了该属性，可以避免判断长度时报错 )
+                                    // 拼接图片路径
+                                    imageDoms[key].src = Chaos.Infos.Apis.TKE + "/events/advertising-materials/wechat/mini-program/qr-code/suffix/" + Chaos.Infos.Suffix + "?app-id="+imageDoms[key].getAttribute("data-appid")+"&page="+imageDoms[key].getAttribute("data-page");
+                                    count++;
+                                }
+                            });
+                            Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 微信小程序码 填充完成，共填充 " + count + " 个." });
                         }
 
                         // 加载小能咨询插件
