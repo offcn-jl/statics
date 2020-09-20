@@ -22,9 +22,7 @@ document.getElementsByTagName("chaos-v5")[0].innerHTML +=
         <img class="chaos-popup-close chaos-popup-close-top" src="https://statics.jilinoffcn.com/images/login-module/close.png" onclick="chaosPopupClose()" />
         <img class="chaos-popup-img" src="https://statics.jilinoffcn.com/images/login-module/pc-popup-20200705.png" onclick="openNtalker()" />
         <div class="chaos-popup-input">您可以直接在此处输入您的问题</div>
-        <div class="chaos-popup-close chaos-popup-do-not-show" onclick="chaosPopupDoNotShow()">
-            30天内不再显示
-        </div>
+        <div class="chaos-popup-close chaos-popup-do-not-show" onclick="chaosPopupDoNotShow()">30天内不再显示</div>
     </div>
 </div>
 `;

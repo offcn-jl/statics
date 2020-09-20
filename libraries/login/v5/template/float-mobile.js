@@ -2,12 +2,8 @@
 document.getElementsByTagName("chaos-v5")[0].innerHTML += `
 <div class="chaos-folat chaos-fade-out">
 	<p>
-		<a rel="nofollow" href="http://jl.offcn.com/zg/ksrl/ksrlz/">
-      招聘公告
-		</a>
-		<a class="chaos-float-right" rel="nofollow" href="http://jl.offcn.com/zg/gzkswbl/">
-			“微”部落
-		</a>
+		<a rel="nofollow" href="http://jl.offcn.com/zg/ksrl/ksrlz/">招聘公告</a>
+		<a class="chaos-float-right" rel="nofollow" href="http://jl.offcn.com/zg/gzkswbl/">“微”部落</a>
 	</p>
 	<a class="chaos-float-middle" onclick="NTKF.im_openInPageChat(Chaos.Infos.NTalkerGID)"><span>在线咨询</span></a>
 </div>
