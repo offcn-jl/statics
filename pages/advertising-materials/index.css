@@ -112,3 +112,8 @@
   margin: 50px auto;
   padding-top: 50px;
 }
+
+.poster-img {
+  display: block;
+  margin: 0 auto;
+}
