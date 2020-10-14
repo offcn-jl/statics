@@ -437,7 +437,14 @@ Chaos.Infos = {
                             var count = 0, doms = document.getElementsByClassName("chaos-v5-link");
                             Object.keys(doms).forEach(function (key) {
                                 if (typeof doms[key].href === "string" && doms[key].href.length > 0) {
-                                    doms[key].href = doms[key].href + "?scode=" + Chaos.Infos.Suffix;
+                                    // 判断是否已经含有参数
+                                    if (doms[key].href.indexOf("?") !== -1) {
+                                        // 含有参数, 将后缀拼接到原参数后
+                                        doms[key].href = doms[key].href + "&scode=" + Chaos.Infos.Suffix;
+                                    } else {
+                                        // 没有参数, 直接拼接后缀
+                                        doms[key].href = doms[key].href + "?scode=" + Chaos.Infos.Suffix;
+                                    }
                                     count++;
                                 }
                             });
