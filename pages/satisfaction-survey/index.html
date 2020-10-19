@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>中公教育课程满意度调查</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../public/style/loading.css">
+    <link rel="stylesheet" href="stylewap.css">
+    <script src="../../libraries/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../libraries/get.js"></script>
+    <script src="../public/javascript/environment-variables.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <!-- 加载动画 -->
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- 主体 -->
+    <div class="zgBox">
+        <div class="zgBanner"><img src="banner.jpg" width="100%" alt=""></div>
+        <div class="ejbd">
+            <h2>中公教育课程满意度调查</h2>
+            <div class="rating">
+                <p>——请将您的真实感受反馈给中公以便于我们更好的为您服务——</p>
+                <p class="class-info">[ 公务员 ] 省考职位分析 ( 2020年09月01日 ) </p>
+
+                <input type="hidden" name="actid" value="26573">
+                <ul class="fm_list">
+                    <label>1.师资 ( 您对主讲老师的表现 )</label>
+                    <div>
+                        <li><label><input autocomplete="off" type="radio" name="teacher" id="teacher1" value="10" />非常满意</label></li>
+                        <li> <label><input autocomplete="off" type="radio" name="teacher" id="teacher2" value="6" checked="checked" /> 满意 </label></li>
+                        <li> <label> <input autocomplete="off" type="radio" name="teacher" id="teacher3" value="3" /> 不满意 </label></li>
+                        <li><label><input autocomplete="off" type="radio" name="teacher" id="teacher4" value="0" /> 非常差 </label> </li>
+                    </div>
+                    <label>2.课程 ( 请您对课程内容进行评价 ）</label>
+                    <div>
+                        <li> <label><input autocomplete="off" type="radio" name="course" id="course1" value="10">非常满意</label></li>
+                        <li> <label><input autocomplete="off" type="radio" name="course" id="course2" value="6" checked="checked" /> 满意</label> </li>
+                        <li> <label><input autocomplete="off" type="radio" name="course" id="course3" value="3" /> 不满意 </label></li>
+                        <li> <label><input autocomplete="off" type="radio" name="course" id="course4" value="0" /> 非常差 </label></li>
+                    </div>
+                    <label>3.服务 ( 请您对我们的服务进行评价 )</label>
+                    <div>
+                        <li><label> <input autocomplete="off" type="radio" name="service" id="service1" value="10">非常满意</label></li>
+                        <li><label> <input autocomplete="off" type="radio" name="service" id="service2" value="6" checked="checked" /> 满意</label> </li>
+                        <li><label> <input autocomplete="off" type="radio" name="service" id="service3" value="3" /> 不满意 </label></li>
+                        <li><label><input autocomplete="off" type="radio" name="service" id="service4" value="0" /> 非常差 </label> </li>
+                    </div>
+                </ul>
+                <span class="sbtn"> <input type="submit" name="dosubmit" id="dosubmit" value="提交评价"></span>
+            </div>
+            <div class="rated">
+                评价成功，感谢您的参与～
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
