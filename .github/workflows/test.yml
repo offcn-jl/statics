@@ -13,10 +13,10 @@ jobs:
     - name: 检出代码
       uses: actions/checkout@v2
 
-    - name: 构建 第五代登陆模块
+    - name: 构建 第六代登陆模块
       run: |
         sudo npm i uglify-js -g
-        cd libraries/login/v5
+        cd libraries/login/v6
         sh ./bulid.sh
         rm bulid.sh
         rm .gitignore

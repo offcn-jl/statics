@@ -1,0 +1,141 @@
+/* 专题中会产生影响的全局样式 */
+*{ padding:0; }
+ul,ul li { margin:0; }
+
+.offcn-sso-folat {
+  position: fixed;
+  right: -15px;
+  top: 30%;
+  width: 86px;
+  padding: 6px 0 0;
+  z-index: 9999;
+}
+
+.offcn-sso-folat-close {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
+    no-repeat 0 -218px;
+  position: fixed;
+  right: 10px;
+  top: 30%;
+  margin-top: -15px;
+}
+
+.offcn-sso-folat-close:hover {
+  background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
+    no-repeat 0 -269px;
+}
+
+.offcn-sso-folat a {
+  text-decoration: none;
+}
+
+.offcn-sso-folat li {
+  font-size: 13px;
+  width: 65px;
+  border: 1px solid #e6e6e6;
+  margin-bottom: 5px;
+  text-align: center;
+  background: #fff;
+  position: relative;
+  box-shadow: 0 0 10px #dcdada;
+  list-style: none;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.offcn-sso-folat li a {
+  color: #505e65;
+  display: block;
+  padding: 40px 0 5px;
+  transition: all 0.3s;
+}
+
+.offcn-sso-folat li a:hover, .offcn-sso-folat li a.hover {
+  color: #fff;
+}
+
+.offcn-sso-folat li.li1 a {
+  background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
+    no-repeat -194px -181px;
+}
+
+.offcn-sso-folat li.li1 a:hover, .offcn-sso-folat li.li1 a.hover {
+  background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
+    no-repeat -194px -253px #e60012;
+}
+
+.offcn-sso-folat li.li2 a {
+  background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
+    no-repeat -114px -178px;
+}
+
+.offcn-sso-folat li.li2 a:hover, .offcn-sso-folat li.li2 a.hover {
+  background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
+    no-repeat -114px -250px #e60012;
+}
+
+.offcn-sso-folat li.li3 a {
+  background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
+    no-repeat -55px -180px;
+}
+
+.offcn-sso-folat li.li3 a:hover, .offcn-sso-folat li.li3 a.hover {
+  background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
+    no-repeat -55px -252px #e60012;
+}
+
+.offcn-sso-folat li.li4 a {
+  background: url(http://jl.offcn.com/statics/images/zgimg/20181120113116208.jpg)
+    no-repeat 50% 10px;
+}
+
+.offcn-sso-folat li.li4 a:hover, .offcn-sso-folat li.li4 a.hover {
+  background: url(http://jl.offcn.com/statics/images/zgimg/20181120113140239.png)
+    no-repeat 50% 10px #e60012;
+}
+
+.offcn-sso-folat .offcn-sso-popup {
+  position: fixed;
+  top: 30%;
+  left: 100%;
+  width: 333px;
+  height: 0;
+  transition-property: height, left, margin-left;
+  transition-duration: 2s, 2s, 2s;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.offcn-sso-folat .offcn-sso-popup-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.offcn-sso-folat .offcn-sso-popup-close {
+  position: absolute;
+  z-index: 99;
+}
+
+.offcn-sso-folat .offcn-sso-popup-close-top {
+  top: -28px;
+  right: 0;
+}
+
+.offcn-sso-folat .offcn-sso-popup-do-not-show {
+  color: gainsboro;
+  left: 18px;
+  bottom: 16px;
+  font-size: 14px;
+}
+
+.offcn-sso-folat .offcn-sso-popup-input {
+  display: none;
+  position: absolute;
+  top: 312px;
+  color: #999999;
+  text-indent: 18px;
+}
