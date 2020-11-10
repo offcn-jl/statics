@@ -1,4 +1,4 @@
-name: 测试环境
+name: CI
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: 生产环境
+name: CD
 
 on:
   push:
