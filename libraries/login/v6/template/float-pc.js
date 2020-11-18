@@ -14,6 +14,9 @@ document.getElementsByTagName("offcn-sso")[0].innerHTML +=`
             <a href="http://jl.offcn.com/zg/ksrl/ksrlz/" target="_blank">招聘公告</a>
         </li>
         <li class="li4">
+            <a href="http://jl.offcn.com/zg/xmtpt/" target="_blank">中公官媒</a>
+        </li>
+        <li class="li5">
             <a href="http://jl.offcn.com/zg/gzkswbl/" target="_blank">关注中公</a>
         </li>
     </ul>
