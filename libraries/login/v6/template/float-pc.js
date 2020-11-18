@@ -88,10 +88,10 @@ function 不再显示弹窗() {
         for (var i = 0; i < document.getElementsByClassName("offcn-sso-folat")[0].getElementsByTagName("li").length; i++) {
           if (i !== 当前点亮元素下标) {
             // 移除效果
-            document.getElementsByClassName("offcn-sso-folat")[0].getElementsByTagName("li")[i].getElementsByTagName("a")[0].classList.remove("hover");
+            document.getElementsByClassName("offcn-sso-folat")[0].getElementsByTagName("li")[i].classList.remove("hover");
           } else {
             // 添加效果
-            document.getElementsByClassName("offcn-sso-folat")[0].getElementsByTagName("li")[i].getElementsByTagName("a")[0].classList.add("hover");
+            document.getElementsByClassName("offcn-sso-folat")[0].getElementsByTagName("li")[i].classList.add("hover");
           }
         }
         // 归零
@@ -115,7 +115,7 @@ function 不再显示弹窗() {
         // 熄灭已经点亮的元素
         for (var i = 0; i < document.getElementsByClassName("offcn-sso-folat")[0].getElementsByTagName("li").length; i++) {
           // 移除效果
-          document.getElementsByClassName("offcn-sso-folat")[0].getElementsByTagName("li")[i].getElementsByTagName("a")[0].classList.remove("hover");
+          document.getElementsByClassName("offcn-sso-folat")[0].getElementsByTagName("li")[i].classList.remove("hover");
         }
         // 记录当前位置
         当前点亮元素下标 = this.classList[0].slice(2) - 1;
@@ -127,7 +127,7 @@ function 不再显示弹窗() {
         // 开启跑马灯
         开启跑马灯 = true;
         // 保持当前元素点亮
-        document.getElementsByClassName("offcn-sso-folat")[0].getElementsByTagName("li")[当前点亮元素下标].getElementsByTagName("a")[0].classList.add("hover");
+        document.getElementsByClassName("offcn-sso-folat")[0].getElementsByTagName("li")[当前点亮元素下标].classList.add("hover");
       };
     }
   }, 500)

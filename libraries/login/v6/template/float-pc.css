@@ -33,7 +33,7 @@ ul,ul li { margin:0; }
 }
 
 .offcn-sso-folat li {
-  font-size: 13px;
+  font-size: 12px;
   width: 65px;
   border: 1px solid #e6e6e6;
   margin-bottom: 5px;
@@ -43,7 +43,6 @@ ul,ul li { margin:0; }
   box-shadow: 0 0 10px #dcdada;
   list-style: none;
   border-radius: 5px;
-  overflow: hidden;
 }
 
 .offcn-sso-folat li a {
@@ -53,56 +52,56 @@ ul,ul li { margin:0; }
   transition: all 0.3s;
 }
 
-.offcn-sso-folat li a:hover, .offcn-sso-folat li a.hover {
+.offcn-sso-folat li:hover a, .offcn-sso-folat li.hover a {
   color: #fff;
 }
 
-.offcn-sso-folat li.li1 a {
+.offcn-sso-folat li.li1 {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -194px -181px;
 }
 
-.offcn-sso-folat li.li1 a:hover, .offcn-sso-folat li.li1 a.hover {
+.offcn-sso-folat li.li1:hover, .offcn-sso-folat li.li1.hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -194px -253px #e60012;
 }
 
-.offcn-sso-folat li.li2 a {
+.offcn-sso-folat li.li2 {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -114px -178px;
 }
 
-.offcn-sso-folat li.li2 a:hover, .offcn-sso-folat li.li2 a.hover {
+.offcn-sso-folat li.li2:hover, .offcn-sso-folat li.li2.hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -114px -250px #e60012;
 }
 
-.offcn-sso-folat li.li3 a {
+.offcn-sso-folat li.li3 {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -55px -180px;
 }
 
-.offcn-sso-folat li.li3 a:hover, .offcn-sso-folat li.li3 a.hover {
+.offcn-sso-folat li.li3:hover, .offcn-sso-folat li.li3.hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -55px -252px #e60012;
 }
 
-.offcn-sso-folat li.li4 a {
+.offcn-sso-folat li.li4 {
   background: url(http://gd.offcn.com/dl/2020/0319/20200319044522115.png)
     no-repeat 50% 10px;
 }
 
-.offcn-sso-folat li.li4 a:hover, .offcn-sso-folat li.li4 a.hover {
+.offcn-sso-folat li.li4:hover, .offcn-sso-folat li.li4.hover {
   background: url(http://gd.offcn.com/dl/2020/0319/20200319050100110.png)
     no-repeat 50% 10px #e60012;
 }
 
-.offcn-sso-folat li.li5 a {
+.offcn-sso-folat li.li5 {
   background: url(http://jl.offcn.com/statics/images/zgimg/20181120113116208.jpg)
     no-repeat 50% 10px;
 }
 
-.offcn-sso-folat li.li5 a:hover, .offcn-sso-folat li.li5 a.hover {
+.offcn-sso-folat li.li5:hover, .offcn-sso-folat li.li5.hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/20181120113140239.png)
     no-repeat 50% 10px #e60012;
 }
