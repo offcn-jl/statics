@@ -1,0 +1,177 @@
+<!-- Base On https://www.cnblogs.com/jiqing9006/p/5396335.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>个人后缀花名册</title>
+    <link rel="stylesheet" href="../../public/style/form.css">
+    <link rel="stylesheet" href="../../public/style/loading.css">
+    <script src="https://statics.jilinoffcn.com/libraries/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../public/javascript/environment-variables.v2.js"></script>
+    <script>
+        $(() => {
+            $.get(环境变量.接口.盖亚 + "/services/personal-suffix/list/active", 有效后缀的响应 => {
+                console.log(有效后缀的响应)
+                if (有效后缀的响应.Message !== "Success") {
+                    alert(有效后缀的响应.Message)
+                    $("body").html(有效后缀的响应.Message)
+                } else {
+                    $.get(环境变量.接口.盖亚 + "/services/personal-suffix/list/deleting", 即将过期后缀的响应 => {
+                        console.log(即将过期后缀的响应)
+                        if (即将过期后缀的响应.Message !== "Success") {
+                            alert(即将过期后缀的响应.Message)
+                            $("body").html(即将过期后缀的响应.Message)
+                        } else {
+                            let 获取推广渠道 = (渠道代码) => {
+                                switch (渠道代码) {
+                                    case 7:
+                                        return "19课堂"
+                                    case 22:
+                                        return "校园、户外推广"
+                                    case 114:
+                                        return "代理"
+                                    default:
+                                        return "未知"
+                                }
+                            }
+                            $(".loading").hide();
+                            $(".content").show();
+                            $(".active-title").html("可用后缀 [ 共 " + 有效后缀的响应.Data.length + " 个 ]");
+                            有效后缀的响应.Data.forEach(后缀信息 => {
+                                $(".active").append('<tr>\
+                            <td data-label="ID">'+ 后缀信息.ID + '</td>\
+                            <td data-label="后缀">'+ 后缀信息.Suffix + '</td>\
+                            <td data-label="后缀名称">'+ 后缀信息.Name + '</td>\
+                            <td data-label="CRM 用户名">'+ 后缀信息.CRMUser + '</td>\
+                            <td data-label="CRM 用户代码">'+ 后缀信息.CRMUID + '</td>\
+                            <td data-label="CRM 组织 ID">'+ 后缀信息.CRMOID + '</td>\
+                            <td data-label="CRM 上级组织 ID">'+ 后缀信息.CRMOFID + '</td>\
+                            <td data-label="CRM 组织代码">'+ 后缀信息.CRMOCode + '</td>\
+                            <td data-label="CRM 组织名称">'+ 后缀信息.CRMOName + '</td>\
+                            <td data-label="CRM 所属渠道代码">'+ 后缀信息.CRMChannel + '</td>\
+                            <td data-label="CRM 所属渠道">'+ 获取推广渠道(后缀信息.CRMChannel) + '</td>\
+                            <td data-label="小能咨询组">'+ 后缀信息.NTalkerGID + '</td></tr>')
+                            });
+                            $(".deleting-title").html("<span style=\"color: red;\">即将过期的</span>的后缀 [ 共 " + 即将过期后缀的响应.Data.length + " 个 ]");
+                            即将过期后缀的响应.Data.forEach(后缀信息 => {
+                                $(".deleting").append('<tr>\
+                            <td data-label="ID">'+ 后缀信息.ID + '</td>\
+                            <td data-label="删除时间">'+ 后缀信息.DeletedAt.slice(0, 10) + '</td>\
+                            <td data-label="后缀">'+ 后缀信息.Suffix + '</td>\
+                            <td data-label="后缀名称">'+ 后缀信息.Name + '</td>\
+                            <td data-label="CRM 用户名">'+ 后缀信息.CRMUser + '</td>\
+                            <td data-label="CRM 用户代码">'+ 后缀信息.CRMUID + '</td>\
+                            <td data-label="CRM 组织名称">'+ 后缀信息.CRMOName + '</td>\
+                            <td data-label="CRM 所属渠道">'+ 获取推广渠道(后缀信息.CRMChannel) + '</td></tr>')
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <style>
+        .active tr:first-child {
+            color: blue;
+            position: relative;
+        }
+
+        .active tr:first-child::after {
+            color: red;
+            content: "默认后缀";
+            position: absolute;
+            display: inline-block;
+            width: 80px;
+            font-size: 18px;
+            left: 50%;
+            margin-left: -40px;
+            margin-top: 5px;
+            opacity: 0.7;
+        }
+
+        /* 修复 Chrome 中缺少右边框 */
+        tr::after {
+            content: "";
+        }
+
+        /* Firefox 可以在行内上下居中, 得到最好的显示效果 */
+        @-moz-document url-prefix() {
+            .active tr:first-child::after {
+                top: 50%;
+                margin-top: -15px;
+            }
+        }
+
+        .deleting {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="content">
+
+        <div class="note">
+            <h1>个人后缀花名册</h1>
+            <p>实时更新，仅供内部备忘使用。</p>
+            <a href="../../advertising-materials/index.html" target="_blank" rel="noopener noreferrer">点击前往 -> 宣传物料下载平台</a>
+        </div>
+
+        <div class="note">
+            <h2 class="active-title">有效后缀</h2>
+        </div>
+        <table>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>后缀</th>
+                    <th>后缀名称</th>
+                    <th>CRM 用户名</th>
+                    <th>CRM 用户代码</th>
+                    <th>CRM 组织 ID</th>
+                    <th>CRM 上级组织 ID</th>
+                    <th>CRM 组织代码</th>
+                    <th>CRM 组织名称</th>
+                    <th>CRM 所属渠道代码</th>
+                    <th>CRM 所属渠道</th> <!-- 需要自行计算 -->
+                    <th>小能咨询组</th>
+                </tr>
+            </thead>
+            <!-- 表格主体 -->
+            <tbody class="active"></tbody>
+        </table>
+
+        <div class="note">
+            <h2 class="deleting-title"><span style="color: red;">即将过期的</span>后缀</h2>
+        </div>
+        <table>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>删除时间</th>
+                    <th>后缀</th>
+                    <th>后缀名称</th>
+                    <th>CRM 用户名</th>
+                    <th>CRM 用户代码</th>
+                    <th>CRM 组织名称</th>
+                    <th>CRM 所属渠道</th> <!-- 需要自行计算 -->
+                </tr>
+            </thead>
+            <!-- 表格主体 -->
+            <tbody class="deleting"></tbody>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 *{ padding:0; }
 ul,ul li { margin:0; }
 
-.chaos-folat {
+.offcn-sso-folat {
   position: fixed;
   right: -15px;
   top: 30%;
@@ -11,7 +11,7 @@ ul,ul li { margin:0; }
   z-index: 9999;
 }
 
-.chaos-folat-close {
+.offcn-sso-folat-close {
   display: block;
   width: 12px;
   height: 12px;
@@ -23,16 +23,16 @@ ul,ul li { margin:0; }
   margin-top: -15px;
 }
 
-.chaos-folat-close:hover {
+.offcn-sso-folat-close:hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat 0 -269px;
 }
 
-.chaos-folat a {
+.offcn-sso-folat a {
   text-decoration: none;
 }
 
-.chaos-folat li {
+.offcn-sso-folat li {
   font-size: 13px;
   width: 65px;
   border: 1px solid #e6e6e6;
@@ -46,68 +46,68 @@ ul,ul li { margin:0; }
   overflow: hidden;
 }
 
-.chaos-folat li a {
+.offcn-sso-folat li a {
   color: #505e65;
   display: block;
   padding: 40px 0 5px;
   transition: all 0.3s;
 }
 
-.chaos-folat li a:hover, .chaos-folat li a.hover {
+.offcn-sso-folat li a:hover, .offcn-sso-folat li a.hover {
   color: #fff;
 }
 
-.chaos-folat li.li1 a {
+.offcn-sso-folat li.li1 a {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -194px -181px;
 }
 
-.chaos-folat li.li1 a:hover, .chaos-folat li.li1 a.hover {
+.offcn-sso-folat li.li1 a:hover, .offcn-sso-folat li.li1 a.hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -194px -253px #e60012;
 }
 
-.chaos-folat li.li2 a {
+.offcn-sso-folat li.li2 a {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -114px -178px;
 }
 
-.chaos-folat li.li2 a:hover, .chaos-folat li.li2 a.hover {
+.offcn-sso-folat li.li2 a:hover, .offcn-sso-folat li.li2 a.hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -114px -250px #e60012;
 }
 
-.chaos-folat li.li3 a {
+.offcn-sso-folat li.li3 a {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -55px -180px;
 }
 
-.chaos-folat li.li3 a:hover, .chaos-folat li.li3 a.hover {
+.offcn-sso-folat li.li3 a:hover, .offcn-sso-folat li.li3 a.hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/script_jhicon.png)
     no-repeat -55px -252px #e60012;
 }
 
-.chaos-folat li.li4 a {
+.offcn-sso-folat li.li4 a {
   background: url(http://gd.offcn.com/dl/2020/0319/20200319044522115.png)
     no-repeat 50% 10px;
 }
 
-.chaos-folat li.li4 a:hover, .chaos-folat li.li4 a.hover {
+.offcn-sso-folat li.li4 a:hover, .offcn-sso-folat li.li4 a.hover {
   background: url(http://gd.offcn.com/dl/2020/0319/20200319050100110.png)
     no-repeat 50% 10px #e60012;
 }
 
-.chaos-folat li.li5 a {
+.offcn-sso-folat li.li5 a {
   background: url(http://jl.offcn.com/statics/images/zgimg/20181120113116208.jpg)
     no-repeat 50% 10px;
 }
 
-.chaos-folat li.li5 a:hover, .chaos-folat li.li5 a.hover {
+.offcn-sso-folat li.li5 a:hover, .offcn-sso-folat li.li5 a.hover {
   background: url(http://jl.offcn.com/statics/images/zgimg/20181120113140239.png)
     no-repeat 50% 10px #e60012;
 }
 
-.chaos-folat .chaos-popup {
+.offcn-sso-folat .offcn-sso-popup {
   position: fixed;
   top: 30%;
   left: 100%;
@@ -119,30 +119,30 @@ ul,ul li { margin:0; }
   cursor: pointer;
 }
 
-.chaos-folat .chaos-popup-img {
+.offcn-sso-folat .offcn-sso-popup-img {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.chaos-folat .chaos-popup-close {
+.offcn-sso-folat .offcn-sso-popup-close {
   position: absolute;
   z-index: 99;
 }
 
-.chaos-folat .chaos-popup-close-top {
+.offcn-sso-folat .offcn-sso-popup-close-top {
   top: -28px;
   right: 0;
 }
 
-.chaos-folat .chaos-popup-do-not-show {
+.offcn-sso-folat .offcn-sso-popup-do-not-show {
   color: gainsboro;
   left: 18px;
   bottom: 16px;
   font-size: 14px;
 }
 
-.chaos-folat .chaos-popup-input {
+.offcn-sso-folat .offcn-sso-popup-input {
   display: none;
   position: absolute;
   top: 312px;

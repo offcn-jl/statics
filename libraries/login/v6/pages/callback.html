@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆中间件 回调函数</title>
+    <script src="../main.min.js" data-id="1" data-type="callback"></script>
+</head>
+
+<body>
+    <button>测试回调函数</button>
+    <script>
+        // 添加 触发登陆事件前 钩子函数
+        // 参数为用户填写的手机号码
+        // 定义这个钩子函数后, 这个钩子函数会在用户点击登陆按钮后直接触发
+        // 返回 True 会继续提交登陆信息, 返回 False 会阻止继续提交
+        // 可以用来在提交登陆信息前进行参数检查等操作
+        哈士齐单点登陆模块.钩子.触发登陆事件前 = function (用户手机号) { alert("触发登陆事件前") }
+        // 添加 触发登陆事件后 钩子函数
+        // 参数为用户填写的手机号码
+        // 定义这个钩子函数后, 这个钩子函数会在登陆事件结束，并且登陆成功后触发
+        // 可以用来在登陆完成后进行抽奖、预约等操作
+        哈士齐单点登陆模块.钩子.触发登陆事件后 = function (用户手机号) { alert("触发登陆事件后") }
+        // 向制定元素添加 触发登陆 事件
+        // 运行钩子函数 哈士齐单点登陆模块.钩子.触发登陆, 并向钩子函数传入回调函数即可
+        // 钩子函数 哈士齐单点登陆模块.钩子.触发登陆的参数为: 1. 回调函数 ( 函数 ) 2. 登陆成功后马上执行一次回调函数 ( 布尔值 )
+        // 回调函数的参数是用户的手机号码，回调函数会在用户已经登陆的情况下被执行
+        document.getElementsByTagName("button")[0].addEventListener("click", function () {
+            if (typeof 哈士齐单点登陆模块 === "object" && typeof 哈士齐单点登陆模块.钩子.触发登陆 === "function") {
+                哈士齐单点登陆模块.钩子.触发登陆(function (用户手机号) { alert("您已登陆, 使用的手机号码是 : " + 用户手机号) }, true)
+            } else {
+                alert("正在努力加载中，请稍后再试～")
+            }
+        })
+    </script>
+    <br>
+    <a class="offcn-sso-link" href="http://19.offcn.com/class-78723/" target="_blank">19 课堂 个人后缀 链接 填充测试</a>
+    <br>
+    <a class="offcn-sso-link" href="http://jl.offcn.com/zg/lydlhz/" target="_blank">专题 个人后缀 链接 填充测试</a>
+    <br>
+    <img class="offcn-sso-image" src="path/example.jpg" alt="个人后缀 图片 填充测试">
+    <div class="offcn-sso-ntalker">小能咨询测试 可以使用任意类型的标签</div>
+    <img class="offcn-sso-wechat-mp-qr-code" data-appid="wxc431ae4dffa2a8a3" data-page="pages/event-20200918/index" alt="个人后缀微信小程序码" src="http://iph.href.lu/150x150?text=加载中">
+</body>
+
+</html>

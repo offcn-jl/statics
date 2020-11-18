@@ -1,0 +1,65 @@
+.offcn-sso-folat {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  left: 0;
+  display:none;
+}
+
+.offcn-sso-fade-in {
+  transition: all 1.5s;
+  opacity: 1;
+}
+
+.offcn-sso-fade-out {
+  transition: all 1.5s;
+  opacity: 0;
+}
+
+.offcn-sso-folat a {
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  background: #313131;
+  text-decoration: none;
+}
+
+.offcn-sso-folat p a {
+  vertical-align: middle;
+  box-sizing: border-box;
+  padding: 0;
+  line-height: 2.1;
+  width: 34.5%;
+}
+
+.offcn-sso-folat p {
+  background: #313131;
+  width: 100%;
+  margin: 0;
+}
+
+.offcn-sso-float-right {
+  float: right;
+}
+
+.offcn-sso-folat .offcn-sso-float-middle {
+  width: 30.9%;
+  background: url(http://jl.offcn.com/statics/wap/dishi17images/off_xfa.png)
+    no-repeat center top;
+  background-size: 100% 10px;
+  position: absolute;
+  left: 34.5%;
+  top: -10px;
+  padding-top: 10px;
+}
+
+.offcn-sso-float-middle span {
+  display: block;
+  width: 89%;
+  background: #ef1e33;
+  color: #fff;
+  margin: 0 auto;
+  line-height: 1.8;
+  margin-top: -5px;
+}

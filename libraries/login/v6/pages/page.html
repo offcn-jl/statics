@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆中间件 页面嵌入式表单</title>
+    <script src="../main.min.js" data-id="1" data-type="page"></script>
+</head>
+
+<body>
+    <style>
+        .optional {
+            border: 2px dotted red;
+            padding: 10px;
+        }
+
+        .optional::before {
+            content: "可选字段";
+            color: red;
+            position: fixed;
+            background: white;
+            top: 0px;
+        }
+
+        .optional input {
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+    <div class="offcn-sso-login-page-optional" style="display: none;">
+        <div class="optional">
+            <p>可以使用任意类型的 input 元素、 可以任意编写样式、 可以任意组合, 只需添加设置了字段对应的 id 的 input 元素到配置有 class 名称为 offcn-sso-login-page-optional 的 div 元素中可。<br />( 注意：需要自行编写每个 input 对应的校验规则。 )</p>
+            <input type="text" id="offcn-sso-customer-name" placeholder="客户姓名">
+            <input type="text" id="offcn-sso-customer-identity" placeholder="客户身份ID, 来自 CRM 中的客户身份字典表">
+            <input type="text" id="offcn-sso-customer-colleage" placeholder="客户毕业院校">
+            <input type="text" id="offcn-sso-customer-mayor" placeholder="客户专业">
+            <input type="text" id="offcn-sso-remark" placeholder="备注">
+        </div>
+    </div>
+    <div class="offcn-sso-login-page-form" style="display: none;"></div>
+    <div class="offcn-sso-login-page-is-login" style="display: none;">您已经参与过此活动！</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- <div class="offcn-sso-login-page-form1">
+        <div class="offcn-sso-line">
+            <label for="offcn-sso-phone" class="offcn-sso-phone-label">手机号</label>
+            <input type="text" id="offcn-sso-phone">
+        </div>
+        <div class="offcn-sso-line">
+            <div class="offcn-sso-tips"><span class="offcn-sso-checked"></span>您的手机号已经注册, 直接点击提交即可完成操作!</div>
+            <div class="offcn-sso-tips"><span class="offcn-sso-uncheck"></span> 您的手机号未注册, 请获取并填写验证码!</div>
+        </div>
+        <div class="offcn-sso-line offcn-sso-code-line">
+            <label for="offcn-sso-code" class="offcn-sso-code-label">验证码</label>
+            <input type="text" id="offcn-sso-code">
+            <button id="offcn-sso-get-code">获取验证码</button>
+        </div>
+        <div class="offcn-sso-line">
+            <button id="offcn-sso-submit">提 交</button>
+        </div>
+        <div class="offcn-sso-line">
+            <div class="offcn-sso-ascription">归属分部</div>
+        </div>
+    </div> -->
+</body>
+
+</html>

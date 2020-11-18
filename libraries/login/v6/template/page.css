@@ -1,0 +1,67 @@
+.offcn-sso-checked {
+    display: inline-block;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #2ac845;
+}
+
+.offcn-sso-checked {
+    display: inline-block;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #2ac845;
+}
+
+.offcn-sso-uncheck {
+    display: inline-block;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #5f646e;
+}
+
+.offcn-sso-checked:before, .offcn-sso-checked:after,.offcn-sso-uncheck:before,.offcn-sso-uncheck:after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    color: white;
+    border: 1px solid;
+    background-color: white;
+}
+
+.offcn-sso-checked:before {
+    width: 1px;
+    height: 1px;
+    left: 25%;
+    top: 50%;
+    transform: skew(0deg,50deg);
+}
+
+.offcn-sso-checked:after {
+    width: 3px;
+    height: 1px;
+    left: 45%;
+    top: 42%;
+    transform: skew(0deg,-50deg);
+}
+
+.offcn-sso-uncheck:before {
+    width: 5px;
+    height: 1px;
+    left: 29%;
+    top: 42%;
+    transform: skew(0deg,45deg);
+}
+
+.offcn-sso-uncheck:after {
+    width: 5px;
+    height: 1px;
+    left: 29%;
+    top: 42%;
+    transform: skew(0deg,-45deg);
+}
