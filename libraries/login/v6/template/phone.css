@@ -12,39 +12,43 @@
 }
 
 .hl-popup {
-    background: white;
+    background: #f3f5f7;
     position: fixed;
     left: 50%;
     top: 50%;
-    border-radius: 15px;
+    border-radius: 10px;
     z-index: 9999;
     display: none;
+    text-align: center;
 }
 
 .hl-close {
     width: 40px;
     height: 40px;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: -30px;
+    top: -40px;
     cursor: pointer;
     background: url(https://statics.jilinoffcn.com/images/public/close.png) no-repeat center center;
 }
 
 /* 手机号登陆 开始 */
 .hl-phone {
-    width: 350px;
-    /* min-height: 300px; */
+    width: 450px;
     margin-top: -210px;
-    margin-left: -175px;
+    margin-left: -225px;
 }
 
 .hlp-top{
+    background:#fff;
+    opacity: 0.9;
+    border-top-left-radius: 10px;
+    border-top-right-radius:10px ;
     width: 100%;
-    height: 50px;
+    height:60px;
     display: flex;
     font-size: 24px;
-    line-height: 50px;
+    line-height:60px;
     -moz-user-select:none; /*火狐*/
     -webkit-user-select:none; /*webkit浏览器*/
     -ms-user-select:none; /*IE10*/
@@ -56,55 +60,74 @@
     width: 150px;
     text-align: center;
     margin: 0 auto;
-    color: #989898;
+
 }
 
 .hlpt-current{
-    color: #EC414D !important;
-    border-bottom: 2px solid #EC414D !important ;
+    color: #da2d18;
+    font-size: 24px;
 }
 
 .offcn-sso-tips {
-    margin-top: 8px;
-    margin-left: 5px;
+    font-size: 16px;
+    line-height:50px;
+    text-align: center;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .offcn-sso-tips span{
     display: block;
     float: left;
+    margin-top: 16px;
+    margin-left:30px;
 }
 
-.offcn-sso-tips div{
-    display: block;
-    font-size: 15px;
-    float: left;
-    margin-top: -3px;
-    padding-left: 5px;
-}
+
 
 .hlp-middle{
-    width: 85%;
-    margin: auto;
+    margin:30px auto;
 }
 
+.hlbj{
+    width: 80%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.hlbj img{    
+    width: 18px;
+    height:24px;
+    padding:13px 22px 12px 20px;
+    float: left;
+}
 .hlp-middle input{
-    height: 48px;
-    width: 100%;
+    width: 80%;
+    height: 49px;
+    line-height: 49px;
     box-sizing: border-box;
-    border-radius: 25px;
     font-size: 20px;
-    border: 1px solid gray;
-    padding-left: 10px;
-    margin-top: 15px;
+    border: none;
     outline: none;
 }
 
-.hlp-middle input[type="button"],input[type="submit"] {
-    background: #EC414D;
+#offcn-sso-submit {
+    width: 170px;
+    background: #da2d18;
     color: #fff;
-    border: 1px solid #EC414D;
     padding: 0;
     cursor: pointer;
+    border-radius:25px;
+    box-shadow: 0px 2px 7.2px 0.8px #e5bcbe;
+    margin: 10px auto;
+    -webkit-appearance: none;/*去掉苹果默认样式*/
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
 }
 
 .offcn-sso-code-line{
@@ -112,45 +135,55 @@
     display: none;
 }
 
+#offcn-sso-location{
+    background: none;
+    font-size: 14px;
+    color: gray;
+    text-align: center;
+}
+
 .offcn-sso-code-line #offcn-sso-get-code {
-    width: 150px;
-    height: 46px;
+    width: 120px;
+    height:50px;
     position: absolute;
-    right: 0px;
-    top: 16px;
+    right:0px;
+    top:0px;
     text-align: center;
     line-height: 50px;
-    font-size: 19px;
+    font-size:14px;
     cursor: pointer;
     text-decoration: none;
-    background: #EC414D;
+    background: #da2d18;
     color: #fff;
-    border-radius: 25px;
-    margin-top: 19px;
+    border-radius: 5px;
 }
 /* 手机号登陆 结束 */
 
 /* 底部 开始 */
 .hlp-bottom {
-    height: 10px;
-    overflow: hidden;
-    font-size: 18px;
-    text-align: center;
-    color: #666;
-    padding-bottom: 20px;
-}
-
-.hlp-bottom h3 {
-    width: 250px;
-    margin: 20px auto;
+    width: 150px;
+    margin:5px auto;
     border-top: 3px solid #ec414d;
 }
-
-.hlp-bottom .ad-button{
-    background: #EC414D;
-    color: #FFF;
-    padding: 5px 25px;
-    border-radius: 20px;
-    text-decoration: none;
-}
 /* 底部 结束 */
+
+@media screen and (max-width:700px) {
+    .hl-phone {
+        width:350px;
+        margin-top: -210px;
+        margin-left: -175px;
+    }
+
+    .hl-close {
+        right: 0px;
+        top: -40px;
+    }
+    .hlp-middle input{
+        width:70%;
+    }
+
+    .offcn-sso-tips {
+        width:100%;
+        margin: 0 auto;
+    }
+}

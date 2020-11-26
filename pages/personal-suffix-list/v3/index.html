@@ -12,13 +12,11 @@
     <script>
         $(() => {
             $.get(环境变量.接口.盖亚 + "/services/personal-suffix/list/active", 有效后缀的响应 => {
-                console.log(有效后缀的响应)
                 if (有效后缀的响应.Message !== "Success") {
                     alert(有效后缀的响应.Message)
                     $("body").html(有效后缀的响应.Message)
                 } else {
                     $.get(环境变量.接口.盖亚 + "/services/personal-suffix/list/deleting", 即将过期后缀的响应 => {
-                        console.log(即将过期后缀的响应)
                         if (即将过期后缀的响应.Message !== "Success") {
                             alert(即将过期后缀的响应.Message)
                             $("body").html(即将过期后缀的响应.Message)
@@ -123,7 +121,7 @@
         <div class="note">
             <h1>个人后缀花名册</h1>
             <p>实时更新，仅供内部备忘使用。</p>
-            <a href="../../advertising-materials/index.html" target="_blank" rel="noopener noreferrer">点击前往 -> 宣传物料下载平台</a>
+            <a href="../../advertising-materials/v2/index.html" target="_blank" rel="noopener noreferrer">点击前往 -> 宣传物料下载平台</a>
         </div>
 
         <div class="note">
