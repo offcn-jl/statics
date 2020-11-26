@@ -137,6 +137,9 @@
 
 #offcn-sso-location{
     background: none;
+    font-size: 14px;
+    color: gray;
+    text-align: center;
 }
 
 .offcn-sso-code-line #offcn-sso-get-code {

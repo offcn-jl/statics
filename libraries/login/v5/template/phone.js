@@ -23,7 +23,7 @@ Chaos.Templates.HTML =
             <div class="hlpm">
                 <input type="button" value="登 陆" id="chaos-submit" class="submintBtn">
             </div>
-            <input type="text" id="location" value="" readonly style="text-align: center;border: 0px;font-size: 15px;height: 25px;color: gray;">
+            <input type="text" id="location" value="" readonly >
         </div>
         <div class="hlp-bottom"> </div>
     </div>

@@ -137,6 +137,9 @@
 
 #location{
     background: none;
+    font-size: 14px;
+    color: gray;
+    text-align: center;
 }
 
 #chaos-get-code {
