@@ -2,8 +2,8 @@
 var 哈士齐单点登陆模块 = {
     // 模块基本信息
     模块信息: {
-        名称: "哈士齐单点登陆模块 ( Single Sign On Module )",
-        版本: "20201110"
+        名称: "哈士齐单点登陆模块",
+        版本: "20201202"
     },
     // 公共函数
     公共函数: {
@@ -85,7 +85,6 @@ var 哈士齐单点登陆模块 = {
                 }
             }
             if (哈士齐单点登陆模块.待打印日志.定时器 === null) {
-                // console.log("初始化日志打印定时器");
                 哈士齐单点登陆模块.待打印日志.定时器 = setInterval(function () {
                     // 判断最后一条日志距离入栈时间是否足够
                     if ((new Date()).valueOf() < (哈士齐单点登陆模块.待打印日志.日志[哈士齐单点登陆模块.待打印日志.日志.length - 1].入栈时间.valueOf() + 打印日志延迟时间)) {
@@ -403,7 +402,7 @@ var 哈士齐单点登陆模块 = {
                             Object.keys(要填充的DOM对象).forEach(function (下标) {
                                 if (typeof 要填充的DOM对象[下标].getAttribute("data-appid") === "string" && 要填充的DOM对象[下标].getAttribute("data-appid").length > 0 && typeof 要填充的DOM对象[下标].getAttribute("data-page") === "string" && 要填充的DOM对象[下标].getAttribute("data-page").length > 0) { // 判断是否填写了 AppID 及 Page ( 先判断属性是否为字符串，即是否设置了该属性，可以避免判断长度时报错 )
                                     // 拼接图片路径
-                                    要填充的DOM对象[下标].src = 哈士齐单点登陆模块.公共信息.接口.TKE + "/events/advertising-materials/wechat/mini-program/qr-code/suffix/" + 哈士齐单点登陆模块.公共信息.宣传后缀 + "?app-id=" + 要填充的DOM对象[下标].getAttribute("data-appid") + "&page=" + 要填充的DOM对象[下标].getAttribute("data-page");
+                                    要填充的DOM对象[下标].src = 哈士齐单点登陆模块.公共信息.接口.GAEA + "/events/sso/wechat/mini-program/qr-code/suffix/" + 哈士齐单点登陆模块.公共信息.宣传后缀 + "?app-id=" + 要填充的DOM对象[下标].getAttribute("data-appid") + "&page=" + 要填充的DOM对象[下标].getAttribute("data-page");
                                     填充数量++;
                                 }
                             });

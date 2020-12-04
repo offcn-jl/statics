@@ -108,7 +108,7 @@
                     return false;
                 }
                 // 都合法则继续提交
-                哈士齐单点登陆模块.公共函数.XHR.POST(哈士齐单点登陆模块.公共信息.接口.GAEA + "/events/sso/sign-up", Object.assign({ MID: 哈士齐单点登陆模块.公共信息.模块ID, Suffix: 哈士齐单点登陆模块.公共信息.宣传后缀, Phone: 用户手机号, Code: 验证码 * 1 /* 修正为数字类型 */ }, 获取可选参数的值())/* 将基本的参数对象与可选参数对象进行合并 */, function (响应内容) {
+                哈士齐单点登陆模块.公共函数.XHR.POST(哈士齐单点登陆模块.公共信息.接口.GAEA + "/events/sso/sign-up", Object.assign({ MID: 哈士齐单点登陆模块.公共信息.模块ID, Suffix: 哈士齐单点登陆模块.公共信息.宣传后缀, Phone: 用户手机号, Code: 验证码 * 1 /* 修正为数字类型 */, URL: window.location.href }, 获取可选参数的值())/* 将基本的参数对象与可选参数对象进行合并 */, function (响应内容) {
                     if (typeof (响应内容.responseJson) == "object") {
                         if (响应内容.responseJson.Message !== "Success") {
                             alert(响应内容.responseJson.Message)
@@ -132,7 +132,7 @@
                 });
             } else {
                 // 调用登陆接口
-                哈士齐单点登陆模块.公共函数.XHR.POST(哈士齐单点登陆模块.公共信息.接口.GAEA + "/events/sso/sign-in", Object.assign({ MID: 哈士齐单点登陆模块.公共信息.模块ID, Suffix: 哈士齐单点登陆模块.公共信息.宣传后缀, Phone: 用户手机号 }, 获取可选参数的值()), function (响应内容) {
+                哈士齐单点登陆模块.公共函数.XHR.POST(哈士齐单点登陆模块.公共信息.接口.GAEA + "/events/sso/sign-in", Object.assign({ MID: 哈士齐单点登陆模块.公共信息.模块ID, Suffix: 哈士齐单点登陆模块.公共信息.宣传后缀, Phone: 用户手机号, URL: window.location.href }, 获取可选参数的值()), function (响应内容) {
                     if (typeof (响应内容.responseJson) == "object") {
                         if (响应内容.responseJson.Message !== "Success") {
                             alert(响应内容.responseJson.Message)

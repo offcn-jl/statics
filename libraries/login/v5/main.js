@@ -3,7 +3,7 @@ var Chaos = {
     // 模块基本信息
     Product: {
         Name: "单点登录模块 ( Single Sign On Module )",
-        Ver: "20200617"
+        Ver: "20201204"
     },
     // 公共函数
     Functions: {
@@ -382,6 +382,9 @@ Chaos.Infos = {
                 document.getElementsByTagName('chaos-v5')[0].setAttribute("data-id", Chaos.Infos.ID)
                 document.getElementsByTagName('chaos-v5')[0].setAttribute("data-type", Chaos.Infos.Type)
             }
+            // 加载 Loading 遮罩
+            Chaos.Functions.DynamicLoading.CSS(Chaos.Infos.Path + "template/loading.css");
+            Chaos.Functions.DynamicLoading.JS(Chaos.Infos.Path + "template/loading.js");
         }
 
         // 加载代码表, 由于存在 DOM 操作, 所以等待 Body 被加载到 DOM 树之后再进行操作
