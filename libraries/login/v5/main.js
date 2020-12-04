@@ -3,7 +3,7 @@ var Chaos = {
     // 模块基本信息
     Product: {
         Name: "单点登录模块 ( Single Sign On Module )",
-        Ver: "20200617"
+        Ver: "20201204"
     },
     // 公共函数
     Functions: {
