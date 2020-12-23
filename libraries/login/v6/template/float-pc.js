@@ -47,7 +47,7 @@ function 关闭单点登陆弹窗() {
   clearInterval(弹窗文字输入动画);
 }
 
-// 20s 后显示弹窗
+// 15s 后显示弹窗
 setTimeout(function () {
   if (哈士齐单点登陆模块.公共函数.Cookies.获取("offcn-sso-popup") !== "disable") {
     document.getElementsByClassName("offcn-sso-popup")[0].style.left = "50%";
@@ -60,7 +60,7 @@ setTimeout(function () {
   setTimeout(function () {
     document.getElementsByClassName("offcn-sso-popup-input")[0].style.display = "block"
   }, 2 * 1000);
-}, 20 * 1000);
+}, 15 * 1000);
 
 // 弹窗文字输入动画
 var 弹窗文字输入动画 = setInterval(function () {
