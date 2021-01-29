@@ -387,8 +387,8 @@ Chaos.Infos = {
             // Chaos.Functions.DynamicLoading.JS(Chaos.Infos.Path + "template/loading.js");
         }
 
-        // 如果是测试环境, 加载调试工具
-        if (Chaos.Infos.Environment === "TEST") {
+        // 如果是在移动端打开测试环境, 加载调试工具
+        if (Chaos.Infos.Environment === "TEST" && navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|IEMobile)/i)) {
             Chaos.Functions.DynamicLoading.JS("https://cdn.jsdelivr.net/npm/eruda");
             var erudaTimer = setInterval(function() {
                 if (typeof eruda === "object") {
