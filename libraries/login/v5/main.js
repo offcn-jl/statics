@@ -490,7 +490,7 @@ Chaos.Infos = {
                             // 判断是否存在 个人后缀 微信小程序链接
                             if (doms.length > 0) {
                                 // 判断当前终端类型 ( PC 端浏览器 / 移动端浏览器 / 移动端微信浏览器 ) , 加载对应的处理逻辑
-                                if (navigator.userAgent.toLowerCase().match(/micromessenger/i) === 'micromessenger') {
+                                if (navigator.userAgent.toLowerCase().match(/micromessenger/i)) {
                                     // 移动端微信浏览器
                                     // 加载微信 JS SDK
                                     Chaos.Functions.DynamicLoading.JS("https://res.wx.qq.com/open/js/jweixin-1.6.0.js");
