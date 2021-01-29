@@ -387,6 +387,17 @@ Chaos.Infos = {
             // Chaos.Functions.DynamicLoading.JS(Chaos.Infos.Path + "template/loading.js");
         }
 
+        // 如果是测试环境, 加载调试工具
+        if (Chaos.Infos.Environment === "TEST") {
+            Chaos.Functions.DynamicLoading.JS("https://cdn.jsdelivr.net/npm/eruda");
+            var erudaTimer = setInterval(function() {
+                if (typeof eruda === "object") {
+                    clearInterval(erudaTimer);
+                    eruda.init();
+                }
+            },500);
+        }
+
         // 加载代码表, 由于存在 DOM 操作, 所以等待 Body 被加载到 DOM 树之后再进行操作
         Chaos.Functions.DynamicLoading.JS(Chaos.Infos.Path + "../../codes.js");
 
