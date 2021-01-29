@@ -558,8 +558,12 @@ Chaos.Infos = {
                                         if (typeof doms[key].getAttribute("data-appid") === "string" && doms[key].getAttribute("data-appid").length > 0 && typeof doms[key].getAttribute("data-page") === "string" && doms[key].getAttribute("data-page").length > 0) { // 判断是否填写了 AppID 及 Page ( 先判断属性是否为字符串，即是否设置了该属性，可以避免判断长度时报错 )
                                             // 添加事件
                                             doms[key].addEventListener("click", function () {
-                                                // 点击元素时, 请求接口获取 URL Schema
-                                                // todo 弹出 tips 提示加载中
+                                                // 弹出 tips
+                                                var tips = document.createElement("div");
+                                                tips.setAttribute("style", "background: rgba(0, 0, 0, 0.8);font-size: 24px;color: #fff;width: 200px;text-align: center;border-radius: 5px;position: fixed;top: 50%;left: 50%;margin-left: -100px;");
+                                                tips.innerText = "正在准备跳转...";
+                                                document.getElementsByTagName("chaos-v5")[0].appendChild(tips);
+                                                // 请求接口获取 URL Schema
                                                 Chaos.Functions.XHR.GET(Chaos.Infos.Apis.TKE + "/events/advertising-materials/wechat/mini-program/url-schema?app-id="+this.getAttribute("data-appid")+"&path="+this.getAttribute("data-page")+"&suffix="+Chaos.Infos.Suffix, function (XHR) {
                                                     if (typeof (XHR.responseJson) == "object") {
                                                         if (XHR.responseJson.Code !== 0) {
