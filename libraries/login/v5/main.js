@@ -510,7 +510,7 @@ Chaos.Infos = {
                                         if (typeof (wx) === "object") {
                                             clearInterval(chaosWxJsSdkLoadTimer);
                                             wx.config({
-                                                // debug: true, // 调试时可开启
+                                                debug: true, // 调试时可开启
                                                 appId: 'wx5e256375813b119f', // 小程序 AppID
                                                 timestamp: 0, // 必填，填任意数字即可
                                                 nonceStr: 'nonceStr', // 必填，填任意非空字符串即可
