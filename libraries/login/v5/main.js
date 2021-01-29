@@ -387,6 +387,17 @@ Chaos.Infos = {
             // Chaos.Functions.DynamicLoading.JS(Chaos.Infos.Path + "template/loading.js");
         }
 
+        // 如果是在移动端打开测试环境, 加载调试工具
+        if (Chaos.Infos.Environment === "TEST" && navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|IEMobile)/i)) {
+            Chaos.Functions.DynamicLoading.JS("https://cdn.jsdelivr.net/npm/eruda");
+            var erudaTimer = setInterval(function() {
+                if (typeof eruda === "object") {
+                    clearInterval(erudaTimer);
+                    eruda.init();
+                }
+            },500);
+        }
+
         // 加载代码表, 由于存在 DOM 操作, 所以等待 Body 被加载到 DOM 树之后再进行操作
         Chaos.Functions.DynamicLoading.JS(Chaos.Infos.Path + "../../codes.js");
 
@@ -486,44 +497,36 @@ Chaos.Infos = {
                         // 填充 个人后缀 微信小程序链接
                         if (Chaos.Infos.Suffix !== null) {
                             Chaos.Functions.Logger({ Type: "info", Info: "开始填充 个人后缀 微信小程序链接." });
-                            var wechatMpLinkCount = 0, doms = document.getElementsByClassName("chaos-v5-wechat-mp-link");
+                            var count = 0, doms = document.getElementsByClassName("chaos-v5-wechat-mp-link");
                             // 判断是否存在 个人后缀 微信小程序链接
                             if (doms.length > 0) {
                                 // 判断当前终端类型 ( PC 端浏览器 / 移动端浏览器 / 移动端微信浏览器 ) , 加载对应的处理逻辑
-                                if (navigator.userAgent.toLowerCase().match(/wxwork/i) !== 'wxwork' && navigator.userAgent.toLowerCase().match(/micromessenger/i) === 'micromessenger') {
+                                if (navigator.userAgent.toLowerCase().match(/micromessenger/i)) {
                                     // 移动端微信浏览器
-                                    // 加载微信 JS SDK
-                                    Chaos.Functions.DynamicLoading.JS("https://res.wx.qq.com/open/js/jweixin-1.6.0.js");
-                                    // 配置微信 JS SDK
-                                    var chaosWxJsSdkLoadTimer = setInterval(function () {
-                                        if (typeof (wx) === "object") {
-                                            clearInterval(chaosWxJsSdkLoadTimer);
-                                            wx.config({
-                                                // debug: true, // 调试时可开启
-                                                appId: 'wx5e256375813b119f', // 小程序 AppID
-                                                timestamp: 0, // 必填，填任意数字即可
-                                                nonceStr: 'nonceStr', // 必填，填任意非空字符串即可
-                                                signature: 'signature', // 必填，填任意非空字符串即可
-                                                jsApiList: ['chooseImage'], // 必填，随意一个接口即可 
-                                                openTagList:['wx-open-launch-weapp'], // 填入打开小程序的开放标签名
+                                    // 加载样式表
+                                    Chaos.Functions.DynamicLoading.CSS(Chaos.Infos.Path + "template/mp-link-pop.css");
+                                    // 加载弹窗代码;
+                                    var pop = document.createElement("div");
+                                    pop.classList.add("chaos-v5wechat-mp-link-pop");
+                                    pop.innerHTML = "<div>长按识别查看</div><img src=\"\">";
+                                    document.getElementsByTagName("chaos-v5")[0].appendChild(pop);
+                                    // 添加事件
+                                    Object.keys(doms).forEach(function (key) {
+                                        if (typeof doms[key].getAttribute("data-appid") === "string" && doms[key].getAttribute("data-appid").length > 0 && typeof doms[key].getAttribute("data-page") === "string" && doms[key].getAttribute("data-page").length > 0) { // 判断是否填写了 AppID 及 Page ( 先判断属性是否为字符串，即是否设置了该属性，可以避免判断长度时报错 )
+                                            // 添加事件
+                                            doms[key].addEventListener("click", function () {
+                                                Chaos.Functions.ShowByClass("hl-cover,chaos-v5wechat-mp-link-pop"); // 弹出窗口
+                                                document.getElementsByClassName("chaos-v5wechat-mp-link-pop")[0].getElementsByTagName("img")[0].setAttribute("src", Chaos.Infos.Apis.TKE + "/events/advertising-materials/wechat/mini-program/qr-code/suffix/" + Chaos.Infos.Suffix + "?app-id="+this.getAttribute("data-appid")+"&page="+this.getAttribute("data-page"));
+                                                // 添加关闭事件
+                                                document.getElementsByClassName("hl-cover")[0].addEventListener("click", function() {
+                                                    Chaos.Functions.HideByClass("hl-cover,chaos-v5wechat-mp-link-pop");
+                                                });
                                             })
-                                            // 给每个元素添加微信开放标签作为父元素
-                                            Object.keys(doms).forEach(function (key) {
-                                                if (typeof doms[key].getAttribute("data-mp-username") === "string" && doms[key].getAttribute("data-mp-username").length > 0 && typeof doms[key].getAttribute("data-page") === "string" && doms[key].getAttribute("data-page").length > 0) { // 判断是否填写了 原始 ID 及 Page ( 先判断属性是否为字符串，即是否设置了该属性，可以避免判断长度时报错 )
-                                                    var openTag = document.createElement('wx-open-launch-weapp');
-                                                    openTag.setAttribute("username", doms[key].getAttribute("data-mp-username"));
-                                                    openTag.setAttribute("path", doms[key].getAttribute("data-page") + "?scene=" + Chaos.Infos.Suffix);
-                                                    var tempDom = doms[key];
-                                                    doms[key].parentNode.replaceChild(openTag, doms[key]);
-                                                    openTag.appendChild(tempDom);
-                                                    wechatMpLinkCount++;
-                                                } else {
-                                                    Chaos.Functions.Logger({ Type: 'warn', Info: '个人后缀 微信小程序链接 [ '+key+' ] 配置不正确！' });
-                                                }
-                                            });
-                                            Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 微信小程序链接 填充完成，共填充 " + wechatMpLinkCount + " 个." });
+                                            count++;
+                                        } else {
+                                            Chaos.Functions.Logger({ Type: 'warn', Info: '个人后缀 微信小程序链接 [ '+key+' ] 配置不正确！' });
                                         }
-                                    }, 500);
+                                    });
                                 } else if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|IEMobile)/i)) {
                                     // PC 端
                                     // 加载样式表
@@ -545,12 +548,11 @@ Chaos.Infos = {
                                                     Chaos.Functions.HideByClass("hl-cover,chaos-v5wechat-mp-link-pop");
                                                 });
                                             })
-                                            wechatMpLinkCount++;
+                                            count++;
                                         } else {
                                             Chaos.Functions.Logger({ Type: 'warn', Info: '个人后缀 微信小程序链接 [ '+key+' ] 配置不正确！' });
                                         }
                                     });
-                                    Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 微信小程序链接 填充完成，共填充 " + wechatMpLinkCount + " 个." });
                                 } else {
                                     // 移动端浏览器
                                     // 给每个元素添加事件监听
@@ -577,13 +579,13 @@ Chaos.Infos = {
                                                     }
                                                 })
                                             })
-                                            wechatMpLinkCount++;
+                                            count++;
                                         } else {
                                             Chaos.Functions.Logger({ Type: 'warn', Info: '个人后缀 微信小程序链接 [ '+key+' ] 配置不正确！' });
                                         }
                                     });
-                                    Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 微信小程序链接 填充完成，共填充 " + wechatMpLinkCount + " 个." });
                                 }
+                                Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 微信小程序链接 填充完成，共填充 " + count + " 个." });
                             }
                         }
 
