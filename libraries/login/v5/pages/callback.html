@@ -11,6 +11,7 @@
         所以模块的 src 中不存在 https 所以不管本页面在生产环境还是测试环境, 模块所处的环境都是测试环境
     -->
     <script src="../main.min.js" data-id="10001" data-type="callback"></script>
+    <style>.chaos-v5-wechat-mp-link {color: red;}</style>
 </head>
 
 <body>
@@ -35,11 +36,13 @@
     <div class="chaos-v5-ntalker">小能咨询测试 可以使用任意类型的标签</div>
     <img class="chaos-v5-wechat-mp-qr-code" data-appid="wxc431ae4dffa2a8a3" data-page="pages/event-20200918/index" alt="个人后缀微信小程序码" src="http://iph.href.lu/150x150?text=加载中">
     <br>
-    <img class="chaos-v5-wechat-mp-link" data-mp-username="gh_a9b532feb4cb" data-appid="wxc431ae4dffa2a8a3" data-page="pages/event-20200918/index" alt="个人后缀微信小程序链接" src="./chaos-v5-wechat-mp-link.jpg">
+    <b style="color:red;">特别注意：<br>无论是直接使用 img 标签还是在内部嵌套 img 标签, 都需要使用绝对路径。<br>由于移动端微信浏览器端使用了 ShadowRoot + iFrame 技术覆盖 Dom 中的 Template + DocumentFragment, 套用了跳转的标签及下级标签的样式 必须使用 内联样式！</b>
     <br>
-    <div class="chaos-v5-wechat-mp-link" data-mp-username="gh_a9b532feb4cb" data-appid="wxc431ae4dffa2a8a3" data-page="pages/event-20200918/index">OFFCN考试助手 个人后缀 微信小程序链接 测试 可以使用任意类型的标签</div>
+    <img class="chaos-v5-wechat-mp-link" data-mp-username="gh_a9b532feb4cb" data-appid="wxc431ae4dffa2a8a3" data-page="pages/event-20200918/index" alt="个人后缀微信小程序链接" src="http://test.statics.jilinoffcn.com/libraries/login/v5/pages/chaos-v5-wechat-mp-link.jpg">
     <br>
-    <div class="chaos-v5-wechat-mp-link" data-mp-username="gh_146c7fa5a832" data-appid="wx5e256375813b119f" data-page="pages/header/index">中公考试助手 个人后缀 微信小程序链接 测试 可以使用任意类型的标签</div>
+    <div class="chaos-v5-wechat-mp-link" data-mp-username="gh_a9b532feb4cb" data-appid="wxc431ae4dffa2a8a3" data-page="pages/event-20200918/index">OFFCN考试助手 个人后缀 微信小程序链接 测试 可以使用任意类型的标签 [ PC 端 / 移动端浏览器中, 本文字为红色 ( class 的样式生效 ); 移动端微信浏览器中, 本文字为黑色 ( class 的样式失效 ) ; ]</div>
+    <br>
+    <div class="chaos-v5-wechat-mp-link" data-mp-username="gh_146c7fa5a832" data-appid="wx5e256375813b119f" data-page="pages/header/index">中公考试助手 个人后缀 微信小程序链接 测试 可以使用任意类型的标签 [ PC 端 / 移动端浏览器中, 本文字为红色 ( class 的样式生效 ); 移动端微信浏览器中, 本文字为黑色 ( class 的样式失效 ) ; ]</div>
     <br>
     <table border="1">
         <tr>
