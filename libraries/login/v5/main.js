@@ -3,7 +3,7 @@ var Chaos = {
     // 模块基本信息
     Product: {
         Name: "单点登录模块 ( Single Sign On Module )",
-        Ver: "20201204"
+        Ver: "20210201"
     },
     // 公共函数
     Functions: {
@@ -458,6 +458,15 @@ Chaos.Infos = {
                                     } else {
                                         // 没有参数, 直接拼接后缀
                                         doms[key].href = doms[key].href + "?scode=" + Chaos.Infos.Suffix;
+                                    }
+                                    // 覆盖 19课堂链接 默认打开方式 ( 阻止 IOS 默认的 H5 通用链接打开 APP 行为 )
+                                    if (navigator.userAgent.indexOf('iPhone') !== -1 && doms[key].href.indexOf("19.offcn.com") !== -1) {
+                                        doms[key].setAttribute("data-chaos-href", doms[key].href);
+                                        doms[key].removeAttribute("href");
+                                        doms[key].addEventListener("click", function (e) {
+                                            e.preventDefault();
+                                            window.open(this.getAttribute("data-chaos-href"));
+                                        })
                                     }
                                     count++;
                                 }
