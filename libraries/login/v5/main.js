@@ -3,7 +3,7 @@ var Chaos = {
     // 模块基本信息
     Product: {
         Name: "单点登录模块 ( Single Sign On Module )",
-        Ver: "20210201"
+        Ver: "20210202"
     },
     // 公共函数
     Functions: {
@@ -594,6 +594,7 @@ Chaos.Infos = {
                                                 // 弹出 tips
                                                 var tips = document.createElement("div");
                                                 tips.setAttribute("style", "background: rgba(0, 0, 0, 0.8);font-size: 24px;color: #fff;width: 200px;text-align: center;border-radius: 5px;position: fixed;top: 50%;left: 50%;margin-left: -100px;");
+                                                tips.classList.add("chaos-v5-wechat-mp-link-tips");
                                                 tips.innerText = "正在准备跳转...";
                                                 document.getElementsByTagName("chaos-v5")[0].appendChild(tips);
                                                 // 请求接口获取 URL Schema
@@ -608,6 +609,7 @@ Chaos.Infos = {
                                                     } else {
                                                         alert("请求出错");
                                                     }
+                                                    Chaos.Functions.HideByClass("chaos-v5-wechat-mp-link-tips");
                                                 })
                                             })
                                             wechatMpLinkCount++;
