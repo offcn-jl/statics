@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打开小程序</title>
+
+    <!-- JQuery 插件 -->
+    <script src="https://statics.jilinoffcn.com/libraries/jquery/jquery-3.4.1.min.js"></script>
+
+    <!-- 处理函数 -->
+    <script>
+        const 接口地址 = window.location.href.indexOf("https") === -1 ? "https://api.chaos.jilinoffcn.com/test" : "https://api.chaos.jilinoffcn.com/release";
+
+        const 获取参数 = 名称 => {
+            const 匹配结果 = window.location.search.substr(1).match(new RegExp("(^|&)" + 名称 + "=([^&]*)(&|$)", "i"))
+            if (匹配结果 != null) {
+                return unescape(匹配结果[2])
+            }
+            return null
+        }
+
+        // 如果是在移动端打开测试环境, 加载调试工具
+        if (window.location.href.indexOf("https") === -1 && navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|IEMobile)/i)) {
+            const 调试工具 = document.createElement("script");
+            调试工具.src = "https://cdn.jsdelivr.net/npm/eruda";
+            调试工具.type = "text/javascript";
+            $("head").append(调试工具);
+            const 加载定时器 = setInterval(() => {
+                if (typeof eruda === "object") {
+                    clearInterval(加载定时器);
+                    eruda.init();
+                }
+            }, 50);
+        }
+
+        $(() => {
+            // 判断是否可以获取到正确的 URL Query 参数
+            if (!获取参数("mp-username") || !获取参数("appid") || !获取参数("page") || !获取参数("scode")) {
+                $(".tips").text("参数有误");
+                $(".tips").show();
+                setTimeout(() => { window.location = "./default-href.html"; }, 3 * 1000);
+            }
+
+            // 弹出加载提示
+            $(".tips").text("加载中...");
+            $(".tips").show();
+
+            // 判断当前终端类型 ( PC 端浏览器 / 移动端浏览器 / 移动端微信浏览器 ) , 加载对应的处理逻辑
+            if (navigator.userAgent.toLowerCase().match(/micromessenger/i)) {
+                // 移动端微信浏览器
+                // 添加 微信公众号软件开发工具包
+                const 微信公众号软件开发工具包 = document.createElement("script");
+                微信公众号软件开发工具包.src = "https://res.wx.qq.com/open/js/jweixin-1.6.0.js";
+                微信公众号软件开发工具包.type = "text/javascript";
+                $("head").append(微信公众号软件开发工具包)
+                // 等待 微信公众号软件开发工具包 加载完成
+                const 加载定时器 = setInterval(() => {
+                    if (typeof (wx) === "object") {
+                        clearInterval(加载定时器);
+                        // 请求接口获取签名
+                        $.ajax({
+                            url: 接口地址 + "/events/advertising-materials/wechat/official-account/js-sdk-signature?app-id=wx9a726689d50fc3d9",
+                            complete: 响应内容 => {
+                                if (!响应内容.responseJSON) {
+                                    // 修改提示内容
+                                    $(".tips").text("请求出错");
+                                    // 跳转到报错页面
+                                    setTimeout(() => { window.location = "./default-href.html"; }, 3 * 1000);
+                                } else {
+                                    if (响应内容.responseJSON.Code !== 0) {
+                                        // 请求出错
+                                        $(".tips").text(响应内容.responseJSON.Error ? 响应内容.responseJSON.Error : "参数有误");
+                                        // 跳转到报错页面
+                                        setTimeout(() => { window.location = "./default-href.html"; }, 3 * 1000);
+                                    } else {
+                                        // 配置 微信公众号软件开发工具包
+                                        wx.config({
+                                            // debug: true, // 调试时可开启
+                                            appId: 'wx9a726689d50fc3d9', // AppID
+                                            timestamp: 响应内容.responseJSON.Timestamp, // 必填
+                                            nonceStr: 响应内容.responseJSON.NonceString, // 必填
+                                            signature: 响应内容.responseJSON.Signature, // 必填
+                                            jsApiList: ['chooseImage'], // 必填，随意一个接口即可 
+                                            openTagList: ['wx-open-launch-weapp'], // 填入打开小程序的开放标签名
+                                        })
+                                        // 配置微信开放标签 username 字段
+                                        $("wx-open-launch-weapp").attr("username", 获取参数("mp-username"));
+                                        // 配置微信开放标签 path 字段
+                                        $("wx-open-launch-weapp").attr("path", 获取参数("page") + "?scene=" + 获取参数("scode"));
+                                        // 隐藏提示
+                                        $(".tips").hide();
+                                        // 显示内容
+                                        $(".micromessenger").show();
+                                    }
+                                }
+                            }
+                        })
+                    }
+                }, 50);
+            } else if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|IEMobile)/i)) {
+                // PC 端
+                // 调用接口生成二维码, 检查返回内容, 测试是否能够成功生成
+                $.ajax({
+                    url: 接口地址 + "/events/advertising-materials/wechat/mini-program/qr-code/suffix/" + 获取参数("scode") + "?app-id=" + 获取参数("appid") + "&page=" + 获取参数("page"),
+                    complete: 响应内容 => {
+                        if (!响应内容.responseJSON) {
+                            // 响应内容不是 JSON, 代表可以成功生成
+                            // 配置二维码链接
+                            $(".pc .qr-code").attr("src", 接口地址 + "/events/advertising-materials/wechat/mini-program/qr-code/suffix/" + 获取参数("scode") + "?app-id=" + 获取参数("appid") + "&page=" + 获取参数("page"));
+                            // 隐藏提示
+                            $(".tips").hide();
+                            // 显示内容
+                            $(".pc").show();
+                        } else {
+                            // 响应内容为 JSON, 代表生成失败
+                            $(".tips").text(响应内容.responseJSON.Error ? 响应内容.responseJSON.Error : "参数有误");
+                            // 跳转到报错页面
+                            setTimeout(() => { window.location = "./default-href.html"; }, 3 * 1000);
+                        }
+                    }
+                });
+            } else {
+                // 移动端浏览器
+                // 请求接口获取 URL Schema
+                $.ajax({
+                    url: 接口地址 + "/events/advertising-materials/wechat/mini-program/url-schema?app-id=" + 获取参数("appid") + "&path=" + 获取参数("page") + "&suffix=" + 获取参数("scode"),
+                    complete: 响应内容 => {
+                        if (!响应内容.responseJSON) {
+                            // 请求出错
+                            $(".tips").text("请求出错");
+                            // 跳转到报错页面
+                            setTimeout(() => { window.location = "./default-href.html"; }, 3 * 1000);
+                        } else {
+                            // 判断是否生成成功
+                            if (响应内容.responseJSON.Code !== 0) {
+                                // 生成出错
+                                $(".tips").text(响应内容.responseJSON.Error ? 响应内容.responseJSON.Error : "请求出错");
+                                // 跳转到报错页面
+                                setTimeout(() => { window.location = "./default-href.html"; }, 3 * 1000);
+                            } else {
+                                // 隐藏提示
+                                $(".tips").hide();
+                                // 显示内容
+                                $(".mobile").show();
+                                // 为点击跳转按钮绑定事件
+                                $(".mobile button").click(() => {
+                                    location.href = 响应内容.responseJSON.URLSchema;
+                                });
+                                // 直接引导跳转
+                                location.href = 响应内容.responseJSON.URLSchema;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- 样式表 -->
+    <style>
+        .tips {
+            display: none;
+            background: rgba(0, 0, 0, 0.8);
+            font-size: 24px;
+            color: #fff;
+            width: 200px;
+            text-align: center;
+            border-radius: 5px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -100px;
+        }
+
+        .micromessenger,
+        .pc,
+        .mobile {
+            display: none;
+        }
+
+        .pc .qr-code {
+            margin: 0 auto;
+            display: block;
+        }
+
+        .pc .tip {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .micromessenger,
+        .mobile .tip {
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 提示 -->
+    <div class="tips"></div>
+    <!-- 移动端微信浏览器, 提供跳转按钮及点击提示 -->
+    <div class="micromessenger">
+        <div class="tip">请您点击下方按钮跳转</div>
+        <wx-open-launch-weapp username="小程序原始账号 ID（gh_ 开头的）" path="要跳转到的页面路径">
+            <template>
+                <button style="width: 200px; height: 45px; text-align: center; font-size: 17px; display: block; margin: 20px auto; padding: 8px 24px; border: none; border-radius: 4px; background-color: #07c160; color:#fff;">打开小程序</button>
+            </template>
+        </wx-open-launch-weapp>
+    </div>
+    <!-- PC 端浏览器, 提供小程序码及扫码提示 -->
+    <div class="pc">
+        <img class="qr-code" src="" alt="小程序码">
+        <div class="tip">请使用手机微信扫码查看</div>
+    </div>
+    <!-- 移动端浏览器, 直接跳转 URL Schema, 并提供跳转按钮, 及点击提示 -->
+    <div class="mobile">
+        <div class="tip">如果页面没有自动跳转, 请手动点击下方按钮跳转</div>
+        <button style="width: 200px; height: 45px; text-align: center; font-size: 17px; display: block; margin: 20px auto; padding: 8px 24px; border: none; border-radius: 4px; background-color: #07c160; color:#fff;">打开小程序</button>
+    </div>
+</body>
+
+</html>

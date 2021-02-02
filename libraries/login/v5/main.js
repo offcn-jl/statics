@@ -3,7 +3,7 @@ var Chaos = {
     // 模块基本信息
     Product: {
         Name: "单点登录模块 ( Single Sign On Module )",
-        Ver: "20210201"
+        Ver: "20210202"
     },
     // 公共函数
     Functions: {
@@ -563,7 +563,7 @@ Chaos.Infos = {
                                     Chaos.Functions.DynamicLoading.CSS(Chaos.Infos.Path + "template/mp-link-pop.css");
                                     // 加载弹窗代码;
                                     var pop = document.createElement("div");
-                                    pop.classList.add("chaos-v5wechat-mp-link-pop");
+                                    pop.classList.add("chaos-v5-wechat-mp-link-pop");
                                     pop.innerHTML = "<div>使用微信扫码查看</div><img src=\"\">";
                                     document.getElementsByTagName("chaos-v5")[0].appendChild(pop);
                                     // 添加事件
@@ -571,11 +571,11 @@ Chaos.Infos = {
                                         if (typeof doms[key].getAttribute("data-appid") === "string" && doms[key].getAttribute("data-appid").length > 0 && typeof doms[key].getAttribute("data-page") === "string" && doms[key].getAttribute("data-page").length > 0) { // 判断是否填写了 AppID 及 Page ( 先判断属性是否为字符串，即是否设置了该属性，可以避免判断长度时报错 )
                                             // 添加事件
                                             doms[key].addEventListener("click", function () {
-                                                Chaos.Functions.ShowByClass("hl-cover,chaos-v5wechat-mp-link-pop"); // 弹出窗口
-                                                document.getElementsByClassName("chaos-v5wechat-mp-link-pop")[0].getElementsByTagName("img")[0].setAttribute("src", Chaos.Infos.Apis.TKE + "/events/advertising-materials/wechat/mini-program/qr-code/suffix/" + Chaos.Infos.Suffix + "?app-id="+this.getAttribute("data-appid")+"&page="+this.getAttribute("data-page"));
+                                                Chaos.Functions.ShowByClass("hl-cover,chaos-v5-wechat-mp-link-pop"); // 弹出窗口
+                                                document.getElementsByClassName("chaos-v5-wechat-mp-link-pop")[0].getElementsByTagName("img")[0].setAttribute("src", Chaos.Infos.Apis.TKE + "/events/advertising-materials/wechat/mini-program/qr-code/suffix/" + Chaos.Infos.Suffix + "?app-id="+this.getAttribute("data-appid")+"&page="+this.getAttribute("data-page"));
                                                 // 添加关闭事件
                                                 document.getElementsByClassName("hl-cover")[0].addEventListener("click", function() {
-                                                    Chaos.Functions.HideByClass("hl-cover,chaos-v5wechat-mp-link-pop");
+                                                    Chaos.Functions.HideByClass("hl-cover,chaos-v5-wechat-mp-link-pop");
                                                 });
                                             })
                                             wechatMpLinkCount++;
@@ -594,6 +594,7 @@ Chaos.Infos = {
                                                 // 弹出 tips
                                                 var tips = document.createElement("div");
                                                 tips.setAttribute("style", "background: rgba(0, 0, 0, 0.8);font-size: 24px;color: #fff;width: 200px;text-align: center;border-radius: 5px;position: fixed;top: 50%;left: 50%;margin-left: -100px;");
+                                                tips.classList.add("chaos-v5-wechat-mp-link-tips");
                                                 tips.innerText = "正在准备跳转...";
                                                 document.getElementsByTagName("chaos-v5")[0].appendChild(tips);
                                                 // 请求接口获取 URL Schema
@@ -608,6 +609,7 @@ Chaos.Infos = {
                                                     } else {
                                                         alert("请求出错");
                                                     }
+                                                    Chaos.Functions.HideByClass("chaos-v5-wechat-mp-link-tips");
                                                 })
                                             })
                                             wechatMpLinkCount++;
