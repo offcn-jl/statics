@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物料下载平台 - 哈士齐营销平台 - 吉林中公教育</title>
+
+    <script src="../../libraries/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../libraries/bootstrap-typeahead/bootstrap-typeahead.js"></script>
+    <script src="../../libraries/get.js"></script>
+    <script src="../public/javascript/environment-variables.js"></script>
+    <script src="short-link.js"></script>
+
+    <link rel="stylesheet" href="../public/style/loading.css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-typeahead/bootstrap-typeahead-basic.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="header">
+        <strong class="title">个人后缀宣传物料下载平台</strong>
+        <h2 style="text-align: center;">小程序跨平台宣传链接</h2>
+        <div class="bla"><a href="../personal-suffix-list/v2/" class="suffix-link" target="_blank" rel="noopener noreferrer">点击前往 -> 个人后缀花名册</a></div>
+        <div style="width: 900px;margin: 0 auto;">
+            小程序跨平台宣传链接 可用于以下渠道:
+            <br>
+            1. 腾讯系移动 APP 点击打开小程序 ( 如: QQ、Tim 等 )，点击后会直接跳转到微信打开小程序;
+            <br>
+            2. 移动端浏览器点击打开小程序，点击后会弹出提示，用户点击同意后跳转到微信打开小程序;
+            <br>
+            3. 部分第三方社交平台 ( 如：抖音 )，点击后会直接跳转到微信打开小程序。 ( 在此类渠道宣传需要注意平台对于引流行为的限制，如：抖音平台对引流到外部的行为存在一定限制 )
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="content">
+        <input type="text" id="suffix" placeholder="宣传人 ( 可搜索 )" autocomplete="off">
+        <input type="text" id="advertising-materials" placeholder="物料名称 ( 可搜索 )" autocomplete="off">
+        <ul>
+            <li>
+                <div id="current-suffix">当前后缀: <span>无</span></div>
+            </li>
+            <li>
+                <div id="current-orgnazition">所属组织: <span>无</span></div>
+            </li>
+            <li>
+                <div id="current-name">所属人: <span>无</span></div>
+            </li>
+            <li>
+                <div id="current-event">当前物料名称: <span>无</span></div>
+            </li>
+            <li>
+                <div id="current-event-link">当前物料专属链接: <span>无</span></div>
+            </li>
+        </ul>
+        <button>生成链接</button>
+    </div>
+
+    <div class="poster">
+        <div class="poster-link-path link">小程序跨平台宣传链接: <br><span></span></div>
+        <a class="poster-template-link" target="_blank" rel="noopener noreferrer">点击生成短链</a>
+        <div class="poster-link-path short-link" style="display: none;">小程序跨平台宣传短链: <br><span></span></div>
+    </div>
+</body>
+
+</html>
