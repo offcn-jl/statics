@@ -514,7 +514,7 @@ Chaos.Infos = {
                                     // 移动端微信浏览器
                                     // 遍历元素
                                     Object.keys(doms).forEach(function (key) {
-                                        if (typeof doms[key].getAttribute("data-appid") === "string" && doms[key].getAttribute("data-appid").length > 0 && typeof doms[key].getAttribute("data-page") === "string" && doms[key].getAttribute("data-page").length > 0 && typeof doms[i].getAttribute("data-mp-username") === "string" && doms[i].getAttribute("data-mp-username").length > 0) { // 判断是否填写了 AppID、 Page 及 Username ( 先判断属性是否为字符串，即是否设置了该属性，可以避免判断长度时报错 )
+                                        if (typeof doms[key].getAttribute("data-appid") === "string" && doms[key].getAttribute("data-appid").length > 0 && typeof doms[key].getAttribute("data-page") === "string" && doms[key].getAttribute("data-page").length > 0 && typeof doms[key].getAttribute("data-mp-username") === "string" && doms[key].getAttribute("data-mp-username").length > 0) { // 判断是否填写了 AppID、 Page 及 Username ( 先判断属性是否为字符串，即是否设置了该属性，可以避免判断长度时报错 )
                                             // 替换链接
                                             doms[key].setAttribute("href", "https://statics.jilinoffcn.com/pages/wechat-mini-program/handler.html?mp-username="+doms[key].getAttribute("data-mp-username")+"&appid="+doms[key].getAttribute("data-appid")+"&page="+doms[key].getAttribute("data-page")+"&scode="+Chaos.Infos.Suffix)
                                             count++;
