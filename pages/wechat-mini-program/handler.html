@@ -88,7 +88,13 @@
                                         // 配置微信开放标签 username 字段
                                         $("wx-open-launch-weapp").attr("username", 获取参数("mp-username"));
                                         // 配置微信开放标签 path 字段
-                                        $("wx-open-launch-weapp").attr("path", 获取参数("page") + "?scene=" + 获取参数("scode"));
+                                        let path =  获取参数("page")
+                                        if (获取参数("page").split("*").length === 2){
+                                            path = 获取参数("page").split("*")[0] + "?scene=" + 获取参数("scode") + "*" + 获取参数("page").split("*")[1]
+                                        } else {
+                                            path += "?scene=" + 获取参数("scode")
+                                        }
+                                        $("wx-open-launch-weapp").attr("path", path);
                                         // 隐藏提示
                                         $(".tips").hide();
                                         // 显示内容
