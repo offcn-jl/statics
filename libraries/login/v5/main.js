@@ -527,6 +527,11 @@ Chaos.Infos = {
                                     });
                                 } else if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|IEMobile)/i)) {
                                     // PC 端
+                                    // 加载遮罩元素
+                                    var chaosDOM = document.getElementsByTagName("chaos-v5")[0];
+                                    var coverDom = document.createElement("div");
+                                    coverDom.classList.add("chaos-v5-wechat-mp-link-cover");
+                                    chaosDOM.appendChild(coverDom);
                                     // 加载样式表
                                     Chaos.Functions.DynamicLoading.CSS(Chaos.Infos.Path + "template/mp-link-pop.css");
                                     // 加载弹窗代码;
@@ -539,11 +544,11 @@ Chaos.Infos = {
                                         if (typeof doms[key].getAttribute("data-appid") === "string" && doms[key].getAttribute("data-appid").length > 0 && typeof doms[key].getAttribute("data-page") === "string" && doms[key].getAttribute("data-page").length > 0) { // 判断是否填写了 AppID 及 Page ( 先判断属性是否为字符串，即是否设置了该属性，可以避免判断长度时报错 )
                                             // 添加事件
                                             doms[key].addEventListener("click", function () {
-                                                Chaos.Functions.ShowByClass("hl-cover,chaos-v5-wechat-mp-link-pop"); // 弹出窗口
+                                                Chaos.Functions.ShowByClass("chaos-v5-wechat-mp-link-cover,chaos-v5-wechat-mp-link-pop"); // 弹出窗口
                                                 document.getElementsByClassName("chaos-v5-wechat-mp-link-pop")[0].getElementsByTagName("img")[0].setAttribute("src", Chaos.Infos.Apis.TKE + "/events/advertising-materials/wechat/mini-program/qr-code/suffix/" + Chaos.Infos.Suffix + "?app-id="+this.getAttribute("data-appid")+"&page="+this.getAttribute("data-page"));
                                                 // 添加关闭事件
-                                                document.getElementsByClassName("hl-cover")[0].addEventListener("click", function() {
-                                                    Chaos.Functions.HideByClass("hl-cover,chaos-v5-wechat-mp-link-pop");
+                                                document.getElementsByClassName("chaos-v5-wechat-mp-link-cover")[0].addEventListener("click", function() {
+                                                    Chaos.Functions.HideByClass("chaos-v5-wechat-mp-link-cover,chaos-v5-wechat-mp-link-pop");
                                                 });
                                             })
                                             count++;

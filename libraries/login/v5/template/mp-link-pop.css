@@ -22,3 +22,16 @@
 .chaos-v5-wechat-mp-link-pop img {
   display: block;
 }
+
+.chaos-v5-wechat-mp-link-cover {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9998;
+  display: none;
+}
