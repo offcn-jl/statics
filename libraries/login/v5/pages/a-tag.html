@@ -6,12 +6,11 @@
     <title>拦截 a 标签</title>
     <!--
         由于小程序码自动生成逻辑的引入，为了避免污染生产环境的小程序 AccessToken 缓存逻辑，需要在此处判断运行环境并引入对应的模块。
-        只在本地环境引入测试环境的模块，最大程度上避免干扰生产环境的 AccessToken 缓存。
     -->
     <script>
-        var chaosLoginModuleJSPath = "https://statics.jilinoffcn.com/libraries/login/v5/main.min.js";
-        if (window.location.protocol === "file:"){
-            chaosLoginModuleJSPath = "../main.min.js";
+        var chaosLoginModuleJSPath = "../main.min.js";
+        if (window.location.protocol === "https:"){
+            chaosLoginModuleJSPath = "https://statics.jilinoffcn.com/libraries/login/v5/main.min.js";
         }
         var chaosLoginModuleJS = document.createElement("script");
         chaosLoginModuleJS.src = chaosLoginModuleJSPath;
