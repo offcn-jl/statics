@@ -9,15 +9,16 @@
         由于小程序码自动生成逻辑的引入，为了避免污染生产环境的小程序 AccessToken 缓存逻辑，需要在此处判断运行环境并引入对应的模块。
     -->
     <script>
-        var chaosLoginModuleJSPath = "../main.min.js";
-        if (window.location.protocol === "https:"){
-            chaosLoginModuleJSPath = "https://statics.jilinoffcn.com/libraries/login/v5/main.min.js";
-        }
         var chaosLoginModuleJS = document.createElement("script");
-        chaosLoginModuleJS.src = chaosLoginModuleJSPath;
         chaosLoginModuleJS.type = "text/javascript";
-        chaosLoginModuleJS.setAttribute("data-id", "10001");
         chaosLoginModuleJS.setAttribute("data-type", "page");
+        if (window.location.protocol === "https:") {
+            chaosLoginModuleJS.setAttribute("data-id", "1");
+            chaosLoginModuleJS.src = "https://statics.jilinoffcn.com/libraries/login/v5/main.min.js";
+        } else {
+            chaosLoginModuleJS.setAttribute("data-id", "10001");
+            chaosLoginModuleJS.src = "../main.min.js";
+        }
         document.getElementsByTagName("head")[0].appendChild(chaosLoginModuleJS);
     </script>
 </head>
