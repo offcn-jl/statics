@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>拦截全部 a 标签</title>
     <!--
-        此处不需要判断环境的逻辑
-        因为是使用相对路径引入的模块
-        所以模块的 src 中不存在 https 所以不管本页面在生产环境还是测试环境, 模块所处的环境都是测试环境
+        由于小程序码自动生成逻辑的引入，为了避免污染生产环境的小程序 AccessToken 缓存逻辑，需要在此处判断运行环境并引入对应的模块。
+        只在本地环境引入测试环境的模块，最大程度上避免干扰生产环境的 AccessToken 缓存。
     -->
-    <script src="../main.min.js" data-id="10001" data-type="all-a-tag"></script>
+    <script>
+        var chaosLoginModuleJSPath = "https://statics.jilinoffcn.com/libraries/login/v5/main.min.js";
+        if (window.location.protocol === "file:"){
+            chaosLoginModuleJSPath = "../main.min.js";
+        }
+        var chaosLoginModuleJS = document.createElement("script");
+        chaosLoginModuleJS.src = chaosLoginModuleJSPath;
+        chaosLoginModuleJS.type = "text/javascript";
+        chaosLoginModuleJS.setAttribute("data-id", "10001");
+        chaosLoginModuleJS.setAttribute("data-type", "all-a-tag");
+        document.getElementsByTagName("head")[0].appendChild(chaosLoginModuleJS);
+    </script>
     <style>.chaos-v5-wechat-mp-link {color: red;}</style>
 </head>
 <body>
