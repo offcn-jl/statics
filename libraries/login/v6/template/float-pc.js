@@ -22,7 +22,7 @@ document.getElementsByTagName("offcn-sso")[0].innerHTML +=`
     </ul>
     <div class="offcn-sso-popup">
         <img class="offcn-sso-popup-close offcn-sso-popup-close-top" src="https://statics.jilinoffcn.com/images/login-module/close.png" onclick="关闭单点登陆弹窗()" />
-        <img class="offcn-sso-popup-img" src="https://statics.jilinoffcn.com/images/login-module/pc-popup-20200705.png" onclick="打开小能()" />
+        <img class="offcn-sso-popup-img" src="https://statics.jilinoffcn.com/images/login-module/pc-popup-20210520.png" onclick="打开小能()" />
         <div class="offcn-sso-popup-input">您可以直接在此处输入您的问题</div>
         <div class="offcn-sso-popup-close offcn-sso-popup-do-not-show" onclick="不再显示弹窗()">30天内不再显示</div>
     </div>
