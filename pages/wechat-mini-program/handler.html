@@ -61,7 +61,7 @@
                         clearInterval(加载定时器);
                         // 请求接口获取签名
                         $.ajax({
-                            url: 接口地址 + "/events/advertising-materials/wechat/official-account/js-sdk-signature?app-id=wx9a726689d50fc3d9",
+                            url: 接口地址 + "/events/advertising-materials/wechat/official-account/js-sdk-signature?app-id=wx54a01e20fc534742",
                             complete: 响应内容 => {
                                 if (!响应内容.responseJSON) {
                                     // 修改提示内容
@@ -78,7 +78,7 @@
                                         // 配置 微信公众号软件开发工具包
                                         wx.config({
                                             // debug: true, // 调试时可开启
-                                            appId: 'wx9a726689d50fc3d9', // AppID
+                                            appId: 'wx54a01e20fc534742', // AppID
                                             timestamp: 响应内容.responseJSON.Timestamp, // 必填
                                             nonceStr: 响应内容.responseJSON.NonceString, // 必填
                                             signature: 响应内容.responseJSON.Signature, // 必填
