@@ -6,7 +6,7 @@ document.getElementsByTagName("chaos-v5")[0].innerHTML +=
     </a>
     <ul>
         <li class="li1">
-            <a href="javascript:void(0);" onclick="openNtalker()">在线咨询</a>
+            <a href="javascript:void(0);" onclick="openZhiChi()">在线咨询</a>
         </li>
         <li class="li2">
             <a href="http://jl.offcn.com/zg/kfqrcode/v2/" target="_blank">微信咨询</a>
@@ -23,7 +23,7 @@ document.getElementsByTagName("chaos-v5")[0].innerHTML +=
     </ul>
     <div class="chaos-popup">
         <img class="chaos-popup-close chaos-popup-close-top" src="https://statics.jilinoffcn.com/images/login-module/close.png" onclick="chaosPopupClose()" />
-        <img class="chaos-popup-img" src="https://statics.jilinoffcn.com/images/login-module/pc-popup-20210520.png" onclick="openNtalker()" />
+        <img class="chaos-popup-img" src="https://statics.jilinoffcn.com/images/login-module/pc-popup-20210520.png" onclick="openZhiChi()" />
         <div class="chaos-popup-input">您可以直接在此处输入您的问题</div>
         <div class="chaos-popup-close chaos-popup-do-not-show" onclick="chaosPopupDoNotShow()">30天内不再显示</div>
     </div>
@@ -32,9 +32,25 @@ document.getElementsByTagName("chaos-v5")[0].innerHTML +=
 
 // 处理函数
 
-// 打开小能
-function openNtalker() {
-  NTKF.im_openInPageChat(Chaos.Infos.NTalkerGID);
+// 打开智齿
+function openZhiChi() {
+  zc('config', {
+    custom: true,
+    reload: true,
+    groupid: Chaos.Infos.NTalkerGID,
+    refresh: true, // 是否每次展开聊天组件都刷新 默认false
+  });
+  zc('frame_status', function(data) {
+    if (data.code === '000002') {
+      zc('frame_manual', function(res) {
+        if (res.code === '000000') {
+          zc('frame_status');
+        }
+      })
+    } else if (data === 'expand') {
+        zc('frame_status');
+    }
+  });
   Chaos.Functions.HideByClass("chaos-popup");
 }
 

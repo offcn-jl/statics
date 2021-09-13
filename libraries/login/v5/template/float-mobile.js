@@ -5,11 +5,32 @@ document.getElementsByTagName("chaos-v5")[0].innerHTML += `
 		<a rel="nofollow" href="http://jl.offcn.com/zg/ksrl/ksrlz/">招聘公告</a>
 		<a class="chaos-float-right" rel="nofollow" href="http://jl.offcn.com/zg/gzkswbl/">“微”部落</a>
 	</p>
-	<a class="chaos-float-middle" onclick="NTKF.im_openInPageChat(Chaos.Infos.NTalkerGID)"><span>在线咨询</span></a>
+	<a class="chaos-float-middle" onclick="openZhiChi()"><span>在线咨询</span></a>
 </div>
 `;
 
 // 处理函数
+
+// 打开智齿
+function openZhiChi() {
+  zc('config', {
+    custom: true,
+    reload: true,
+    groupid: Chaos.Infos.NTalkerGID,
+    refresh: true, // 是否每次展开聊天组件都刷新 默认false
+  });
+  zc('frame_status', function(data) {
+    if (data.code === '000002') {
+      zc('frame_manual', function(res) {
+        if (res.code === '000000') {
+          zc('frame_status');
+        }
+      })
+    } else if (data === 'expand') {
+        zc('frame_status');
+    }
+  });
+}
 
 // chaosFloatSwitchTimeout 用于记录切换 float 的 display 状态的定时器, 在设定新定时器前, 清除旧的定时器, 避免发生状态漂移 ( 在 if 条件的临界位置, 100ms 的定时器进行操作后, 1600ms 的定时器又进行了反向操作, 造成状态漂移 ) 
 var chaosFloatSwitchTimeout

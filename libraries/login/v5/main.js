@@ -594,23 +594,62 @@ Chaos.Infos = {
                             Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 微信小程序链接 填充完成，共填充 " + count + " 个." });
                         }
 
-                        // 加载小能咨询插件
-                        Chaos.Functions.DynamicLoading.JS("https://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_10353");
-                        // 填充 个人后缀 小能
+                        // 加载智齿咨询插件
+                        Chaos.Functions.DynamicLoading.CSS(Chaos.Infos.Path + "template/zhichi.css");
+                        window['zc'] = function () {
+                            window.cbk = window.cbk || []
+                            window.cbk.push(arguments);
+                        }
+                        var zhichiScript = document.createElement('script');
+                        zhichiScript.async = true;
+                        zhichiScript.id = 'zhichiScript';
+                        zhichiScript.className = 'chaos-v5-ntalker'; //该class可自行设置，只需要在使用的自定义入口上同名即可
+                        zhichiScript.src = 'https://offcn.sobot.com/chat/frame/v2/entrance.js?sysnum=020bd1a0655d4c5e9603b2d261018f6a&channelid=79';
+                        document.getElementsByTagName("chaos-v5")[0].appendChild(zhichiScript);
+                        // 等待智齿 JSSDK 加载完成后, 初始化智齿 JSSDK
+                        // 50ms 运行一次 ( 此处的时间间隔必须足够短，否则就会出现 SDK 自动初始化的情况 )
+                        var zhichiTimer = setInterval(function(){
+                            if (typeof zc === 'function') {
+                                clearInterval(zhichiTimer);
+                                zc('config', {
+                                    manual: true, // 是否手动初始化
+                                    custom: true, // 自定义按钮
+                                    refresh: true, // 是否每次展开聊天组件都刷新 默认false
+                                    groupid: '020bd1a0655d4c5e9603b2d261018f6a', 
+                                });
+                            }
+                        }, 5e1);
+                        // 填充 个人后缀 智齿
                         if (Chaos.Infos.Suffix !== null) {
-                            Chaos.Functions.Logger({ Type: "info", Info: "开始填充 个人后缀 小能." });
-                            var count = 0, ntalkerDoms = document.getElementsByClassName("chaos-v5-ntalker");
-                            Object.keys(ntalkerDoms).forEach(function (key) {
-                                ntalkerDoms[key].addEventListener("click", function () {
-                                    if (typeof NTKF === "function") {
-                                        NTKF.im_openInPageChat(Chaos.Infos.NTalkerGID)
+                            Chaos.Functions.Logger({ Type: "info", Info: "开始填充 个人后缀 智齿." });
+                            var count = 0, zhichiDoms = document.getElementsByClassName("chaos-v5-ntalker");
+                            Object.keys(zhichiDoms).forEach(function (key) {
+                                zhichiDoms[key].addEventListener("click", function () {
+                                    if (typeof zc === "function") {
+                                        zc('config', {
+                                            custom: true,
+                                            reload: true,
+                                            groupid: Chaos.Infos.NTalkerGID,
+                                            refresh: true, // 是否每次展开聊天组件都刷新 默认false
+                                        });
+                                        zc('frame_status', function(data) {
+                                            if (data.code === '000002') {
+                                                zc('frame_manual', function(res) {
+                                                    if (res.code === '000000') {
+                                                        zc('frame_status');
+                                                    }
+                                                })
+                                            } else if (data === 'expand') {
+                                                zc('frame_status');
+                                            }
+                                        });
                                     } else {
-                                        alert("正在努力加载中～")
+                                        alert("正在努力加载中～");
                                     }
                                 })
                                 count++;
                             });
-                            Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 小能 填充完成，共填充 " + count + " 个." });
+                            Chaos.Functions.Logger({ Type: "info", Info: "个人后缀 智齿 填充完成，共填充 " + count + " 个." });
                         }
 
                         // 判断终端类型, 加载对应悬浮
