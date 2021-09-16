@@ -6,7 +6,7 @@ document.getElementsByTagName("chaos-v5")[0].innerHTML +=
     </a>
     <ul>
         <li class="li1">
-            <a href="javascript:void(0);" onclick="openZhiChi()">在线咨询</a>
+            <a class="chaos-v5-ntalker" href="javascript:void(0);" onclick="openZhiChi()">在线咨询</a>
         </li>
         <li class="li2">
             <a href="http://jl.offcn.com/zg/kfqrcode/v2/" target="_blank">微信咨询</a>

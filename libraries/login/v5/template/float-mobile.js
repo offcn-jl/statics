@@ -5,7 +5,7 @@ document.getElementsByTagName("chaos-v5")[0].innerHTML += `
 		<a rel="nofollow" href="http://jl.offcn.com/zg/ksrl/ksrlz/">招聘公告</a>
 		<a class="chaos-float-right" rel="nofollow" href="http://jl.offcn.com/zg/gzkswbl/">“微”部落</a>
 	</p>
-	<a class="chaos-float-middle" onclick="openZhiChi()"><span>在线咨询</span></a>
+	<a class="chaos-float-middle chaos-v5-ntalker" onclick="openZhiChi()"><span>在线咨询</span></a>
 </div>
 `;
 
