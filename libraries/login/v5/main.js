@@ -595,7 +595,7 @@ Chaos.Infos = {
                         }
 
                         // 加载智齿咨询插件
-                        Chaos.Functions.DynamicLoading.CSS(Chaos.Infos.Path + "template/zhichi.css");
+                        // Chaos.Functions.DynamicLoading.CSS(Chaos.Infos.Path + "template/zhichi.css");
                         window['zc'] = function () {
                             window.cbk = window.cbk || []
                             window.cbk.push(arguments);
