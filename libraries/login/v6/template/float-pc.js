@@ -16,9 +16,9 @@ document.getElementsByTagName("offcn-sso")[0].innerHTML +=`
         <li class="li4">
             <a href="http://jl.offcn.com/zg/xmtpt/" target="_blank">中公官媒</a>
         </li>
-        <li class="li5">
+        <!--li class="li5">
             <a href="http://jl.offcn.com/zg/gzkswbl/" target="_blank">关注中公</a>
-        </li>
+        </li-->
     </ul>
     <div class="offcn-sso-popup">
         <img class="offcn-sso-popup-close offcn-sso-popup-close-top" src="https://statics.jilinoffcn.com/images/login-module/close.png" onclick="关闭单点登陆弹窗()" />
